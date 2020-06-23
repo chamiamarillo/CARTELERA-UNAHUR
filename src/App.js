@@ -3,7 +3,8 @@ import './App.css';
 
 
 import Encabezado from  "./components/Encabezado";
-import MenuFiltroIzq from "./components/MenuFiltroIzq"
+import MenuFiltroIzq from "./components/MenuFiltroIzq";
+import Principal from "./components/Principal"
 
 class App extends React.Component {
   render() {
@@ -11,13 +12,8 @@ class App extends React.Component {
     return (
  
       <div class="container">
-        <Encabezado/>
-        <div class="container1">
-
-        <MenuFiltroIzq/>
-        </div>
-        </div>
-
+        <Principal/>
+      </div>
             
     );
   }

@@ -1,32 +1,28 @@
-import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Switch } from 'react-router-dom';
+
+import React, { Component } from 'react';
+import Route from 'react-router-dom/Route'
 
 
 //--- COMPONENTES
 import LogoUsuario from "./LogoUsuario";
-import Menu from  "./Menu";
-
+import Nav from "./MenuTab"
+import CrearEstudiantes from "./CrearEstudiantes";
+import Asignar from "./Asignar";
 
 class Encabezado extends React.Component {
   render() {
   
     return (
       <BrowserRouter>
-      <div>
-        <div className="Encabezado">
-          <br/>
-          <div className="container-fluid">
+        <div>
           <LogoUsuario/>
-          </div>
-      
-          <div id="menu"> </div>
-          <Menu/>
-
-          <br/>
-          <br/>
-        
         </div>
-      </div>
+        <div>
+            <Nav />
+            <Route exact path="/Asignar" component={Asignar} />
+            <Route path="/CrearEStudiante" component={CrearEstudiantes} />
+        </div>
       </BrowserRouter>
     );
   }

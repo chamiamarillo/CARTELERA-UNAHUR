@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import './css/MenuFiltro.css';
-
+//const dias = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"];
+//const dias, ver como hacer el menu automatico
 
 class MenuFiltroIzq extends Component {
-  
   render() {
     return (
     
@@ -20,6 +20,7 @@ class MenuFiltroIzq extends Component {
         <div class="panel-body">
             <form>
                 <div class="checkbox">
+                  
                     <label><input type="checkbox" value=""></input>Lunes</label>
                 </div>
                 <div class="checkbox">
