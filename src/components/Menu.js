@@ -17,7 +17,7 @@ class Menu extends Component {
   </ul>
 
   <div class="tab-content">
-    <div id="asignar" class="tab-pane fade in active">
+    <div id="asignar" class="tab-pane fade">
       <Asignar/>
     </div>
     <div id="crearEstudiante" class="tab-pane fade">

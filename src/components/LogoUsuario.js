@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
-
+import './css/LogoUsuario.css';
 //---IMAGENES
 import logo from "./logo-transparente.png";
 
 class LogoUsuario extends Component {
     render() {
         return (
-            <nav className="navbar navbar-expand-md navbar-dark bg-dark">
+            <nav className="navbar">
                 <img
                 className="img-fluid"
                 src={logo}
                 alt="imagen_logo"
               /> 
-              ASIGNACION DE AULAS - UNAHUR
-              <div>USUARIO</div>
+              <div className="tituloAula">
+                  ASIGNACION DE AULAS - UNAHUR
+              </div>
             </nav>
         )
     }

@@ -18,8 +18,7 @@ class Encabezado extends React.Component {
           <div className="container-fluid">
           <LogoUsuario/>
           </div>
-          <br/>
-          <br/>
+      
           <div id="menu"> </div>
           <Menu/>
 
