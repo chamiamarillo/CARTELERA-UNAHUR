@@ -12,16 +12,16 @@ import Asignar from "./Asignar";
 
 class Encabezado extends React.Component {
   render() {
-  
+
     return (
       <BrowserRouter>
         <div>
-          <LogoUsuario/>
+          <LogoUsuario />
         </div>
         <div>
-            <Nav />
-            <Route exact path="/Asignar" component={Asignar} />
-            <Route path="/CrearEStudiante" component={CrearEstudiantes} />
+          <Nav />
+          <Route exact path="/Asignar" component={Asignar} />
+          <Route path="/CrearEStudiante" component={CrearEstudiantes} />
         </div>
       </BrowserRouter>
     );

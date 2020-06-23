@@ -7,14 +7,16 @@ class LogoUsuario extends Component {
     render() {
         return (
             <nav className="navbar">
+
                 <img
-                className="img-fluid"
-                src={logo}
-                alt="imagen_logo"
-              /> 
-              <div className="tituloAula">
+                    className="img-fluid"
+                    src={logo}
+                    alt="imagen_logo"
+                />
+                <div className="lead text-center">
+                    <br></br>
                   ASIGNACION DE AULAS - UNAHUR
-              </div>
+            </div>
             </nav>
         )
     }
