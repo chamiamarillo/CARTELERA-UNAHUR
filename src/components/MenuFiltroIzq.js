@@ -7,82 +7,82 @@ class MenuFiltroIzq extends Component {
   render() {
     return (
 
-      <div class="menuFiltro">
+      <div className="menuFiltro">
 
-        <div class="panel-group" id="accordion">
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title">
+        <div className="panel-group" id="accordion">
+          <div className="panel panel-default">
+            <div className="panel-heading">
+              <h3 className="panel-title">
                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Dias de Cursada</a>
               </h3>
             </div>
-            <div id="collapse1" class="panel-collapse collapse">
-              <div class="panel-body">
+            <div id="collapse1" className="panel-collapse collapse">
+              <div className="panel-body">
                 <form>
-                  <div class="checkbox">
+                  <div className="checkbox">
 
                     <label><input type="checkbox" value=""></input>Lunes</label>
                   </div>
-                  <div class="checkbox">
+                  <div className="checkbox">
                     <label><input type="checkbox" value=""></input>Martes</label>
                   </div>
-                  <div class="checkbox">
+                  <div className="checkbox">
                     <label><input type="checkbox" value="" ></input>Miercoles</label>
                   </div>
-                  <div class="checkbox">
+                  <div className="checkbox">
                     <label><input type="checkbox" value="" ></input>Jueves</label>
                   </div>
-                  <div class="checkbox">
+                  <div className="checkbox">
                     <label><input type="checkbox" value="" ></input>Viernes</label>
                   </div>
-                  <div class="checkbox">
+                  <div className="checkbox">
                     <label><input type="checkbox" value="" ></input>Sabado</label>
                   </div>
-                  <div class="checkbox">
+                  <div className="checkbox">
                     <label><input type="checkbox" value="" ></input>Domingo</label>
                   </div>
                 </form>
               </div>
             </div>
           </div>
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title">
+          <div className="panel panel-default">
+            <div className="panel-heading">
+              <h3 className="panel-title">
                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Banda Horaria</a>
               </h3>
             </div>
-            <div id="collapse2" class="panel-collapse collapse">
-              <div class="panel-body">
+            <div id="collapse2" className="panel-collapse collapse">
+              <div className="panel-body">
                 <form>
-                  <div class="checkbox">
+                  <div className="checkbox">
                     <label><input type="checkbox" value=""></input>Mañana</label>
                   </div>
-                  <div class="checkbox">
+                  <div className="checkbox">
                     <label><input type="checkbox" value=""></input>Tarde</label>
                   </div>
-                  <div class="checkbox">
+                  <div className="checkbox">
                     <label><input type="checkbox" value="" ></input>Noche</label>
                   </div>
                 </form>
               </div>
             </div>
           </div>
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title">
+          <div className="panel panel-default">
+            <div className="panel-heading">
+              <h3 className="panel-title">
                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Propuestas</a>
               </h3>
             </div>
-            <div id="collapse3" class="panel-collapse collapse">
-              <div class="panel-body">
+            <div id="collapse3" className="panel-collapse collapse">
+              <div className="panel-body">
                 <form>
-                  <div class="checkbox">
+                  <div className="checkbox">
                     <label><input type="checkbox" value=""></input>Lic. En Informatica</label>
                   </div>
-                  <div class="checkbox">
+                  <div className="checkbox">
                     <label><input type="checkbox" value=""></input>Tec. en Informatica</label>
                   </div>
-                  <div class="checkbox">
+                  <div className="checkbox">
                     <label><input type="checkbox" value="" ></input>Enfermeria Universitaria</label>
                   </div>
                 </form>

@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Container, Row, Col } from "react-bootstrap"; //Usaba Grid pero se cambio el nombre a Container https://react-bootstrap.github.io/migrating/
+
 
 class CrearEstudiantes extends Component {
   state = {
@@ -17,10 +19,13 @@ class CrearEstudiantes extends Component {
   render() {
     return (
       <div>
+        <Container>
+          <Row className="show-grid">
+            <Col mdpull={9} md={9}>
         <div className="contenedor-titulo">
           <div className="titulo">CREAR NUEVO ESTUDIANTE</div>
         </div>
-        <div className="col-md-4" style={{ backgroundColor: "rgb(240, 240, 240)" }}>
+        <div style={{ backgroundColor: "rgb(240, 240, 240)" }}>
           <form
             action=""
             autoComplete="off"
@@ -57,7 +62,11 @@ class CrearEstudiantes extends Component {
             </footer>
           </form>
         </div>
-
+        </Col>
+        </Row >
+        </Container>
+         
+            
       </div>
     )
   }
