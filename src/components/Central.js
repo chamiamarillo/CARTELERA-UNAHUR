@@ -11,7 +11,7 @@ class Central extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      itemActiveMenuTab: {enviar}
+      itemActiveMenuTab: ''
      }
     };
 
