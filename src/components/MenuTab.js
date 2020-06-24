@@ -1,34 +1,58 @@
-import React from 'react';
-import {NavLink, withRouter}  from 'react-router-dom'
-import './css/MenuTab.css';
+import React, { Component } from 'react'
+import { Input, Menu, Segment } from 'semantic-ui-react'
+import Central from './Central';
 
-class MenuTab extends React.Component {
-    getNavLinkClass = (path) => {
-        return this.props.location.pathname === path ? 'active' : '';
+const styleLink = document.createElement("link");
+styleLink.rel = "stylesheet";
+styleLink.href = "https://cdn.jsdelivr.net/npm/semantic-ui/dist/semantic.min.css";
+document.head.appendChild(styleLink);
+
+
+export default class MenuTab extends Component {
+
+    constructor(props){
+        super(props);
+        this.handleItemClick = this.handleItemClick.bind(this);
+        this.enviar = this.enviar.bind(this);
+
+        this.state = {
+            activeItem: '',
+            estado:''
+        }
     }
-    render() {
-        return (
-            <nav className="navbar navbar-inverse container" >
-                <div className="container-fluid">
-                    <div className="navbar-header">
-                        <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                            <span className="sr-only">Toggle navigation</span>
-                            <span className="icon-bar"></span>
-                            <span className="icon-bar"></span>
-                            <span className="icon-bar"></span>
-                        </button>
-                        <a className="navbar-brand" href="/">Menu Principal</a>
-                    </div>
-                    <div className="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
-                        <ul className="nav navbar-nav navbar-right">
-                           <li className={this.getNavLinkClass("/Asignar")}><NavLink to="/Asignar" >Asignar</NavLink></li>
-                           <li className={this.getNavLinkClass("/CrearEstudiante")}><NavLink to="/CrearEstudiante">Crear Estudiante</NavLink></li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        )
-    }
-};
-MenuTab = withRouter(MenuTab);
-export default MenuTab;
+
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name} );
+
+  enviar = (e, {activeItem}) => this.state.activeItem
+  render() {
+    const { activeItem } = this.state
+    let estado =this.state.activeItem
+    return (
+
+
+      <div>
+
+        <Menu attached='top' position='right' tabular>
+          <Menu.Item
+            name='Asignar'
+            active={activeItem === 'Asignar'}
+            onClick={this.handleItemClick}
+          />
+          <Menu.Item
+            name='Crear Estudiante'
+            active={activeItem === 'Crear Estudiante'}
+            onClick={this.handleItemClick}
+          />
+          <Menu.Menu position='right'>
+          <Menu.Item
+            name='Menu Principal'
+            active={activeItem === 'Menu Principal'}
+            href="/"
+          />
+          </Menu.Menu>
+        </Menu>
+
+      </div>
+    )
+  }
+}

@@ -20,6 +20,7 @@ class Principal extends React.Component {
       
         <Row className="show-grid">       
           <Col md={12}>
+            <br/>
             <MenuFiltroIzq />
           </Col>
           <Col md={4}>
