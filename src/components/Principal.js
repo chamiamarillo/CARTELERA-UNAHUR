@@ -12,21 +12,21 @@ class Principal extends React.Component {
 
     return (
       <Container>
-        <Row className="show-grid">
-          <Col md={12}>
+        <Row >
+          <Col >
             <Encabezado />
-          </Col>
-          </Row>
-      
-        <Row className="show-grid">       
-          <Col md={12}>
-            <br/>
-            <MenuFiltroIzq />
-          </Col>
-          <Col md={4}>
-            <Central />
+            <br />
           </Col>
         </Row>
+        <Row >
+          <Col>
+            <div className="col-sm-2"><MenuFiltroIzq /></div>
+            <br />
+            <div className="col-sm-10"><Central /></div>
+
+          </Col>
+        </Row>
+
       </Container>
     )
   }
