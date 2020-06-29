@@ -1,33 +1,20 @@
+import { BrowserRouter } from 'react-router-dom';
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 
 //--- COMPONENTES
 import LogoUsuario from "./LogoUsuario";
-import Menu from  "./Menu";
-
+import MenuTab from "./MenuTab";
 
 class Encabezado extends React.Component {
   render() {
-  
+
     return (
       <BrowserRouter>
-      <div>
-        <div className="Encabezado">
-          <br/>
-          <div className="container-fluid">
-          <LogoUsuario/>
-          </div>
-          <br/>
-          <br/>
-          <div id="menu"> </div>
-          <Menu/>
-
-          <br/>
-          <br/>
-        
+        <div>
+          <LogoUsuario />
+          <MenuTab/>
         </div>
-      </div>
       </BrowserRouter>
     );
   }

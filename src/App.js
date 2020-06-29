@@ -1,28 +1,26 @@
 import React, { Component } from 'react';
 import './App.css';
+import { Container, Row, Col } from "react-bootstrap"; //Usaba Grid pero se cambio el nombre a Container https://react-bootstrap.github.io/migrating/
 
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+//---Componentes
+import Principal from "./components/Principal"
+import MenuFiltroIzq from "./components/MenuFiltroIzq";
 
-import Encabezado from  "./components/Encabezado";
 
 class App extends React.Component {
   render() {
-  
-    return (
-      <BrowserRouter>
-      <div>
-        <div className="App">
-          <br/>
-          <div className="container-fluid">
-          <Encabezado/>
-          </div>
 
-          <br/>
-          <br/>
-        
-        </div>
+    return (
+      <div>
+      <Col className="col-sm-10" >
+       <Principal />
+      </Col>
+      <Col className="col-sm-2">
+      <MenuFiltroIzq />
+      </Col>
       </div>
-      </BrowserRouter>
+
+      
     );
   }
 }
