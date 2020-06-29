@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import { Input, Menu, Segment } from 'semantic-ui-react'
+import Central from "./Central"
+import { Container, Row, Col } from "react-bootstrap"; //Usaba Grid pero se cambio el nombre a Container https://react-bootstrap.github.io/migrating/
+
 
 const styleLink = document.createElement("link");
 styleLink.rel = "stylesheet";
@@ -10,14 +13,15 @@ document.head.appendChild(styleLink);
 
 export default class MenuTab extends Component {
 
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.handleItemClick = this.handleItemClick.bind(this);
         this.state = {
-            activeItem: '',
-            estado: ''
+            activeItem: 'Menu Principal',
         }
     }
+
+
 
     handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
@@ -33,9 +37,6 @@ export default class MenuTab extends Component {
                         name='Asignar'
                         active={activeItem === 'Asignar'}
                         onClick={this.handleItemClick}
-
-                        
-
                     />
                     <Menu.Item
                         name='Crear Estudiante'
@@ -51,8 +52,10 @@ export default class MenuTab extends Component {
                         />
                     </Menu.Menu>
                 </Menu>
+                <Central mostrar={activeItem}/>
+
             </div>
-          
+
         )
     }
 }

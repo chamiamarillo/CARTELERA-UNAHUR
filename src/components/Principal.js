@@ -5,29 +5,18 @@ import { Container, Row, Col } from "react-bootstrap"; //Usaba Grid pero se camb
 //--- COMPONENTES
 import MenuFiltroIzq from "./MenuFiltroIzq";
 import Encabezado from './Encabezado';
-import Central from './Central';
+import MenuTab from './MenuTab';
 
 class Principal extends React.Component {
   render() {
 
     return (
+
       <Container>
-        <Row >
-          <Col >
             <Encabezado />
-            <br />
-          </Col>
-        </Row>
-        <Row >
-          <Col>
-            <div className="col-sm-2"><MenuFiltroIzq /></div>
-            <br />
-            <div className="col-sm-10"><Central /></div>
-
-          </Col>
-        </Row>
-
+            
       </Container>
+ 
     )
   }
 }

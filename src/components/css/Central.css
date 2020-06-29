@@ -1,4 +1,5 @@
-.central {
-    border: 1px solid black;
+#central {
+    width: 50px;
+    margin:50px ;
     
 }

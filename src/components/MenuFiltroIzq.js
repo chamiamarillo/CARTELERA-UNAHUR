@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import './css/MenuFiltro.css';
+import { Container } from "react-bootstrap";
 //const dias = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"];
 //const dias, ver como hacer el menu automatico
 
 class MenuFiltroIzq extends Component {
   render() {
     return (
-
       <div className="menuFiltro">
 
         <div className="panel-group" id="accordion">
@@ -91,7 +91,6 @@ class MenuFiltroIzq extends Component {
           </div>
         </div>
       </div>
-
     )
   }
 }
