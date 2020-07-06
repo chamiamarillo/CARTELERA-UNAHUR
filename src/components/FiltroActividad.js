@@ -14,7 +14,7 @@ class FiltroActividad extends Component {
     let username = 'aulas';
     let password = 'aulas';
     let proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-    let url = 'http://guarani-test.unahur.edu.ar/guarani/3.17/rest/comisiones-aulas?limit=10'
+    let url = 'http://guarani-test.unahur.edu.ar/guarani/3.17/rest/comisiones-aulas?limit=2000'
     fetch(proxyUrl + url, {
       method: 'GET',
       headers: { 'Authorization': 'Basic ' + btoa(username + ":" + password) },
@@ -27,9 +27,6 @@ class FiltroActividad extends Component {
             items: result
           });
         },
-        // Nota: es importante manejar errores aquí y no en 
-        // un bloque catch() para que no interceptemos errores
-        // de errores reales en los componentes.
         (error) => {
           this.setState({
             isLoaded: true,
