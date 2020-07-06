@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 import { Input, Menu, Segment } from 'semantic-ui-react'
-import Central from "./Central"
-import { Container, Row, Col } from "react-bootstrap"; //Usaba Grid pero se cambio el nombre a Container https://react-bootstrap.github.io/migrating/
+import Central from './Central';
 
-
+/***************************************** estilo de los botones ********************/
 const styleLink = document.createElement("link");
 styleLink.rel = "stylesheet";
 styleLink.href = "https://cdn.jsdelivr.net/npm/semantic-ui/dist/semantic.min.css";
 document.head.appendChild(styleLink);
-
+/***********************************************************************************/
 
 
 export default class MenuTab extends Component {
@@ -33,6 +32,12 @@ export default class MenuTab extends Component {
             <div>
 
                 <Menu attached='top' position='right' tabular>
+
+                    <Menu.Item
+                        name='Menu Principal'
+                        active={activeItem === 'Menu Principal'}
+                        href="/"
+                    />
                     <Menu.Item
                         name='Asignar'
                         active={activeItem === 'Asignar'}
@@ -44,13 +49,7 @@ export default class MenuTab extends Component {
                         onClick={this.handleItemClick}
 
                     />
-                    <Menu.Menu position='right'>
-                        <Menu.Item
-                            name='Menu Principal'
-                            active={activeItem === 'Menu Principal'}
-                            href="/"
-                        />
-                    </Menu.Menu>
+                    
                 </Menu>
                 <Central mostrar={activeItem}/>
 

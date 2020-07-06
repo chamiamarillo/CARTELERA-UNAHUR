@@ -1,24 +1,34 @@
-import React from 'react';
-import './css/Principal.css';
-import { Container, Row, Col } from "react-bootstrap"; //Usaba Grid pero se cambio el nombre a Container https://react-bootstrap.github.io/migrating/
+import React, { Fragment } from 'react';
 
-//--- COMPONENTES
-import MenuFiltroIzq from "./MenuFiltroIzq";
-import Encabezado from './Encabezado';
-import MenuTab from './MenuTab';
+/******* COMPONENTES */
+import MenuFiltroIzq from "./MenuFiltroIzq"; // Filtro del costado días - banda horaria - propuesta
+import MenuTab from "./MenuTab"; // menu superior asignar - crear est. - menu principal
+import LogoUsuario from './LogoUsuario'; // por ahora logo y titulo
+import Central from './Central'; // pantalla central de interaccion segun la eleccion del menu
 
-class Principal extends React.Component {
-  render() {
+/****************** */
 
-    return (
+const Principal = () => {
+  return ( 
+    <Fragment>
+        <div>
+        <header>
+          <LogoUsuario />
+        </header>
 
-      <Container>
-            <Encabezado />
-            
-      </Container>
- 
-    )
-  }
+        <nav>
+          <MenuTab />
+        </nav>
+
+        <section>
+          <aside id="izq"><MenuFiltroIzq /></aside>
+          <article><Central /></article>
+        </section>
+
+        <footer></footer>
+        </div>
+      </Fragment>
+   );
 }
-
+ 
 export default Principal;

@@ -1,3 +1,4 @@
+/*
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -11,3 +12,58 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/*******************************************************************************************************************************/
+*{
+	margin:0;
+	padding:0;
+	list-style:none;
+	}
+
+header{
+  position:relative; /* ubicacion tiente tres valores  relativa  y si la quiero centrar es margin automatica */
+  
+  background-color: deeppink;
+	}
+
+
+nav{
+  background-color: chocolate;
+
+  }
+  
+  .botones{
+    float:left; /* "float" hace flotar el listado que estaba a niverl vertical lo hace flotar a nivel horizontal // float: left => flota de izquierda a derecha */
+    width:196px;
+    margin:0px 2px;
+    height:48px;
+    background:#333;
+    }
+
+
+
+
+
+
+  section{
+    position:relative;
+    top: 0px;
+    /*background-color: darkgreen;*/
+    }
+  
+  aside#izq{
+    position:absolute;
+    left:0;/*
+    top:0;*/
+    background-color: gold;
+    }
+    
+    
+  article{
+    position: absolute;
+  	left:126px;/*
+	  top:0;*/
+	  width:auto;
+	  height:auto;
+    background-color: green;
+  }
