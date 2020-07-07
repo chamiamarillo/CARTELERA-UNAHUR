@@ -14,7 +14,7 @@ class FiltroActividad extends Component {
     let username = 'aulas';
     let password = 'aulas';
     let proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-    let url = 'http://localhost:80/guarani/3.17/rest/comisiones-aulas'
+    let url = 'http://181.45.234.123:8095/guarani/3.17/rest/comisiones-aulas?limit=20' // limitado a traer 20 registros
     fetch(proxyUrl + url, {
       method: 'GET',
       headers: { 'Authorization': 'Basic ' + btoa(username + ":" + password) },

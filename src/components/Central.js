@@ -2,8 +2,7 @@ import React, { Fragment, Component } from 'react';
 
 import Asignar from "./Asignar";
 import CrearEstudiantes from "./CrearEstudiantes";
-
-
+import { render } from '@testing-library/react';
 
 class Central extends Component {
 
@@ -34,5 +33,3 @@ class Central extends Component {
 }
  
 export default Central;
-
-

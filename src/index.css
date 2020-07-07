@@ -23,12 +23,12 @@ code {
 header{
   position:relative; /* ubicacion tiente tres valores  relativa  y si la quiero centrar es margin automatica */
   
-  background-color: deeppink;
+  /*background-color: deeppink;*/
 	}
 
 
 nav{
-  background-color: chocolate;
+  /*background-color: chocolate;*/
 
   }
   
@@ -37,7 +37,7 @@ nav{
     width:196px;
     margin:0px 2px;
     height:48px;
-    background:#333;
+    /*background:#333;*/
     }
 
 
@@ -54,8 +54,8 @@ nav{
   aside#izq{
     position:absolute;
     left:0;/*
-    top:0;*/
-    background-color: gold;
+    top:0;
+    background-color: gold;*/
     }
     
     
@@ -65,5 +65,5 @@ nav{
 	  top:0;*/
 	  width:auto;
 	  height:auto;
-    background-color: green;
+    /*background-color: green;*/
   }
