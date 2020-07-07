@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import './css/MenuFiltro.css';
-import { Container } from "react-bootstrap";
 //const dias = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"];
 //const dias, ver como hacer el menu automatico
 

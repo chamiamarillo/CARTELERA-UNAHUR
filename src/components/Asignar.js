@@ -10,8 +10,8 @@ class Asignar extends Component {
     return (
       <div className="asignar">
         <Container>
-        <FiltroActividad/>
-                </Container >
+          <FiltroActividad/>
+        </Container >
       </div>
 
 

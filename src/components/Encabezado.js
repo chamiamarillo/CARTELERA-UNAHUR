@@ -4,7 +4,7 @@ import React from 'react';
 
 //--- COMPONENTES
 import LogoUsuario from "./LogoUsuario";
-import MenuTab from "./MenuTab";
+
 
 class Encabezado extends React.Component {
   render() {
@@ -13,7 +13,7 @@ class Encabezado extends React.Component {
       <BrowserRouter>
         <div>
           <LogoUsuario />
-          <MenuTab/>
+          
         </div>
       </BrowserRouter>
     );
