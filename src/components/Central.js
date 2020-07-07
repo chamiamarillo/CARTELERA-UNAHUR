@@ -1,39 +1,35 @@
-import React, { Component, useState } from "react";
-import { BrowserRouter, Route } from 'react-router-dom';
+import React, { Fragment, Component } from 'react';
 
 import Asignar from "./Asignar";
 import CrearEstudiantes from "./CrearEstudiantes";
-import './css/Central.css';
-
+import { render } from '@testing-library/react';
 
 class Central extends Component {
 
-  renderSwitch(mostrar) {
-
-    switch (mostrar) {
-      case 'Asignar':
-        return <Asignar />;
-      case 'Crear Estudiante':
-        return <CrearEstudiantes />
-      default:
-        return ;
+    renderSwitch(mostrar) {
+        
+        switch (mostrar) {
+          case 'Asignar':
+            return <Asignar />;
+          case 'Crear Estudiante':
+            return <CrearEstudiantes />
+          default:
+            return ;
+        }
     }
-  }
 
-  render() {
+    render() {
+        const mostrar = this.props.mostrar;
+     
+        return ( 
 
-    const mostrar = this.props.mostrar
-    return (
-      <div id="central">
-        {this.renderSwitch(mostrar)}
-      </div>
-    );
-  }
-
-
+            <Fragment>           
+                <article>
+                    {this.renderSwitch(mostrar)}
+                </article>
+            </Fragment>
+        );
+    }
 }
-
-
-
-
+ 
 export default Central;
