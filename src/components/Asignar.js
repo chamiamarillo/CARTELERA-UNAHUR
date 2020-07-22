@@ -1,6 +1,6 @@
 import React from "react";
-import FiltroActividad from "./FiltroActividad";
+import Filtro from "./Filtro";
 
-const Asignar = () => ( <FiltroActividad /> )
+const Asignar = () => ( <Filtro/> )
  
 export default Asignar;

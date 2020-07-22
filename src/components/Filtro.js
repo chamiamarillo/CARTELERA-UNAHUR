@@ -1,5 +1,6 @@
-  import React, { Component } from 'react';
-  class FiltroActividad extends Component {
+
+import React, { Component } from 'react';
+  class Filtro extends Component {
     constructor(props) {
       super(props);
       this.state = {
@@ -77,4 +78,4 @@
     }
   }
   }
-  export default FiltroActividad;
+  export default Filtro;
