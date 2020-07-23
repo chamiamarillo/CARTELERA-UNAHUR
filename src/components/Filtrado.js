@@ -10,7 +10,8 @@
 
     obtenerComision(comisionBuscada) {
       debugLog(`Buscando información ...${comisionBuscada}...`)
-        .get('http://guarani-test.unahur.edu.ar/guarani3/swagger/index.html?url=http://guarani-test.unahur.edu.ar/guarani/3.17/rest/api-docs#!/comisiones-aulas/get')
+        .get('http://181.45.234.123:8095/guarani/3.17/rest/comisiones-aulas?limit=20' )
+      
         .query({ key: this.key, results: comisionBuscada})
         .then(res => {
           const comiss = res.body.results[0];

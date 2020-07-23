@@ -14,9 +14,9 @@ import React, { Component } from 'react';
       let username = 'aulas';
       let password = 'aulas';
       let proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-      //let url = 'http://181.45.234.123:8095/guarani/3.17/rest/comisiones-aulas?limit=20' // limitado a traer 20 registros
-      let url = 'http://guarani-test.unahur.edu.ar/guarani3/swagger/index.html?url=http://guarani-test.unahur.edu.ar/guarani/3.17/rest/api-docs#!/comisiones-aulas/get';
-      ++
+      let url = 'http://181.45.234.123:8095/guarani/3.17/rest/comisiones-aulas?limit=20' // limitado a traer 20 registros
+      //let url = 'http://guarani-test.unahur.edu.ar/guarani3/swagger/index.html?url=http://guarani-test.unahur.edu.ar/guarani/3.17/rest/api-docs#!/comisiones-aulas/get';
+      
         
       fetch(proxyUrl + url, {
         method: 'GET',
