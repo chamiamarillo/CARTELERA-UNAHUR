@@ -6,7 +6,6 @@ import './css/MenuFiltro.css';
 class MenuFiltroIzq extends Component {
   render() {
     return (
-
       <div className="menuFiltro">
 
         <div className="panel-group" id="accordion">
@@ -91,7 +90,6 @@ class MenuFiltroIzq extends Component {
           </div>
         </div>
       </div>
-
     )
   }
 }
