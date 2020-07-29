@@ -1,18 +1,17 @@
 import React, { Fragment, Component } from 'react';
 
 import Asignar from "./Asignar";
-import CrearEstudiantes from "./CrearEstudiantes";
-import { render } from '@testing-library/react';
+import FiltroActividad from './FiltroActividad';
 
 class Central extends Component {
 
     renderSwitch(mostrar) {
         
         switch (mostrar) {
-          case 'Asignar':
+          case 'Asignacion':
             return <Asignar />;
-          case 'Crear Estudiante':
-            return <CrearEstudiantes />
+          case 'Modificacion':
+            return <FiltroActividad />;
           default:
             return ;
         }
