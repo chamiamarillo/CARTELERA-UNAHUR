@@ -22,15 +22,19 @@ const Principal = () => {
       </nav>
 
       <section>
-        <div className="visual">  
-          <div className="izq">
-            <MenuFiltroIzq />
-          </div>
+          
+        <aside id="izq">
+          <MenuFiltroIzq />
+        
 
-          <div className="central">
-            <Central />
-          </div>
-        </div>
+        
+
+        </aside>
+
+        <aside id="central">
+          <Central />
+        </aside>
+
       </section>
 
       <footer></footer>

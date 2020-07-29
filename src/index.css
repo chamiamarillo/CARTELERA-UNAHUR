@@ -19,28 +19,132 @@ code {
 	padding:0;
 	list-style:none;
 	}
+/********************************************************************************************************************************/
+/***** Cabezera - Logo - Loguin **************/
 
 header{
-  position:relative; /* ubicacion tiente tres valores  relativa  y si la quiero centrar es margin automatica */
-  
+  width: 100%;/*
+  background: yellow;*/
+  height: 70px;
+ /* position:relative; /* ubicacion tiente tres valores  relativa  y si la quiero centrar es margin automatica */
   /*background-color: deeppink;*/
-	}
-
-
-nav{
-  /*background-color: chocolate;*/
-
   }
+
+  .anchoheader{
+    width: 99%;
+    height: 70px;/*
+    background: red;*/
+    margin: auto; 
+  }
+  .logo{
+    width: 35%;
+    height: 70px;/*
+    background: blue;*/
+    float: left;
+  }
+  .logo p img{
+    vertical-align: middle;
+    width: 80%;
+  }
+  .tituloapp{
+    width: 40%;
+    height: 70px;/*
+    background: olive;*/
+    float: left;
+    padding-top: 20px;
+    box-sizing: border-box;
+  }
+  .login{
+    width: 25%;
+    height: 70px;/*
+    background: pink;*/
+    float: left;/*
+    padding-top: 10px;
+    box-sizing: border-box;*/
+  }
+ 
+/* Loguin */
+
+  .anchoLoguin{
+    width: 50%;
+    height: 70px;
+    text-align: right;
+    padding-top: 26px;
+    padding-right: 3px;/*
+    background: greenyellow;*/
+    float: left;
+  }
+  .inpLoguin{
+    width: 65%;
+    background-color: ivory;
+    border-radius: 10%;
+    box-shadow: 0 0 5px rgb(10, 10, 10);
+  }
+  .logoLoguin{
+    width: 50%;
+    height: 70px;
+    padding-top: 4px;
+    padding-left: 3px;/*
+    background: blueviolet;*/
+    float: left;
+  }
+  .logoLoguin p img{
+    vertical-align: middle;
+    width: 40%;
+  }
+
+/***************************************/
+
+nav{/*
+  background: chocolate;*/
+  width: 100%;
+  height: 43px;
+  }
+  .anchotab{
+    width: 100%;
+    height: 43px;/*
+    background: blueviolet;*/
+  }
+  .menusalir{
+    width: 5%;
+    height: 43px;
+    float: left;
+  }
+  .menubotones{
+    width: 75%;
+    height: 43px;
+    float: left;
+  }
+  .menuhora{
+    width: 20%;
+    height: 43px;
+    text-align: center;
+    padding-top: 4px;/*
+    background: burlywood;*/
+    float: left;
+  }
+  
+
+
+
+
+
+
+
+
+
   
   .botones{
     float:left; /* "float" hace flotar el listado que estaba a niverl vertical lo hace flotar a nivel horizontal // float: left => flota de izquierda a derecha */
     width:196px;
     margin:0px 2px;
     height:48px;
-    /*background:#333;*/
+    background: blue;
     }
 
-
+    .frechahora{
+      margin-top: 20px;
+    }
 
 
 
