@@ -10,16 +10,14 @@ class FiltroActividad extends Component {
     this.state = {
       error: null,
       isLoaded: false,
-      items: []
+      items: [],
     };
   }
 
-  
 
-  componentDidMount() {    
-    
-    let bbb = this.state.buscar;
-    //let bbb = "obj"
+  componentWillReceiveProps() {
+    let bbb = this.props.buscar;
+  //  let bbb = "obj"
     let username = 'aulas';
     let password = 'aulas';
     let proxyUrl = 'https://cors-anywhere.herokuapp.com/';
@@ -45,7 +43,8 @@ class FiltroActividad extends Component {
           });
         }
       )
-  }
+          }
+
 
   render() {
     const { error, isLoaded, items } = this.state;

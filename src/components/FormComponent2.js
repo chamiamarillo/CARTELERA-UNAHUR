@@ -1,7 +1,8 @@
 import React, { Fragment, useState } from 'react';
 import FiltroActividad from './FiltroActividad';
+import { useEffect } from 'react';
 
-const FromComponent2 = () => {
+const FormComponent2 = () => {
 
   const [ buscar, guardarBuscar ] = useState('');
   
@@ -13,7 +14,6 @@ const FromComponent2 = () => {
    
     guardarBuscar('');
   }
-
 
   return ( 
     <Fragment>
@@ -35,15 +35,13 @@ const FromComponent2 = () => {
         />
       </form>
       <div>
-        <FiltroActividad 
-          buscar={buscar}
-        />
-      </div>
-  
-
+      <FiltroActividad
+        buscar={buscar}
+      />
+        </div>
      </Fragment>
 
    );
 }
  
-export default FromComponent2
+export default FormComponent2
