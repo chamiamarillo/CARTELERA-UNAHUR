@@ -1,6 +1,10 @@
-import React, { Component } from 'react';
+import React, { useState, Component } from 'react';
 
 class FiltroActividad extends Component {
+
+  
+  //console.log(concatenarBusqueda);
+
   constructor(props) {
     super(props);
     this.state = {
@@ -10,11 +14,16 @@ class FiltroActividad extends Component {
     };
   }
 
-  componentWillMount() {
+  
+
+  componentDidMount() {    
+    
+    let bbb = this.state.buscar;
+    //let bbb = "obj"
     let username = 'aulas';
     let password = 'aulas';
     let proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-    let url = 'http://181.45.234.123:8095/guarani/3.17/rest/comisiones-aulas?nombre=contiene%3BCPI_&con_horarios=1&con_docentes=1'
+    let url = `http://181.45.234.123:8095/guarani/3.17/rest/comisiones-aulas?nombre=contiene%3B${bbb}&con_horarios=1&con_docentes=1`
 
     //let url = 'http://181.45.234.123:8095/guarani/3.17/rest/comisiones-aulas?limit=20?con_horarios=1&con_docentes=1' // limitado a traer 20 registros
     fetch(proxyUrl + url, {

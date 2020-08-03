@@ -17,8 +17,12 @@ class Buscador extends Component {
             return(
               <form onSubmit={this.obtenerDatos}>
                    <div>
-                      <input ref={this.busquedaRef}
-                             type="text" className="form-control form-control-lg" placeholder="filtra"/>
+                      <input 
+                        ref={this.busquedaRef}
+                        type="text"
+                        className="form-control form-control-lg" 
+                        placeholder="filtra"
+                      />
                     </div>
 
                     <div>
