@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 
+
 class FiltroActividad extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -10,11 +12,22 @@ class FiltroActividad extends Component {
     };
   }
 
-  componentWillMount() {
+  //let bbb = this.state.buscar;
+
+
+
+  componentWillReceiveProps() {    
+    
+    // uso los hooks del FiltrosComponente y aca los tomo como props
+    let actividad = this.props.actividad;
+    let comision = this.props.comision;
+    let docente = this.props.docente;
+
     let username = 'aulas';
     let password = 'aulas';
     let proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-    let url = 'http://181.45.234.123:8095/guarani/3.17/rest/comisiones-aulas?nombre=contiene%3BCPI_&con_horarios=1&con_docentes=1'
+    //console.log(bbb)
+    let url = `http://181.45.234.123:8095/guarani/3.17/rest/comisiones-aulas?nombre=contiene%3B${actividad}&con_horarios=1&con_docentes=1`
 
     //let url = 'http://181.45.234.123:8095/guarani/3.17/rest/comisiones-aulas?limit=20?con_horarios=1&con_docentes=1' // limitado a traer 20 registros
     fetch(proxyUrl + url, {

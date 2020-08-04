@@ -124,7 +124,12 @@ nav{/*
     float: left;
   }
   
-
+  .nuevo-estilo{
+    margin: 15px;
+    background-color: #EFEDF1;
+    border: 1px solid #E2E3E8;
+    padding: 10px;
+  }
 
 
 
