@@ -28,10 +28,7 @@ const FiltrosComponente = () => {
    guardarDocente('');
   }
 
-  
 
-
-  
   return ( 
     <Fragment>
       <p></p>
@@ -92,13 +89,12 @@ const FiltrosComponente = () => {
       </form>
       <p></p>
       <div>
+      { render ? 
 
-        { render ? 
-          <FiltroActividad 
-             actividad={actividad}
-          />
+        <FiltroActividad 
+          actividad={actividad}
+        />
         : null }
-
       </div>
       <p></p>
       <div>
@@ -110,21 +106,3 @@ const FiltrosComponente = () => {
 }
  
 export default FiltrosComponente
-
-
-
-
-/*
-
-
-
-
-
-
-
-
-
-
-
-
-*/
