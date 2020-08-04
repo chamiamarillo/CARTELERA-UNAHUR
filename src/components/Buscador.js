@@ -17,12 +17,17 @@ class Buscador extends Component {
             return(
               <form onSubmit={this.obtenerDatos}>
                    <div>
+<<<<<<< Updated upstream
                       <input 
                         ref={this.busquedaRef}
                         type="text"
                         className="form-control form-control-lg" 
                         placeholder="filtra"
                       />
+=======
+                      <input ref={this.busquedaRef}
+                             type="text" className="form-control form-control-lg" placeholder="filtra"/>
+>>>>>>> Stashed changes
                     </div>
 
                     <div>
