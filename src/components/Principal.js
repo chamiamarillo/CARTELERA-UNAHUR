@@ -16,11 +16,11 @@ const Principal = () => {
       <header>
         <HeaderLogoTitulo />
       </header>
-
-      <nav className="menuNav">
-        <MenuNav />
-      </nav>
-
+      <div className="nuevo-estilo">
+        <nav className="menuNav">
+          <MenuNav />
+        </nav>
+      </div>
       <section>
         <div className="visual">  
           <div className="izq">

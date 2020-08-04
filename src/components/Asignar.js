@@ -1,8 +1,6 @@
 import React from "react";
-//import FiltroActividad from "./FiltroActividad";
-import FormComponent from "./FormComponent";
-import FormComponent2 from "./FormComponent2"
+import FiltrosComponente from "./FiltrosComponente";
 
-const Asignar = () => ( <FormComponent2 /> )
+const Asignar = () => ( <FiltrosComponente /> )
  
 export default Asignar;
