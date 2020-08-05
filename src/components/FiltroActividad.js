@@ -11,21 +11,14 @@ class FiltroActividad extends Component {
     };
   }
 
-
-
   componentWillReceiveProps() {    
     
-    // uso los hooks del FiltrosComponente y aca los tomo como props
-   // let actividad = this.props.actividad;
     let result = this.props.result;
     this.setState({
       isLoaded: true,
       items: result
     });
-    
   }
-
-    
 
   render() {
     const { error, isLoaded, items } = this.state;
