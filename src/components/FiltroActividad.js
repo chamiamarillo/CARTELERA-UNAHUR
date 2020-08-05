@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import Switch from 'react-bootstrap/esm/Switch';
-
 
 class FiltroActividad extends Component {
 

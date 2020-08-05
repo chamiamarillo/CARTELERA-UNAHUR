@@ -23,7 +23,7 @@ const FiltrosComponente = () => {
    guardarDocente('');
   }
 
-  const fetchGrilla = (buscarActividad) => {
+  const fetchGrillaActividad = (buscarActividad) => {
 
     let username = 'aulas';
     let password = 'aulas';
@@ -50,7 +50,7 @@ const FiltrosComponente = () => {
       )
   }
 
-  const fetchGrilla = (buscarComision) => {
+  const fetchGrillaComision = (buscarComision) => {
 
     let username = 'aulas';
     let password = 'aulas';
@@ -79,7 +79,33 @@ const FiltrosComponente = () => {
   }
 
 
-  
+  const fetchGrillaDocente = (buscarDocente) => {
+
+    let username = 'aulas';
+    let password = 'aulas';
+    let proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+    /////
+    
+    let url = `http://181.45.234.123:8095/guarani/3.17/rest/comisiones-aulas?nombre=contiene%3B${buscarDocente}&con_horarios=1&con_docentes=1`
+
+    //let url = 'http://181.45.234.123:8095/guarani/3.17/rest/comisiones-aulas?limit=20?con_horarios=1&con_docentes=1' // limitado a traer 20 registros
+    fetch(proxyUrl + url, {
+      method: 'GET',
+      headers: { 'Authorization': 'Basic ' + btoa(username + ":" + password) },
+    })
+      .then(res => res.json())
+      .then(
+        (result) => {
+          guardarJsonGrilla(result)
+        },
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      )
+  }
   
 
 
@@ -105,7 +131,7 @@ const FiltrosComponente = () => {
           type="submit" 
           className="botonActividad"
           value="Buscar"
-          onClick={ () => fetchGrilla(buscarActividad) }
+          onClick={ () => fetchGrillaActividad(buscarActividad) }
         />
         
         <label>
@@ -122,7 +148,7 @@ const FiltrosComponente = () => {
           type="submit" 
           className="botonComision"
           value="Buscar"
-          onClick={ () => fetchGrilla(buscarComision)}
+          onClick={ () => fetchGrillaComision(buscarComision)}
         />
         
         <label>
@@ -139,18 +165,14 @@ const FiltrosComponente = () => {
           type="submit" 
           className="botonDocente"
           value="Buscar"
-          onClick={ () => fetchGrilla(buscarDocente)}
+          onClick={ () => fetchGrillaDocente(buscarDocente)}
         />
       </form>
       <p></p>
       <div>
-
-        { render ? 
           <FiltroActividad 
              result = {jsonGrilla}
           />
-        : null }
-
       </div>
       <p></p>
       <div>
