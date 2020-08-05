@@ -18,43 +18,16 @@ class FiltroActividad extends Component {
   componentWillReceiveProps() {    
     
     // uso los hooks del FiltrosComponente y aca los tomo como props
-    let actividad = this.props.actividad;
-    let comision = this.props.comision;
-    let docente = this.props.docente;
-    ///
-    //let nomAccion = this.props.nomAccion
-
-    let username = 'aulas';
-    let password = 'aulas';
-    let proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-    /////
+   // let actividad = this.props.actividad;
+    let result = this.props.result;
+    this.setState({
+      isLoaded: true,
+      items: result
+    });
     
-
-
-
-    let url = `http://181.45.234.123:8095/guarani/3.17/rest/comisiones-aulas?nombre=contiene%3B${actividad}&con_horarios=1&con_docentes=1`
-
-    //let url = 'http://181.45.234.123:8095/guarani/3.17/rest/comisiones-aulas?limit=20?con_horarios=1&con_docentes=1' // limitado a traer 20 registros
-    fetch(proxyUrl + url, {
-      method: 'GET',
-      headers: { 'Authorization': 'Basic ' + btoa(username + ":" + password) },
-    })
-      .then(res => res.json())
-      .then(
-        (result) => {
-          this.setState({
-            isLoaded: true,
-            items: result
-          });
-        },
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }
-      )
   }
+
+    
 
   render() {
     const { error, isLoaded, items } = this.state;
@@ -77,7 +50,7 @@ class FiltroActividad extends Component {
               </tr>
             </thead>
             <tbody>
-              {this.state.items.map(com => {
+              {this.props.result.map(com => {
                 return (
 
                   <tr key={com.comision}>
