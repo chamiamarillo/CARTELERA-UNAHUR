@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import Buscador from './Buscador';
-import Buscador from './Resultado';
-import Elemento from './Elemento';
+import Buscador from './components/Buscador';
+import Resultado from './components/Resultado';
+//import Elemento from './Component/Elemento';
 
 class App2 extends Component {
    state={
@@ -36,7 +36,7 @@ paginaAnterior = () =>{
 }
 paginaSiguiente= () =>{
  //leer el state de la pagina actual
-  let popagina =this.state.pagina;
+  let pagina =this.state.pagina;
 //sumar uno a la pagina actual
   pagina +=1;
 //agregar el cambio al state
@@ -89,5 +89,5 @@ consultarApi = () => {
      );
   }
 }
-export default App;
+export default App2;
 //esto debe estar conectado al index js

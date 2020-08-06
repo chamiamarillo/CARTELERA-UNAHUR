@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react';
-import FiltroActividad from './FiltroActividad';
+import MostrarResultadoFiltro from './MostrarResultadoFiltro';
 import CaracteristicasAulas from './CaracteristicasAulas';
 
 
@@ -9,9 +9,8 @@ const FiltrosComponente = () => {
   const [ buscarActividad, guardarActividad ] = useState('');
   const [ buscarComision, guardarComision ] = useState('');
   const [ buscarDocente, guardarDocente ] = useState('');
-  /// pasar conjunto de datos
+  /// pasar conjunto de datos como props al filtro actividad (renderisa la tabla)
   const [ jsonGrilla, guardarJsonGrilla ] = useState([]);
-
 
 
   const enviarBusqueda = e => {
@@ -22,6 +21,9 @@ const FiltrosComponente = () => {
    guardarComision('');
    guardarDocente('');
   }
+  
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Metodos que consultan la api de guarani creada para los filtros //
+  /////////////////////////////////////////////////////////////////////
 
   const fetchGrillaActividad = (buscarActividad) => {
 
@@ -55,7 +57,6 @@ const FiltrosComponente = () => {
     let username = 'aulas';
     let password = 'aulas';
     let proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-    /////
     
     let url = `http://181.45.234.123:8095/guarani/3.17/rest/comisiones-aulas?nombre=contiene%3B${buscarComision}&con_horarios=1&con_docentes=1`
 
@@ -78,13 +79,11 @@ const FiltrosComponente = () => {
       )
   }
 
-
   const fetchGrillaDocente = (buscarDocente) => {
 
     let username = 'aulas';
     let password = 'aulas';
     let proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-    /////
     
     let url = `http://181.45.234.123:8095/guarani/3.17/rest/comisiones-aulas?nombre=contiene%3B${buscarDocente}&con_horarios=1&con_docentes=1`
 
@@ -107,7 +106,7 @@ const FiltrosComponente = () => {
       )
   }
   
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   
   return ( 
@@ -170,8 +169,8 @@ const FiltrosComponente = () => {
       </form>
       <p></p>
       <div>
-          <FiltroActividad 
-             result = {jsonGrilla}
+          <MostrarResultadoFiltro 
+             result = {jsonGrilla} // envio el JSon como props para renderizar como tabla en el componente
           />
       </div>
       <p></p>
