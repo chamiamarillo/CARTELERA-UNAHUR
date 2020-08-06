@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class FiltroActividad extends Component {
+class MostrarResultadoFiltro extends Component {
 
   constructor(props) {
     super(props);
@@ -12,13 +12,14 @@ class FiltroActividad extends Component {
   }
 
   componentWillReceiveProps() {    
-    
+  
     let result = this.props.result;
     this.setState({
       isLoaded: true,
       items: result
     });
   }
+
 
   render() {
     const { error, isLoaded, items } = this.state;
@@ -63,4 +64,4 @@ class FiltroActividad extends Component {
   }
 }
 
-export default FiltroActividad;
+export default MostrarResultadoFiltro;

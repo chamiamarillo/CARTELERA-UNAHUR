@@ -7,7 +7,6 @@ import logo from "./logo-transparente.png";
 const HeaderLogoTitulo = () => {
     return (
         <Fragment>
-<<<<<<< Updated upstream:src/components/HeaderLogoTitulo.js
             <div className="anchoheader">
                 <div className="logo">
                     <p>
@@ -26,16 +25,6 @@ const HeaderLogoTitulo = () => {
                 <div className="login">
                     <Loguin />
                 </div>
-=======
-            <img 
-                className="img-fluid"
-                src={logo}
-                alt="imagen_logo"
-            />
-            
-            <div className="lead text-center">
-                ASIGNACION DE AULAS - UNAHUR
->>>>>>> Stashed changes:src/components/LogoUsuario.js
             </div>
         </Fragment>
     );

@@ -1,7 +1,6 @@
 import React, { Fragment, Component } from 'react';
 
 import Asignar from "./Asignar";
-import FiltroActividad from './FiltroActividad';
 
 class Central extends Component {
 
@@ -11,7 +10,7 @@ class Central extends Component {
           case 'Asignacion':
             return <Asignar />;
           case 'Modificacion':
-            return <FiltroActividad />;
+            return;
           default:
             return ;
         }
