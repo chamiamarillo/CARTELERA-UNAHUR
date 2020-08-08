@@ -2,6 +2,7 @@ import React, { Fragment, Component } from 'react';
 
 import Asignar from "./Asignar";
 import FiltroActividad from './FiltroActividad';
+import MaquetaGrilla from './MaquetaGrilla';
 
 class Central extends Component {
 
@@ -9,9 +10,11 @@ class Central extends Component {
         
         switch (mostrar) {
           case 'Asignacion':
-            return <Asignar />;
+            return <Asignar /> ;
           case 'Modificacion':
             return <FiltroActividad />;
+          case 'Consulta':
+            return <MaquetaGrilla />
           default:
             return ;
         }

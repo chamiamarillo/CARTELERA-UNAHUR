@@ -1,7 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import FiltroActividad from './FiltroActividad';
 import CaracteristicasAulas from './CaracteristicasAulas';
-
+import  MaquetaGrilla from "./MaquetaGrilla";
 
 const FiltrosComponente = () => {
 
@@ -112,11 +112,11 @@ const FiltrosComponente = () => {
   
   return ( 
     <Fragment>
-      <p></p>
-      
-      <form 
+
+      <form className="formAsignacion"
         onSubmit={enviarBusqueda}
       >
+        <div className= "nuevo-estilo2">
         <label>
           {'Actividad: '} {/* el texto del label para poder tener un espacio */}
           <input 
@@ -132,8 +132,8 @@ const FiltrosComponente = () => {
           className="botonActividad"
           value="Buscar"
           onClick={ () => fetchGrillaActividad(buscarActividad) }
-        />
-        
+        /></div>
+        <div className= "nuevo-estilo2">
         <label>
           {'Comisión: '} {/* el texto del label para poder tener un espacio */}
           <input 
@@ -149,8 +149,8 @@ const FiltrosComponente = () => {
           className="botonComision"
           value="Buscar"
           onClick={ () => fetchGrillaComision(buscarComision)}
-        />
-        
+        /></div>
+        <div className= "nuevo-estilo2">
         <label>
           {'Docente: '} {/* el texto del label para poder tener un espacio */}
           <input 
@@ -166,7 +166,7 @@ const FiltrosComponente = () => {
           className="botonDocente"
           value="Buscar"
           onClick={ () => fetchGrillaDocente(buscarDocente)}
-        />
+        /></div>
       </form>
       <p></p>
       <div>
@@ -177,6 +177,10 @@ const FiltrosComponente = () => {
       <p></p>
       <div>
         <CaracteristicasAulas /> 
+      </div>
+     
+      <div>
+        <MaquetaGrilla />)
       </div>
      </Fragment>
 

@@ -29,15 +29,16 @@ class FiltroActividad extends Component {
     } else {
       return (
         <div>
-          <table border="1">
-            <thead>
+          <table  className="table">
+          
+            <thead className="thead-dark">
               <tr>
-                <th>Codigo</th>
-                <th>Nombre</th>
-                <th>Docente</th>
-                <th>Acceso Especial</th>
-                <th>Cant. Inscriptos</th>
-                <th>Dia de Cursada</th>
+                <th className="header" scope="col">Codigo</th>
+                <th className="header" scope="col">Nombre</th>
+                <th className="header" scope="col">Docente</th>
+                <th className="header" scope="col">Acceso Especial</th>
+                <th className="header" scope="col">Cant. Inscriptos</th>
+                <th className="header" scope="col">Dia de Cursada</th>
               </tr>
             </thead>
             <tbody>
