@@ -1,34 +1,114 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import FiltroActividad from './FiltroActividad';
+import MostrarResultadoFiltro from './MostrarResultadoFiltro';
 import CaracteristicasAulas from './CaracteristicasAulas';
+import DatatablePage from './DatatablePage';
 
 
 const FiltrosComponente = () => {
 
   // definicion de state para el uso de los filtros
-  const [ actividad, guardarActividad ] = useState('');
-  const [ comision, guardarComision ] = useState('');
-  const [ docente, guardarDocente ] = useState('');
-  // para ocultar el listado
-  const [ render, imprimirRender ] = useState(false)
-  // tipo de hoks o props
-  const [ nomAccion, guardarNomAccion ] = useState('');
-  
+  const [ buscarActividad, guardarActividad ] = useState('');
+  const [ buscarComision, guardarComision ] = useState('');
+  const [ buscarDocente, guardarDocente ] = useState('');
+  /// pasar conjunto de datos como props al filtro actividad (renderisa la tabla)
+  const [ jsonGrilla, guardarJsonGrilla ] = useState([]);
 
   const enviarBusqueda = e => {
    e.preventDefault()
-
-   // validar
-
-  
 
    // recetear el formulario
    guardarActividad('');
    guardarComision('');
    guardarDocente('');
   }
+  
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Metodos que consultan la api de guarani creada para los filtros //
+  /////////////////////////////////////////////////////////////////////
 
+  const fetchGrillaActividad = (buscarActividad) => {
 
+    let username = 'aulas';
+    let password = 'aulas';
+    let proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+    /////
+    let url = `http://181.45.234.123:8095/guarani/3.17/rest/comisiones-aulas?actividad=contiene%3B${buscarActividad}&con_horarios=1&con_docentes=1`
+
+    //let url = 'http://181.45.234.123:8095/guarani/3.17/rest/comisiones-aulas?limit=20?con_horarios=1&con_docentes=1' // limitado a traer 20 registros
+    fetch(proxyUrl + url, {
+      method: 'GET',
+      headers: { 'Authorization': 'Basic ' + btoa(username + ":" + password) },
+    })
+      .then(res => res.json())
+      .then(
+        (result) => {
+          guardarJsonGrilla(result)
+        },
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      )
+  }
+
+  const fetchGrillaComision = (buscarComision) => {
+
+    let username = 'aulas';
+    let password = 'aulas';
+    let proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+    
+    let url = `http://181.45.234.123:8095/guarani/3.17/rest/comisiones-aulas?nombre=contiene%3B${buscarComision}&con_horarios=1&con_docentes=1`
+
+    //let url = 'http://181.45.234.123:8095/guarani/3.17/rest/comisiones-aulas?limit=20?con_horarios=1&con_docentes=1' // limitado a traer 20 registros
+    fetch(proxyUrl + url, {
+      method: 'GET',
+      headers: { 'Authorization': 'Basic ' + btoa(username + ":" + password) },
+    })
+      .then(res => res.json())
+      .then(
+        (result) => {
+          guardarJsonGrilla(result)
+        },
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      )
+  }
+
+  const fetchGrillaDocente = (buscarDocente) => {
+
+    let username = 'aulas';
+    let password = 'aulas';
+    let proxyUrl = 'https://cors-anywhere.herokuapp.com/';
+    
+    let url = `http://181.45.234.123:8095/guarani/3.17/rest/docentescomisiones-unahur?apellido_nombres=contiene%3B${buscarDocente}&con_horarios=1&con_docentes=1`
+  
+    //let url = 'http://181.45.234.123:8095/guarani/3.17/rest/comisiones-aulas?limit=20?con_horarios=1&con_docentes=1' // limitado a traer 20 registros
+    fetch(proxyUrl + url, {
+      method: 'GET',
+      headers: { 'Authorization': 'Basic ' + btoa(username + ":" + password) },
+    })
+      .then(res => res.json())
+      .then(
+        (result) => {
+          guardarJsonGrilla(result)
+        },
+        (error) => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      )
+  }
+  
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  
   return ( 
     <Fragment>
       <p></p>
@@ -42,15 +122,15 @@ const FiltrosComponente = () => {
             type="text" 
             className="actividad"
             placeholder="Buscar por Actividad"
-            value={actividad} 
-            onChange={e => guardarActividad(e.target.value) + guardarNomAccion(e.target.className)} 
+            value={buscarActividad} 
+            onChange={e => guardarActividad(e.target.value)} 
           />
         </label>
         <input 
           type="submit" 
           className="botonActividad"
           value="Buscar"
-          onClick={ () => imprimirRender(true) }
+          onClick={ () => fetchGrillaActividad(buscarActividad) }
         />
         
         <label>
@@ -59,15 +139,15 @@ const FiltrosComponente = () => {
             type="text" 
             className="comision"
             placeholder="Buscar por Comisión"
-            value={comision} 
-            onChange={e => guardarComision(e.target.value) + guardarNomAccion(e.target.className)} 
+            value={buscarComision} 
+            onChange={e => guardarComision(e.target.value)} 
           />
         </label>
         <input 
           type="submit" 
           className="botonComision"
           value="Buscar"
-          onClick={ () => imprimirRender(true) }
+          onClick={ () => fetchGrillaComision(buscarComision)}
         />
         
         <label>
@@ -76,7 +156,7 @@ const FiltrosComponente = () => {
             type="text" 
             className="docente"
             placeholder="Buscar por Docente"
-            value={docente} 
+            value={buscarDocente} 
             onChange={e => guardarDocente(e.target.value)} 
           />
         </label>
@@ -84,17 +164,17 @@ const FiltrosComponente = () => {
           type="submit" 
           className="botonDocente"
           value="Buscar"
-          onClick={ () => imprimirRender(true) }
+          onClick={ () => fetchGrillaDocente(buscarDocente)}
         />
       </form>
       <p></p>
       <div>
-      { render ? 
-
-        <FiltroActividad 
-          actividad={actividad}
-        />
-        : null }
+          <MostrarResultadoFiltro 
+            result = {jsonGrilla} // envio el JSon como props para renderizar como tabla en el componente
+          />
+          <DatatablePage 
+            result = {jsonGrilla}
+          />      
       </div>
       <p></p>
       <div>

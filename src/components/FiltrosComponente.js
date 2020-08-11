@@ -1,6 +1,7 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import MostrarResultadoFiltro from './MostrarResultadoFiltro';
 import CaracteristicasAulas from './CaracteristicasAulas';
+import DatatablePage from './DatatablePage';
 
 
 const FiltrosComponente = () => {
@@ -11,7 +12,6 @@ const FiltrosComponente = () => {
   const [ buscarDocente, guardarDocente ] = useState('');
   /// pasar conjunto de datos como props al filtro actividad (renderisa la tabla)
   const [ jsonGrilla, guardarJsonGrilla ] = useState([]);
-
 
   const enviarBusqueda = e => {
    e.preventDefault()
@@ -85,8 +85,8 @@ const FiltrosComponente = () => {
     let password = 'aulas';
     let proxyUrl = 'https://cors-anywhere.herokuapp.com/';
     
-    let url = `http://181.45.234.123:8095/guarani/3.17/rest/comisiones-aulas?nombre=contiene%3B${buscarDocente}&con_horarios=1&con_docentes=1`
-
+    let url = `http://181.45.234.123:8095/guarani/3.17/rest/docentescomisiones-unahur?apellido_nombres=contiene%3B${buscarDocente}&con_horarios=1&con_docentes=1`
+  
     //let url = 'http://181.45.234.123:8095/guarani/3.17/rest/comisiones-aulas?limit=20?con_horarios=1&con_docentes=1' // limitado a traer 20 registros
     fetch(proxyUrl + url, {
       method: 'GET',
@@ -170,8 +170,8 @@ const FiltrosComponente = () => {
       <p></p>
       <div>
           <MostrarResultadoFiltro 
-             result = {jsonGrilla} // envio el JSon como props para renderizar como tabla en el componente
-          />
+            result = {jsonGrilla}
+          />      
       </div>
       <p></p>
       <div>
@@ -183,21 +183,3 @@ const FiltrosComponente = () => {
 }
  
 export default FiltrosComponente
-
-
-
-
-/*
-
-
-
-
-
-
-
-
-
-
-
-
-*/

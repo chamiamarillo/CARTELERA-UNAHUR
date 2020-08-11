@@ -1,6 +1,8 @@
 import React, { Fragment, Component } from 'react';
+import DatatablePage from './DatatablePage';
 
 import Asignar from "./Asignar";
+import Prueba3 from './Prueba3';
 
 class Central extends Component {
 
@@ -10,7 +12,9 @@ class Central extends Component {
           case 'Asignacion':
             return <Asignar />;
           case 'Modificacion':
-            return;
+            return <DatatablePage /> ;
+          case 'Consulta':
+            return <Prueba3 />
           default:
             return ;
         }
