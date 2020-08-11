@@ -71,7 +71,7 @@ export default class DatatablePage extends Component {
           //key: data.comision,
             codigo: data.comision,
             nombre: data.nombre,
-            docente: data.docentes.map(docente => docente.nombre +" "+ docente.apellido+" - "),
+            docentes: data.docentes.map(docente => docente.nombres+" "+docente.apellido+" - "),
             acceso_especial: data.acceso_especial,
             cant_inscriptos: data.cant_inscriptos,
             horarios: data.horarios.map(hora => hora.dia+" - ")
