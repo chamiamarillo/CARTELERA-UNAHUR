@@ -26,9 +26,6 @@ export default class DatatablePage extends Component {
     const data = {
       columns: [
        {
-          field: 'key',
-       },
-       {
           label: 'Codigo',
           field: 'codigo',
           sort: 'asc',
@@ -92,6 +89,9 @@ export default class DatatablePage extends Component {
             <div className="container">         
               <div className="introductory_details customer-table">
                 <MDBDataTable
+                  entries={5}
+                  entriesOptions={[5,10,15,20]}
+                  entriesLabel='Cant. Registros'
                   striped
                   bordered
                   small
