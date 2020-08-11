@@ -92,6 +92,7 @@ export default class DatatablePage extends Component {
                   entries={5}
                   entriesOptions={[5,10,15,20]}
                   entriesLabel='Cant. Registros'
+                  polite='caca'
                   striped
                   bordered
                   small
