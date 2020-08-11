@@ -169,7 +169,7 @@ const FiltrosComponente = () => {
       </form>
       <p></p>
       <div>
-          <MostrarResultadoFiltro 
+          <DatatablePage 
             result = {jsonGrilla}
           />      
       </div>
