@@ -10,7 +10,7 @@ const MenuNav = () => {
             </div>
 
             <div className="menuhora">
-                <button class="btn btn-default" type="submit">{<FechaHora />}</button>
+                <button className="btn btn-default" type="submit">{<FechaHora />}</button>
             </div>
         </div>        
      );

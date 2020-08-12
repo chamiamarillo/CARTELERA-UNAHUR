@@ -1,7 +1,6 @@
-import React, { Fragment, useState, useEffect } from 'react';
-import MostrarResultadoFiltro from './MostrarResultadoFiltro';
+import React, { Fragment, useState } from 'react';
 import CaracteristicasAulas from './CaracteristicasAulas';
-import DatatablePage from './DatatablePage';
+import TablaComisiones from './TablaComisiones';
 
 
 const FiltrosComponente = () => {
@@ -30,10 +29,9 @@ const FiltrosComponente = () => {
     let username = 'aulas';
     let password = 'aulas';
     let proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-    /////
-    let url = `http://181.45.234.123:8095/guarani/3.17/rest/comisiones-aulas?actividad=contiene%3B${buscarActividad}&con_horarios=1&con_docentes=1`
+    
+    let url = `http://181.45.234.123:8095/guarani/3.17/rest/comisiones-aulas?actividad=contiene%3B${buscarActividad}&con_horarios=1&con_docentes=1&limit=50` // limitado a traer 50 registros ya que no hay tantas comisiones
 
-    //let url = 'http://181.45.234.123:8095/guarani/3.17/rest/comisiones-aulas?limit=20?con_horarios=1&con_docentes=1' // limitado a traer 20 registros
     fetch(proxyUrl + url, {
       method: 'GET',
       headers: { 'Authorization': 'Basic ' + btoa(username + ":" + password) },
@@ -58,9 +56,8 @@ const FiltrosComponente = () => {
     let password = 'aulas';
     let proxyUrl = 'https://cors-anywhere.herokuapp.com/';
     
-    let url = `http://181.45.234.123:8095/guarani/3.17/rest/comisiones-aulas?nombre=contiene%3B${buscarComision}&con_horarios=1&con_docentes=1`
+    let url = `http://181.45.234.123:8095/guarani/3.17/rest/comisiones-aulas?nombre=contiene%3B${buscarComision}&con_horarios=1&con_docentes=1&limit=50` // limitado a traer 50 registros ya que no hay tantas comisiones
 
-    //let url = 'http://181.45.234.123:8095/guarani/3.17/rest/comisiones-aulas?limit=20?con_horarios=1&con_docentes=1' // limitado a traer 20 registros
     fetch(proxyUrl + url, {
       method: 'GET',
       headers: { 'Authorization': 'Basic ' + btoa(username + ":" + password) },
@@ -85,9 +82,8 @@ const FiltrosComponente = () => {
     let password = 'aulas';
     let proxyUrl = 'https://cors-anywhere.herokuapp.com/';
     
-    let url = `http://181.45.234.123:8095/guarani/3.17/rest/docentescomisiones-unahur?apellido_nombres=contiene%3B${buscarDocente}&con_horarios=1&con_docentes=1`
-  
-    //let url = 'http://181.45.234.123:8095/guarani/3.17/rest/comisiones-aulas?limit=20?con_horarios=1&con_docentes=1' // limitado a traer 20 registros
+    let url = `http://181.45.234.123:8095/guarani/3.17/rest/docentescomisiones-unahur?apellido_nombres=contiene%3B${buscarDocente}&con_horarios=1&con_docentes=1&limit=50` // limitado a traer 50 registros ya que no hay tantas comisiones
+
     fetch(proxyUrl + url, {
       method: 'GET',
       headers: { 'Authorization': 'Basic ' + btoa(username + ":" + password) },
@@ -169,7 +165,7 @@ const FiltrosComponente = () => {
       </form>
       <p></p>
       <div>
-          <DatatablePage 
+          <TablaComisiones 
             result = {jsonGrilla}
           />      
       </div>

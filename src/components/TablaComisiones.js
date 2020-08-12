@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { MDBDataTable } from 'mdbreact';
+import { MDBDataTable } from 'mdbreact'; 
 
-export default class DatatablePage extends Component {
+export default class TablaComisiones extends Component {
   
   constructor(props) {
     super(props);
@@ -65,7 +65,6 @@ export default class DatatablePage extends Component {
       rows: [
         ...this.props.result.map( data => (
          {
-          //key: data.comision,
             codigo: data.comision,
             nombre: data.nombre,
             docentes: data.docentes.map(docente => docente.nombres+" "+docente.apellido+" - "),
@@ -77,7 +76,7 @@ export default class DatatablePage extends Component {
      ]
     };
 
-  const { error, isLoaded, items } = this.state;
+  const { error, isLoaded } = this.state;
   if (error) {
   return <div>Error: {error.message}</div>;
   } else if (!isLoaded) {
@@ -92,7 +91,9 @@ export default class DatatablePage extends Component {
                   entries={5}
                   entriesOptions={[5,10,15,20]}
                   entriesLabel='Cant. Registros'
-                  polite='caca'
+                  info={false}
+                  paginationLabel={['Anterior','Siguiente']}     
+                  searchLabel='Buscar'
                   striped
                   bordered
                   small
