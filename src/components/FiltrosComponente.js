@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from 'react';
 import CaracteristicasAulas from './CaracteristicasAulas';
 import TablaComisiones from './TablaComisiones';
+import MaquetaGrilla from './MaquetaGrilla';
 
 
 const FiltrosComponente = () => {
@@ -112,7 +113,7 @@ const FiltrosComponente = () => {
       <form 
         onSubmit={enviarBusqueda}
       >
-        <label>
+        <label id="labelActividad">
           {'Actividad: '} {/* el texto del label para poder tener un espacio */}
           <input 
             type="text" 
@@ -125,6 +126,7 @@ const FiltrosComponente = () => {
         <input 
           type="submit" 
           className="botonActividad"
+          id="botonActividad"
           value="Buscar"
           onClick={ () => fetchGrillaActividad(buscarActividad) }
         />
@@ -172,6 +174,9 @@ const FiltrosComponente = () => {
       <p></p>
       <div>
         <CaracteristicasAulas /> 
+      </div>
+      <div>
+        <MaquetaGrilla /> 
       </div>
      </Fragment>
 

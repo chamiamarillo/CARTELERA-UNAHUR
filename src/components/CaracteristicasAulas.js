@@ -18,8 +18,8 @@ class CaracteristicasAulas extends Component {
     render() {
       return (
     <Fragment>
-        <div>
-        Seleccione carateristicas necesarias de las aulas:
+        <div><h4>
+        Seleccione carateristicas necesarias de las aulas:</h4>
         </div>           
         <div class="checkbox checkbox-inline">
             <input type="checkbox" id="inlineCheckbox1" value="option1"></input>

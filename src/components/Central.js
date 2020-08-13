@@ -24,7 +24,7 @@ class Central extends Component {
         return ( 
 
             <Fragment>           
-                <article>
+                <article id="renderCentral">
                     {this.renderSwitch(mostrar)}
                 </article>
             </Fragment>

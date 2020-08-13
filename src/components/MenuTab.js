@@ -8,9 +8,6 @@ styleLink.rel = "stylesheet";
 styleLink.href = "https://cdn.jsdelivr.net/npm/semantic-ui/dist/semantic.min.css";
 document.head.appendChild(styleLink);
 /***********************************************************************************/
-
-
-
 export default class MenuTab extends Component {
 
     constructor() {
@@ -20,8 +17,6 @@ export default class MenuTab extends Component {
             activeItem: 'Menu Principal',
         }
     }
-
-
 
     handleItemClick = (e, { name }) => this.setState({ activeItem: name });
 
@@ -36,6 +31,7 @@ export default class MenuTab extends Component {
 
                     <Menu.Item
                         name='Menu Principal'
+                        id='MenuPrincipalLabel'
                         active={activeItem === 'Menu Principal'}
                         href="/"
                     />
@@ -49,7 +45,6 @@ export default class MenuTab extends Component {
                         name='Modificacion'
                         active={activeItem === 'Modificacion'}
                         onClick={this.handleItemClick}
-
                     />
                     <Menu.Item
                         name='Consulta'
