@@ -16,7 +16,7 @@ const FiltrosComponente = () => {
   // direcciones de la appi este parametro esta casi fijo!!!!
   const [ direccionApi, guardarDireccionApi ] = useState('');
 
-  
+
   const enviarBusqueda = e => {
    e.preventDefault()
 
@@ -64,6 +64,8 @@ const FiltrosComponente = () => {
   }
   
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// filtros (input)           //
+//////////////////////////////
 
   return ( 
     <Fragment>

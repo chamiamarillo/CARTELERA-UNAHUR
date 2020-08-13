@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { MDBDataTable } from 'mdbreact'; 
+import { MDBDataTable } from 'mdbreact'; // componente de boostap usado para renderizar tablas y armar paginacion
 
 export default class TablaComisiones extends Component {
   
@@ -12,6 +12,8 @@ export default class TablaComisiones extends Component {
     };
   }
 
+
+  /*
   componentWillReceiveProps() {    
   
     let result = this.props.result;
@@ -20,6 +22,21 @@ export default class TablaComisiones extends Component {
       items: result
     });
   }
+  */
+
+  static getDerivedStateFromProps(props) {
+    
+    let result = props.result
+
+    return{
+      isLoaded: true,
+      items: result
+    };
+  }
+
+
+
+
 
   render() {
 
@@ -80,9 +97,9 @@ export default class TablaComisiones extends Component {
 
   const { error, isLoaded } = this.state;
   if (error) {
-  return <div>Error: {error.message}</div>;
+    return <div>Error: {error.message}</div>;
   } else if (!isLoaded) {
-  return <div>Cargando listado...</div>;
+    return <div>Cargando listado...</div>;
   } else {
     return (
       <div>
@@ -95,9 +112,10 @@ export default class TablaComisiones extends Component {
                   entriesOptions={[5,10,15,20]}
                   entriesLabel='Cant. Registros'
                   info={false}
-                  paginationLabel={['Anterior','Siguiente']}     
+                  paginationLabel={['Anterior','Siguiente']}  
                   searchLabel='Buscar'
                   noBottomColumns={true}
+                  noRecordsFoundLabel="Aguardando busqueda"
                   striped
                   bordered
                   small
@@ -107,9 +125,7 @@ export default class TablaComisiones extends Component {
             </div>
         </section>
       </div>
-    )
+    )}
   }
-}
-  
 }
 
