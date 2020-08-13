@@ -113,12 +113,13 @@ const FiltrosComponente = () => {
       
       <form id="formActividad"
         onSubmit={enviarBusqueda}
-      ><p  id="labelActividad">
+      ><li id="pActividad">
         <label>
           {'Actividad: '} {/* el texto del label para poder tener un espacio */}
           <input 
             type="text" 
             className="actividad"
+            id="efectoGris"
             placeholder="Buscar por Actividad"
             value={buscarActividad} 
             onChange={e => guardarActividad(e.target.value)} 
@@ -130,13 +131,14 @@ const FiltrosComponente = () => {
           id="botonActividad"
           value="Buscar"
           onClick={ () => fetchGrillaActividad(buscarActividad) }
-        /></p>
-        
-        <label id="labelComision">
+        /></li>
+         <li id="pComision">
+        <label >
           {'Comisión: '} {/* el texto del label para poder tener un espacio */}
           <input 
             type="text" 
             className="comision"
+            id="efectoGris"
             placeholder="Buscar por Comisión"
             value={buscarComision} 
             onChange={e => guardarComision(e.target.value)} 
@@ -147,13 +149,14 @@ const FiltrosComponente = () => {
           className="botonComision"
           value="Buscar"
           onClick={ () => fetchGrillaComision(buscarComision)}
-        />
-        
+        /></li>
+         <li id="pDocente">
         <label>
           {'Docente: '} {/* el texto del label para poder tener un espacio */}
           <input 
             type="text" 
             className="docente"
+            id="efectoGris"
             placeholder="Buscar por Docente"
             value={buscarDocente} 
             onChange={e => guardarDocente(e.target.value)} 
@@ -164,7 +167,7 @@ const FiltrosComponente = () => {
           className="botonDocente"
           value="Buscar"
           onClick={ () => fetchGrillaDocente(buscarDocente)}
-        />
+        /></li>
       </form>
       <p></p>
       <div>

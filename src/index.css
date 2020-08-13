@@ -4,7 +4,11 @@
 	margin:0;
 	padding:0;
 	list-style:none;
-	}
+  }
+  
+  #MenuPrincipalLabel{
+    width: 30%;
+  }
 /********************************************************************************************************************************/
 /***** Cabezera - Logo - Loguin **************/
 
@@ -105,7 +109,6 @@ nav{
     padding-top: 4px;
     float: left;
   }
-  
  
 thead tr th { 
     position: sticky;
@@ -114,22 +117,14 @@ thead tr th {
     background-color: #e8ece8;
   }
 
-
- 
-  
   .frechahora{
       margin-top: 20px;
   } 
 
-
-  section{
-    
+  section{ 
     top: 0px;
-
   }
- 
-      
-      
+   
   article{
       position: absolute;
       left:15%;
