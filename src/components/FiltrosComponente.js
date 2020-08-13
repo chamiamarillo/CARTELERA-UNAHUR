@@ -11,7 +11,12 @@ const FiltrosComponente = () => {
   const [ buscarDocente, guardarDocente ] = useState('');
   /// pasar conjunto de datos como props al filtro actividad (renderisa la tabla)
   const [ jsonGrilla, guardarJsonGrilla ] = useState([]);
+  // para usar la misma api, con diferentes parametros
+  const [ tipoFiltro, guardarTipoFiltro ] = useState('');
+  // direcciones de la appi este parametro esta casi fijo!!!!
+  const [ direccionApi, guardarDireccionApi ] = useState('');
 
+  
   const enviarBusqueda = e => {
    e.preventDefault()
 
@@ -24,65 +29,21 @@ const FiltrosComponente = () => {
   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Metodos que consultan la api de guarani creada para los filtros //
   /////////////////////////////////////////////////////////////////////
 
-  const fetchGrillaActividad = (buscarActividad) => {
+  //        para actividad  =>  filtro actividad en front
+  //           para nombre  =>  filtro comision en front
+  // para apellido_nombres  =>  filtro docente en front
+
+  const fetchGrilla = (valorBuscar,filtroElegido,tipoApi) => {
+
+    // $valorBuscar corresponde filtro del front. El valor a buscar!!!
+    // $filtroElegido corresponde si se filtra por actividad, comision o docente
+    // $tipoApi es la direccion url de la api a utilizar
 
     let username = 'aulas';
     let password = 'aulas';
     let proxyUrl = 'https://cors-anywhere.herokuapp.com/';
     
-    let url = `http://181.45.234.123:8095/guarani/3.17/rest/comisiones-aulas?actividad=contiene%3B${buscarActividad}&con_horarios=1&con_docentes=1&limit=50` // limitado a traer 50 registros ya que no hay tantas comisiones
-
-    fetch(proxyUrl + url, {
-      method: 'GET',
-      headers: { 'Authorization': 'Basic ' + btoa(username + ":" + password) },
-    })
-      .then(res => res.json())
-      .then(
-        (result) => {
-          guardarJsonGrilla(result)
-        },
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }
-      )
-  }
-
-  const fetchGrillaComision = (buscarComision) => {
-
-    let username = 'aulas';
-    let password = 'aulas';
-    let proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-    
-    let url = `http://181.45.234.123:8095/guarani/3.17/rest/comisiones-aulas?nombre=contiene%3B${buscarComision}&con_horarios=1&con_docentes=1&limit=50` // limitado a traer 50 registros ya que no hay tantas comisiones
-
-    fetch(proxyUrl + url, {
-      method: 'GET',
-      headers: { 'Authorization': 'Basic ' + btoa(username + ":" + password) },
-    })
-      .then(res => res.json())
-      .then(
-        (result) => {
-          guardarJsonGrilla(result)
-        },
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }
-      )
-  }
-
-  const fetchGrillaDocente = (buscarDocente) => {
-
-    let username = 'aulas';
-    let password = 'aulas';
-    let proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-    
-    let url = `http://181.45.234.123:8095/guarani/3.17/rest/docentescomisiones-unahur?apellido_nombres=contiene%3B${buscarDocente}&con_horarios=1&con_docentes=1&limit=50` // limitado a traer 50 registros ya que no hay tantas comisiones
+    let url = `http://181.45.234.123:8095/guarani/3.17/rest/${tipoApi}?${filtroElegido}=contiene%3B${valorBuscar}&con_horarios=1&con_docentes=1&limit=50` // limitado a traer 50 registros ya que no hay tantas comisiones
 
     fetch(proxyUrl + url, {
       method: 'GET',
@@ -104,7 +65,6 @@ const FiltrosComponente = () => {
   
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  
   return ( 
     <Fragment>
       <p></p>
@@ -119,48 +79,48 @@ const FiltrosComponente = () => {
             className="actividad"
             placeholder="Buscar por Actividad"
             value={buscarActividad} 
-            onChange={e => guardarActividad(e.target.value)} 
+            onChange={e => guardarActividad(e.target.value) + guardarTipoFiltro(e.target.className) + guardarDireccionApi('comisiones-aulas')} 
           />
         </label>
         <input 
           type="submit" 
           className="botonActividad"
           value="Buscar"
-          onClick={ () => fetchGrillaActividad(buscarActividad) }
+          onClick={ () => fetchGrilla(buscarActividad, tipoFiltro, direccionApi)}
         />
         
         <label>
           {'Comisión: '} {/* el texto del label para poder tener un espacio */}
           <input 
             type="text" 
-            className="comision"
+            className="nombre"
             placeholder="Buscar por Comisión"
             value={buscarComision} 
-            onChange={e => guardarComision(e.target.value)} 
+            onChange={e => guardarComision(e.target.value) + guardarTipoFiltro(e.target.className) + guardarDireccionApi('comisiones-aulas')} 
           />
         </label>
         <input 
           type="submit" 
           className="botonComision"
           value="Buscar"
-          onClick={ () => fetchGrillaComision(buscarComision)}
+          onClick={ () => fetchGrilla(buscarComision, tipoFiltro, direccionApi)}
         />
         
         <label>
           {'Docente: '} {/* el texto del label para poder tener un espacio */}
           <input 
             type="text" 
-            className="docente"
+            className="apellido_nombres"
             placeholder="Buscar por Docente"
             value={buscarDocente} 
-            onChange={e => guardarDocente(e.target.value)} 
+            onChange={e => guardarDocente(e.target.value) + guardarTipoFiltro(e.target.className) + guardarDireccionApi('docentescomisiones-unahur')} 
           />
         </label>
         <input 
           type="submit" 
           className="botonDocente"
           value="Buscar"
-          onClick={ () => fetchGrillaDocente(buscarDocente)}
+          onClick={ () => fetchGrilla(buscarDocente, tipoFiltro, direccionApi )}
         />
       </form>
       <p></p>

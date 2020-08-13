@@ -23,6 +23,7 @@ export default class TablaComisiones extends Component {
 
   render() {
 
+    // armamos las tablas identificando las columnas
     const data = {
       columns: [
        {
@@ -62,8 +63,9 @@ export default class TablaComisiones extends Component {
           width: 150
        }
       ],
+      // vamos cargando cada columna con el resultado que arroja la api, recorriendo todo el json
       rows: [
-        ...this.props.result.map( data => (
+        ...this.props.result.map( data => ( // los "..." hacen que valla guardando los resultados anteriores.
          {
             codigo: data.comision,
             nombre: data.nombre,
@@ -87,6 +89,7 @@ export default class TablaComisiones extends Component {
         <section className="tanning">
             <div className="container">         
               <div className="introductory_details customer-table">
+                {/* llamo al componente MDBDataTable que tiene bootstrap 4  y configuro las opciones */}
                 <MDBDataTable
                   entries={5}
                   entriesOptions={[5,10,15,20]}
@@ -94,6 +97,7 @@ export default class TablaComisiones extends Component {
                   info={false}
                   paginationLabel={['Anterior','Siguiente']}     
                   searchLabel='Buscar'
+                  noBottomColumns={true}
                   striped
                   bordered
                   small
@@ -106,10 +110,6 @@ export default class TablaComisiones extends Component {
     )
   }
 }
-
-
-
-
   
 }
 
