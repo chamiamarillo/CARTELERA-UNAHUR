@@ -4,8 +4,7 @@
     position: relative;
     align-items: center;
     border: 1px solid #E2ffE8;
-    color: black;
-    background-color: violet;
+    
   }
   .nuevo-estilo{
     margin: 15px;
@@ -29,29 +28,39 @@
     position: absolute;
     float: right; 
     border-radius: 5px;
-    width: 70px;
+    width: 10%;
     height: 25px;
     background:linear-gradient(180deg,rgb(145, 182, 169)0%100%);
     box-shadow: inset 0 0 20px grey;
     
 }
+
 #formActividad{
   padding-left: 5px;
-  justify-content: space-around;
-  
+  width: 120%;
 }
 
 #pActividad, #pComision, #pDocente{
 padding-bottom: 3%;
+}
 
-}
 #efectoGris{
- 
   border-radius: 5px;
-  background:linear-gradient(180deg,rgb(249, 252, 255)0%100%);
-  box-shadow: inset 0 0 20px gray;
-  height: 30px;
-  margin: 2px;
-  padding-left: 5px;
+  background:linear-gradient(180deg,rgb(253, 254, 255)0%70%);
+  box-shadow: inset 0 0 20px rgb(161, 161, 161);
+  width: auto;
+  height: 25px;
 }
+label{
+  display: inline-block;
+}
+/*icono de lupa buscadora va con link a la pagina 
+.container:hover button.icon, .container:active button.icon, .container:focus button.icon{
+  outline: none;
+  opacity: 1;
+  margin-left: -50px;
+   background: rgb(177, 143, 143);
+}*/
+
+
   
