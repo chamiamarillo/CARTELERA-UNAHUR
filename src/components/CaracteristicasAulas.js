@@ -21,23 +21,23 @@ class CaracteristicasAulas extends Component {
         <div>
         Seleccione carateristicas necesarias de las aulas:
         </div>           
-        <div class="checkbox checkbox-inline">
+        <div className="checkbox checkbox-inline">
             <input type="checkbox" id="inlineCheckbox1" value="option1"></input>
             <label>Televisor </label>
         </div>
-        <div class="checkbox checkbox-inline">
+        <div className="checkbox checkbox-inline">
             <input type="checkbox" id="inlineCheckbox2" value="option2"></input>
             <label>Acceso Internet </label>
         </div>
-        <div class="checkbox checkbox-inline">
+        <div className="checkbox checkbox-inline">
             <input type="checkbox" id="inlineCheckbox3" value="option3"></input>
             <label>Acceso Silla de Ruedas </label>
         </div>
-        <div class="checkbox checkbox-inline">
+        <div className="checkbox checkbox-inline">
             <input type="checkbox" id="inlineCheckbox4" value="option4"></input>
             <label>Proyector</label>
         </div>
-        <div class="checkbox checkbox-inline">
+        <div className="checkbox checkbox-inline">
             <input type="checkbox" id="inlineCheckbox5" value="option4"></input>
             <label>Mesas de Taller </label>
             </div>
