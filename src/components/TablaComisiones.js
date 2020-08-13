@@ -106,7 +106,7 @@ export default class TablaComisiones extends Component {
         <section className="tanning">
             <div className="container">         
               <div className="introductory_details customer-table">
-                {/* llamo al componente MDBDataTable que tiene bootstrap 4  y configuro las opciones */}
+                {/* llamo al componente MDBDataTable que tiene bootstrap y configuro las opciones */}
                 <MDBDataTable
                   entries={5}
                   entriesOptions={[5,10,15,20]}

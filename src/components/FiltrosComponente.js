@@ -1,7 +1,8 @@
 import React, { Fragment, useState } from 'react';
 import CaracteristicasAulas from './CaracteristicasAulas';
 import TablaComisiones from './TablaComisiones';
-
+import MaquetaGrilla from './MaquetaGrilla';
+import './css/FiltrosComponent.css'
 
 const FiltrosComponente = () => {
 
@@ -70,15 +71,16 @@ const FiltrosComponente = () => {
   return ( 
     <Fragment>
       <p></p>
-      
       <form 
+        id='formActividad'
         onSubmit={enviarBusqueda}
-      >
+      ><li id="pActividad">
         <label>
           {'Actividad: '} {/* el texto del label para poder tener un espacio */}
           <input 
             type="text" 
             className="actividad"
+            id="efectoGris"
             placeholder="Buscar por Actividad"
             value={buscarActividad} 
             onChange={e => guardarActividad(e.target.value) + guardarTipoFiltro(e.target.className) + guardarDireccionApi('comisiones-aulas')} 
@@ -89,13 +91,14 @@ const FiltrosComponente = () => {
           className="botonActividad"
           value="Buscar"
           onClick={ () => fetchGrilla(buscarActividad, tipoFiltro, direccionApi)}
-        />
-        
+        /></li>
+        <li id="pComision">
         <label>
           {'Comisión: '} {/* el texto del label para poder tener un espacio */}
           <input 
             type="text" 
             className="nombre"
+            id="efectoGris"
             placeholder="Buscar por Comisión"
             value={buscarComision} 
             onChange={e => guardarComision(e.target.value) + guardarTipoFiltro(e.target.className) + guardarDireccionApi('comisiones-aulas')} 
@@ -106,13 +109,14 @@ const FiltrosComponente = () => {
           className="botonComision"
           value="Buscar"
           onClick={ () => fetchGrilla(buscarComision, tipoFiltro, direccionApi)}
-        />
-        
+        /></li>
+        <li id="pDocente">
         <label>
           {'Docente: '} {/* el texto del label para poder tener un espacio */}
           <input 
             type="text" 
             className="apellido_nombres"
+            id="efectoGris"
             placeholder="Buscar por Docente"
             value={buscarDocente} 
             onChange={e => guardarDocente(e.target.value) + guardarTipoFiltro(e.target.className) + guardarDireccionApi('docentescomisiones-unahur')} 
@@ -123,7 +127,7 @@ const FiltrosComponente = () => {
           className="botonDocente"
           value="Buscar"
           onClick={ () => fetchGrilla(buscarDocente, tipoFiltro, direccionApi )}
-        />
+        /></li>
       </form>
       <p></p>
       <div>
@@ -134,6 +138,9 @@ const FiltrosComponente = () => {
       <p></p>
       <div>
         <CaracteristicasAulas /> 
+      </div>
+      <div>
+        <MaquetaGrilla />
       </div>
      </Fragment>
 
