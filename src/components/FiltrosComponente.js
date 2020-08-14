@@ -7,9 +7,9 @@ import './css/FiltrosComponent.css'
 const FiltrosComponente = () => {
 
   // definicion de state para el uso de los filtros
-  const [ buscarActividad, guardarActividad ] = useState('');
-  const [ buscarComision, guardarComision ] = useState('');
-  const [ buscarDocente, guardarDocente ] = useState('');
+  const [ buscarActividad, guardarActividad ] = useState(' ');
+  const [ buscarComision, guardarComision ] = useState(' ');
+  const [ buscarDocente, guardarDocente ] = useState(' ');
   /// pasar conjunto de datos como props al filtro actividad (renderisa la tabla)
   const [ jsonGrilla, guardarJsonGrilla ] = useState([]);
   // para usar la misma api, con diferentes parametros
@@ -35,6 +35,11 @@ const FiltrosComponente = () => {
   // para apellido_nombres  =>  filtro docente en front
 
   const fetchGrilla = (valorBuscar,filtroElegido,tipoApi) => {
+
+    if(valorBuscar === ''){
+      valorBuscar='c'
+    }
+
 
     // $valorBuscar corresponde filtro del front. El valor a buscar!!!
     // $filtroElegido corresponde si se filtra por actividad, comision o docente
