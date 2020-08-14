@@ -1,16 +1,14 @@
 import React, { Component } from "react";
-import './css/MenuFiltro.css';
-//const dias = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"];
-//const dias, ver como hacer el menu automatico
+import './css/MenuFiltroIzq.css';
 
 class MenuFiltroIzq extends Component {
   render() {
     return (
-      <div className="menuFiltro">
+      <div className="menuFiltro" id="menuFiltro">
 
         <div className="panel-group" id="accordion">
           <div className="panel panel-default">
-            <div className="panel-heading">
+            <div className="panel-heading" id="a">
               <h3 className="panel-title">
                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Dias de Cursada</a>
               </h3>
@@ -45,7 +43,7 @@ class MenuFiltroIzq extends Component {
             </div>
           </div>
           <div className="panel panel-default">
-            <div className="panel-heading">
+            <div className="panel-heading" id="a">
               <h3 className="panel-title">
                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Banda Horaria</a>
               </h3>
@@ -67,7 +65,7 @@ class MenuFiltroIzq extends Component {
             </div>
           </div>
           <div className="panel panel-default">
-            <div className="panel-heading">
+            <div className="panel-heading" id="a">
               <h3 className="panel-title">
                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Propuestas</a>
               </h3>
@@ -76,13 +74,19 @@ class MenuFiltroIzq extends Component {
               <div className="panel-body">
                 <form>
                   <div className="checkbox">
-                    <label><input type="checkbox" value=""></input>Lic. En Informatica</label>
+                    <label><input type="checkbox" value=""></input>Tec. En Informatica</label>
                   </div>
                   <div className="checkbox">
-                    <label><input type="checkbox" value=""></input>Tec. en Informatica</label>
+                    <label><input type="checkbox" value=""></input>Lic. en Informatica</label>
                   </div>
                   <div className="checkbox">
                     <label><input type="checkbox" value="" ></input>Enfermeria Universitaria</label>
+                  </div>
+                  <div className="checkbox">
+                    <label><input type="checkbox" value=""></input>Ingeniería Metalúrgica</label>
+                  </div>
+                  <div className="checkbox">
+                    <label><input type="checkbox" value="" ></input>Ingeniería Eléctrica</label>
                   </div>
                 </form>
               </div>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { MDBDataTable } from 'mdbreact'; 
+import { MDBDataTable } from 'mdbreact'; // componente de boostap usado para renderizar tablas y armar paginacion
 
 export default class TablaComisiones extends Component {
   
@@ -12,6 +12,8 @@ export default class TablaComisiones extends Component {
     };
   }
 
+
+  /*
   componentWillReceiveProps() {    
   
     let result = this.props.result;
@@ -20,9 +22,25 @@ export default class TablaComisiones extends Component {
       items: result
     });
   }
+  */
+
+  static getDerivedStateFromProps(props) {
+    
+    let result = props.result
+
+    return{
+      isLoaded: true,
+      items: result
+    };
+  }
+
+
+
+
 
   render() {
 
+    // armamos las tablas identificando las columnas
     const data = {
       columns: [
        {
@@ -62,8 +80,9 @@ export default class TablaComisiones extends Component {
           width: 150
        }
       ],
+      // vamos cargando cada columna con el resultado que arroja la api, recorriendo todo el json
       rows: [
-        ...this.props.result.map( data => (
+        ...this.props.result.map( data => ( // los "..." hacen que valla guardando los resultados anteriores.
          {
             codigo: data.comision,
             nombre: data.nombre,
@@ -78,22 +97,25 @@ export default class TablaComisiones extends Component {
 
   const { error, isLoaded } = this.state;
   if (error) {
-  return <div>Error: {error.message}</div>;
+    return <div>Error: {error.message}</div>;
   } else if (!isLoaded) {
-  return <div>Cargando listado...</div>;
+    return <div>Cargando listado...</div>;
   } else {
     return (
       <div>
         <section className="tanning">
             <div className="container">         
               <div className="introductory_details customer-table">
+                {/* llamo al componente MDBDataTable que tiene bootstrap y configuro las opciones */}
                 <MDBDataTable
                   entries={5}
                   entriesOptions={[5,10,15,20]}
                   entriesLabel='Cant. Registros'
                   info={false}
-                  paginationLabel={['Anterior','Siguiente']}     
+                  paginationLabel={['Anterior','Siguiente']}  
                   searchLabel='Buscar'
+                  noBottomColumns={true}
+                  noRecordsFoundLabel="Aguardando busqueda"
                   striped
                   bordered
                   small
@@ -103,13 +125,7 @@ export default class TablaComisiones extends Component {
             </div>
         </section>
       </div>
-    )
+    )}
   }
-}
-
-
-
-
-  
 }
 

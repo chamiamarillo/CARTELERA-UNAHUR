@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 class Buscador extends Component {
     
-   busquedaRef = React.createRef();
+  busquedaRef = React.createRef();
 
    obtenerDatos = (e)=>{
           e.preventDefault();
@@ -28,7 +28,6 @@ class Buscador extends Component {
                     <div>
                       <input type="submit" className="btn btn-lg btn-danger btn-block" value="filtrar..."/>
                    </div>
-
               </form>
             )
      }

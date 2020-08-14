@@ -1,6 +1,7 @@
 import React from 'react';
 import MenuTab from './MenuTab';
 import FechaHora from './FechaHora';
+import './css/MenuNav.css';
 
 const MenuNav = () => {
     return ( 

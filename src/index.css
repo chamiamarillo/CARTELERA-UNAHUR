@@ -1,93 +1,77 @@
-/*
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-/*******************************************************************************************************************************/
+*******************************************************************************************************************************/
 *{
 	margin:0;
 	padding:0;
 	list-style:none;
-	}
+  }
+  
+  #MenuPrincipalLabel{
+    width: 30%;
+  }
 /********************************************************************************************************************************/
 /***** Cabezera - Logo - Loguin **************/
 
 header{
-  width: 100%;/*
-  background: yellow;*/
+  width: 100%;
   height: 70px;
- /* position:relative; /* ubicacion tiente tres valores  relativa  y si la quiero centrar es margin automatica */
-  /*background-color: deeppink;*/
   }
 
   .anchoheader{
     width: 99%;
-    height: 70px;/*
-    background: red;*/
+    height: 70px;
     margin: auto; 
   }
+
   .logo{
     width: 35%;
-    height: 70px;/*
-    background: blue;*/
+    height: 70px;
     float: left;
   }
+
   .logo p img{
     vertical-align: middle;
     width: 80%;
   }
+
   .tituloapp{
     width: 40%;
-    height: 70px;/*
-    background: olive;*/
+    height: 70px;
     float: left;
     padding-top: 20px;
     box-sizing: border-box;
   }
+
   .login{
     width: 25%;
-    height: 70px;/*
-    background: pink;*/
-    float: left;/*
-    padding-top: 10px;
-    box-sizing: border-box;*/
+    height: 70px;
+    float: left;
   }
  
 /* Loguin */
-
   .anchoLoguin{
     width: 50%;
     height: 70px;
     text-align: right;
     padding-top: 26px;
-    padding-right: 3px;/*
-    background: greenyellow;*/
+    padding-right: 3px;
     float: left;
   }
+
   .inpLoguin{
     width: 65%;
     background-color: ivory;
     border-radius: 10%;
     box-shadow: 0 0 5px rgb(10, 10, 10);
   }
+
   .logoLoguin{
     width: 50%;
     height: 70px;
     padding-top: 4px;
-    padding-left: 3px;/*
-    background: blueviolet;*/
+    padding-left: 3px;
     float: left;
   }
+
   .logoLoguin p img{
     vertical-align: middle;
     width: 40%;
@@ -95,86 +79,54 @@ header{
 
 /***************************************/
 
-nav{/*
-  background: chocolate;*/
+nav{
   width: 100%;
   height: 43px;
   }
+
   .anchotab{
     width: 100%;
-    height: 43px;/*
-    background: blueviolet;*/
+    height: 43px;
   }
+
   .menusalir{
     width: 5%;
     height: 43px;
     float: left;
   }
+
   .menubotones{
     width: 75%;
     height: 43px;
     float: left;
   }
+
   .menuhora{
     width: 20%;
     height: 43px;
     text-align: center;
-    padding-top: 4px;/*
-    background: burlywood;*/
+    padding-top: 4px;
     float: left;
   }
-  
-  .nuevo-estilo{
-    margin: 15px;
-    background-color: #EFEDF1;
-    border: 1px solid #E2E3E8;
-    padding: 10px;
+ 
+thead tr th { 
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: #e8ece8;
   }
 
-
-
-
-
-
-
-
-  
-  .botones{
-    float:left; /* "float" hace flotar el listado que estaba a niverl vertical lo hace flotar a nivel horizontal // float: left => flota de izquierda a derecha */
-    width:196px;
-    margin:0px 2px;
-    height:48px;
-    background: blue;
-    }
-
-    .frechahora{
+  .frechahora{
       margin-top: 20px;
-    }
+  } 
 
-
-
-
-  section{
-    position:relative;
+  section{ 
     top: 0px;
-    /*background-color: darkgreen;*/
-    }
-  
-  aside#izq{
-    position:absolute;
-    left:0;/*
-    top:0;
-    background-color: gold;*/
-    }
-    
-    
-  article{
-    position: absolute;
-  	left:126px;/*
-	  top:0;*/
-	  width:auto;
-	  height:auto;
-    /*background-color: green;*/
   }
-
-  
+   
+  article{
+      position: absolute;
+      left:15%;
+      width:auto;
+      height:auto;
+  }
