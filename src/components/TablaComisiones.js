@@ -78,15 +78,6 @@ export default class TablaComisiones extends Component {
        }
       ],
       // vamos cargando cada columna con el resultado que arroja la api, recorriendo todo el json
-
-      
-      if (error) {
-        return <div>Error: {error.message}</div>
-      },
-
-
-
-      
       rows: [
         ...this.props.result.map( data => ( // los "..." hacen que valla guardando los resultados anteriores.
          {
