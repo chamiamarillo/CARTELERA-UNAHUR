@@ -26,31 +26,44 @@ const FiltrosComponente = () => {
    guardarComision('');
    guardarDocente('');
   }
+
+  // data.nombre busca el nombre de la comision
+  // data.actividad.nombre busca el nombre de la actividad 
+  
+
+
+  const mapearActividad = (buscarActividad, jsonGrilla) => {
+
+    const nvoJson = jsonGrilla.map((data)  => data.nombre == buscarActividad ? result(data) ) 
+    guardarJsonGrilla(nvoJson)
+  }
+
+
   
   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Metodos que consultan la api de guarani creada para los filtros //
-  /////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////
 
-  //        para actividad  =>  filtro actividad en front
-  //           para nombre  =>  filtro comision en front
-  // para apellido_nombres  =>  filtro docente en front
 
-  const fetchGrilla = (valorBuscar,filtroElegido,tipoApi) => {
 
-    // $valorBuscar corresponde filtro del front. El valor a buscar!!!
-    // $filtroElegido corresponde si se filtra por actividad, comision o docente
-    // $tipoApi es la direccion url de la api a utilizar
+  const fetchGrilla = async () => {
 
     let username = 'aulas';
     let password = 'aulas';
     let proxyUrl = 'https://cors-anywhere.herokuapp.com/';
     
-    let url = `http://181.45.234.123:8095/guarani/3.17/rest/${tipoApi}?${filtroElegido}=contiene%3B${valorBuscar}&con_horarios=1&con_docentes=1&limit=50` // limitado a traer 50 registros ya que no hay tantas comisiones
+    let url = `http://181.45.234.123:8095/guarani/3.17/rest/comisiones-aulas?con_horarios=1&con_docentes=1&limit=1000`
 
-    fetch(proxyUrl + url, {
+    const res = await fetch(proxyUrl + url, {
       method: 'GET',
       headers: { 'Authorization': 'Basic ' + btoa(username + ":" + password) },
     })
-      .then(res => res.json())
+    const result = await res.json()
+    guardarJsonGrilla(result);  
+    
+    
+    
+    /*
+    .then(res => res.json())
       .then(
         (result) => {
           guardarJsonGrilla(result)
@@ -61,7 +74,7 @@ const FiltrosComponente = () => {
             error
           });
         }
-      )
+      )*/
   }
   
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -83,14 +96,14 @@ const FiltrosComponente = () => {
             id="efectoGris"
             placeholder="Buscar por Actividad"
             value={buscarActividad} 
-            onChange={e => guardarActividad(e.target.value) + guardarTipoFiltro(e.target.className) + guardarDireccionApi('comisiones-aulas')} 
+            onChange={e => guardarActividad(e.target.value) + fetchGrilla()} 
           />
         </label>
         <input 
           type="submit" 
           className="botonActividad"
           value="Buscar"
-          onClick={ () => fetchGrilla(buscarActividad, tipoFiltro, direccionApi)}
+          onClick={ () => mapearActividad(buscarActividad, jsonGrilla)}
         /></li>
         <li id="pComision">
         <label>

@@ -83,10 +83,10 @@ export default class TablaComisiones extends Component {
          {
             codigo: data.comision,
             nombre: data.nombre,
-            docentes: data.docentes.map(docente => docente.nombres+" "+docente.apellido+" - "),
+            //docentes: data.docentes.map(docente => docente.nombres+" "+docente.apellido+" - "),
             acceso_especial: data.acceso_especial,
             cant_inscriptos: data.cant_inscriptos,
-            horarios: data.horarios.map(hora => hora.dia+" - ")
+           // horarios: data.horarios.map(hora => hora.dia+" - ")
          }
        ))
      ]
