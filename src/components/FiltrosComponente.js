@@ -4,14 +4,16 @@ import TablaComisiones from './TablaComisiones';
 import MaquetaGrilla from './MaquetaGrilla';
 import './css/FiltrosComponent.css'
 
-const FiltrosComponente = () => {
+const FiltrosComponente = (props) => {
+
+  let jsonGrilla2 = props.result;
 
   // definicion de state para el uso de los filtros
   const [ buscarActividad, guardarActividad ] = useState('');
   const [ buscarComision, guardarComision ] = useState('');
   const [ buscarDocente, guardarDocente ] = useState('');
   /// pasar conjunto de datos como props al filtro actividad (renderisa la tabla)
-  const [ jsonGrilla, guardarJsonGrilla ] = useState([]);
+  const [ jsonGrillaFiltrado, guardarJsonGrillaFiltrado ] = useState([]);
   // para usar la misma api, con diferentes parametros
   const [ tipoFiltro, guardarTipoFiltro ] = useState('');
   // direcciones de la appi este parametro esta casi fijo!!!!
@@ -27,60 +29,18 @@ const FiltrosComponente = () => {
    guardarDocente('');
   }
 
-  // data.nombre busca el nombre de la comision
-  // data.actividad.nombre busca el nombre de la actividad 
-  
+  const mapearActividad = (buscarActividad, jsonGrillaFiltrado) => {
 
-
-  const mapearActividad = (buscarActividad, jsonGrilla) => {
-
-    const nvoJson = jsonGrilla.map((data)  => data.nombre == buscarActividad ? result(data) ) 
-    guardarJsonGrilla(nvoJson)
+    const nvoJson = jsonGrillaFiltrado.filter(data  => (data.actividad.nombre.toLowerCase().indexOf(buscarActividad.toLowerCase()) > -1)) 
+    guardarJsonGrillaFiltrado(nvoJson)
   }
-
-
   
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// Metodos que consultan la api de guarani creada para los filtros //
-  /////////////////////////////////////////////////////////////////////////
-
-
-
-  const fetchGrilla = async () => {
-
-    let username = 'aulas';
-    let password = 'aulas';
-    let proxyUrl = 'https://cors-anywhere.herokuapp.com/';
-    
-    let url = `http://181.45.234.123:8095/guarani/3.17/rest/comisiones-aulas?con_horarios=1&con_docentes=1&limit=1000`
-
-    const res = await fetch(proxyUrl + url, {
-      method: 'GET',
-      headers: { 'Authorization': 'Basic ' + btoa(username + ":" + password) },
-    })
-    const result = await res.json()
-    guardarJsonGrilla(result);  
-    
-    
-    
-    /*
-    .then(res => res.json())
-      .then(
-        (result) => {
-          guardarJsonGrilla(result)
-        },
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }
-      )*/
-  }
   
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // filtros (input)           //
 //////////////////////////////
-
+console.log(JSON.stringify(jsonGrillaFiltrado));
+console.log(JSON.stringify(jsonGrilla2));
   return ( 
     <Fragment>
       <p></p>
@@ -96,14 +56,14 @@ const FiltrosComponente = () => {
             id="efectoGris"
             placeholder="Buscar por Actividad"
             value={buscarActividad} 
-            onChange={e => guardarActividad(e.target.value) + fetchGrilla()} 
+            onChange={e => guardarActividad(e.target.value)} 
           />
         </label>
         <input 
           type="submit" 
           className="botonActividad"
           value="Buscar"
-          onClick={ () => mapearActividad(buscarActividad, jsonGrilla)}
+          onClick={ () => mapearActividad(buscarActividad, jsonGrilla2)}
         /></li>
         <li id="pComision">
         <label>
@@ -121,7 +81,7 @@ const FiltrosComponente = () => {
           type="submit" 
           className="botonComision"
           value="Buscar"
-          onClick={ () => fetchGrilla(buscarComision, tipoFiltro, direccionApi)}
+          
         /></li>
         <li id="pDocente">
         <label>
@@ -139,13 +99,13 @@ const FiltrosComponente = () => {
           type="submit" 
           className="botonDocente"
           value="Buscar"
-          onClick={ () => fetchGrilla(buscarDocente, tipoFiltro, direccionApi )}
+          
         /></li>
       </form>
       <p></p>
       <div>
           <TablaComisiones 
-            result = {jsonGrilla}
+            result = {jsonGrillaFiltrado}
           />      
       </div>
       <p></p>

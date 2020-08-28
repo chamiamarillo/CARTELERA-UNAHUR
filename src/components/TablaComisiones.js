@@ -37,6 +37,7 @@ export default class TablaComisiones extends Component {
 
   render() {
 
+    console.log(this.props);
     // armamos las tablas identificando las columnas
     const data = {
       columns: [
@@ -77,16 +78,17 @@ export default class TablaComisiones extends Component {
           width: 150
        }
       ],
+      
       // vamos cargando cada columna con el resultado que arroja la api, recorriendo todo el json
       rows: [
         ...this.props.result.map( data => ( // los "..." hacen que valla guardando los resultados anteriores.
          {
             codigo: data.comision,
             nombre: data.nombre,
-            //docentes: data.docentes.map(docente => docente.nombres+" "+docente.apellido+" - "),
+            docentes: data.docentes.map(docente => docente.nombres+" "+docente.apellido+" - "),
             acceso_especial: data.acceso_especial,
             cant_inscriptos: data.cant_inscriptos,
-           // horarios: data.horarios.map(hora => hora.dia+" - ")
+            horarios: data.horarios.map(hora => hora.dia+" - ")
          }
        ))
      ]
