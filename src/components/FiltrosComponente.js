@@ -15,9 +15,9 @@ const FiltrosComponente = (props) => {
   /// pasar conjunto de datos como props al filtro actividad (renderisa la tabla)
   const [ jsonGrillaFiltrado, guardarJsonGrillaFiltrado ] = useState([]);
   // para usar la misma api, con diferentes parametros
-  const [ tipoFiltro, guardarTipoFiltro ] = useState('');
+  //const [ tipoFiltro, guardarTipoFiltro ] = useState('');
   // direcciones de la appi este parametro esta casi fijo!!!!
-  const [ direccionApi, guardarDireccionApi ] = useState('');
+  //const [ direccionApi, guardarDireccionApi ] = useState('');
 
 
   const enviarBusqueda = e => {
@@ -29,11 +29,29 @@ const FiltrosComponente = (props) => {
    guardarDocente('');
   }
 
+
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
   const mapearActividad = (buscarActividad, jsonGrillaFiltrado) => {
 
     const nvoJson = jsonGrillaFiltrado.filter(data  => (data.actividad.nombre.toLowerCase().indexOf(buscarActividad.toLowerCase()) > -1)) 
     guardarJsonGrillaFiltrado(nvoJson)
   }
+
+  const mapearComision = (buscarComision, jsonGrillaFiltrado) => {
+
+    const nvoJson = jsonGrillaFiltrado.filter(data  => (data.nombre.toLowerCase().indexOf(buscarComision.toLowerCase()) > -1)) 
+    guardarJsonGrillaFiltrado(nvoJson)
+  }
+  
+  const mapearDocente = (buscarDocente, jsonGrillaFiltrado) => {
+
+
+
+    const nvoJson = jsonGrillaFiltrado.filter(data  => (data.docentes.toLowerCase().indexOf(buscarDocente.toLowerCase()) > -1)) 
+    guardarJsonGrillaFiltrado(nvoJson)
+  }
+  
   
   
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -74,14 +92,14 @@ console.log(JSON.stringify(jsonGrilla2));
             id="efectoGris"
             placeholder="Buscar por Comisión"
             value={buscarComision} 
-            onChange={e => guardarComision(e.target.value) + guardarTipoFiltro(e.target.className) + guardarDireccionApi('comisiones-aulas')} 
+            onChange={e => guardarComision(e.target.value) } 
           />
         </label>
         <input 
           type="submit" 
           className="botonComision"
           value="Buscar"
-          
+          onClick={ () => mapearComision(buscarComision, jsonGrilla2)}
         /></li>
         <li id="pDocente">
         <label>
@@ -92,14 +110,14 @@ console.log(JSON.stringify(jsonGrilla2));
             id="efectoGris"
             placeholder="Buscar por Docente"
             value={buscarDocente} 
-            onChange={e => guardarDocente(e.target.value) + guardarTipoFiltro(e.target.className) + guardarDireccionApi('docentescomisiones-unahur')} 
+            onChange={e => guardarDocente(e.target.value)} 
           />
         </label>
         <input 
           type="submit" 
           className="botonDocente"
           value="Buscar"
-          
+          onClick={ () => mapearDocente(buscarDocente, jsonGrilla2)}
         /></li>
       </form>
       <p></p>
