@@ -10,74 +10,75 @@ import './css/FiltrosComponent.css'
 const FiltrosComponente = () => {
 
   // definicion de state para el uso de los filtros
-  const [ buscarActividad, guardarActividad ] = useState('');
-  /// pasar conjunto de datos como props al filtro actividad (renderisa la tabla)
+  const [buscarActividad, guardarActividad] = useState('');
+  // json
   const [jsonGrillaOriginal, setjsonGrillaOriginal] = useState([])
+  const [jsonGrillaFiltrado, setjsonGrillaFiltrado] = useState([])
 
   useEffect(() => {
     getComisiones().then(rest => setjsonGrillaOriginal(rest));
   }, [])
 
   const enviarBusqueda = e => {
-   e.preventDefault()
+    e.preventDefault()
 
-   // recetear el formulario
-   guardarActividad('');
+    // recetear el formulario
+    guardarActividad('');
   }
 
-  /////////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // Guardamos el resultado de la busqueda en un nuevo json
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  const mapearActividad = (buscarActividad, jsonGrillaOriginal) => {
+  const mapearActividad = (buscarActividad, jsonGrilla) => {
 
-    const nvoJson = jsonGrillaOriginal.filter(data  => (data.actividad.nombre.toLowerCase().indexOf(buscarActividad.toLowerCase()) > -1)) 
-    setjsonGrillaOriginal(nvoJson)
+    const nvoJson = jsonGrilla.filter(data => (data.actividad.nombre.toLowerCase().indexOf(buscarActividad.toLowerCase()) > -1))
+    setjsonGrillaFiltrado(nvoJson)
   }
-  
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// filtro (input)           //
-//////////////////////////////
 
-  return ( 
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  return (
     <Fragment>
       <p></p>
-      <form 
+      <form
         id='formActividad'
         onSubmit={enviarBusqueda}
       ><li id="pActividad">
-        <label>
-          {'Actividad: '} {/* el texto del label para poder tener un espacio */}
-          <input 
-            type="text" 
-            className="actividad"
-            id="efectoGris"
-            placeholder="Buscar por Actividad"
-            value={buscarActividad} 
-            onChange={e => guardarActividad(e.target.value)} 
-          />
-        </label>
-        <input 
-          type="submit" 
-          className="botonActividad"
-          value="Buscar"
-          onClick={ () => mapearActividad(buscarActividad, jsonGrillaOriginal)}
-        /></li>
+          <label>
+            {'Actividad: '} {/* el texto del label para poder tener un espacio */}
+            <input
+              type="text"
+              className="actividad"
+              id="efectoGris"
+              placeholder="Buscar por Actividad"
+              value={buscarActividad}
+              onChange={e => guardarActividad(e.target.value)}
+            />
+          </label>
+          <input
+            type="submit"
+            className="botonActividad"
+            value="Buscar"
+            onClick={() => mapearActividad(buscarActividad, jsonGrillaOriginal)}
+          /></li>
       </form>
       <p></p>
       <div>
-          <TablaComisiones 
-            result = {jsonGrillaOriginal}
-          />      
+        <TablaComisiones
+          result={jsonGrillaFiltrado}
+        />
       </div>
       <p></p>
       <div>
-        <CaracteristicasAulas /> 
+        <CaracteristicasAulas />
       </div>
       <div>
         <MaquetaGrilla />
       </div>
-     </Fragment>
+    </Fragment>
 
-   );
+  );
 }
- 
+
 export default FiltrosComponente
