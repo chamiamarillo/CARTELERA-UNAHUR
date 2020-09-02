@@ -7,13 +7,13 @@ class FechaHora extends Component {
       time: new Date().toLocaleString()
     };
   }
-  componentDidMount() {
+  UNSAFE_componentDidMount() {
     this.intervalID = setInterval(
       () => this.tick(),
       1000
     );
   }
-  componentWillUnmount() {
+  UNSAFE_componentWillUnmount() {
     clearInterval(this.intervalID);
   }
   tick() {

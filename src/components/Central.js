@@ -1,6 +1,8 @@
 import React, { Fragment, Component } from 'react';
 
-import Asignar from "./Asignar";
+//import Asignar from "./Asignar";
+//import FetchJson from './FetchJson';
+import FiltrosComponente from './FiltrosComponente';
 
 class Central extends Component {
 
@@ -8,7 +10,7 @@ class Central extends Component {
         
         switch (mostrar) {
           case 'Asignacion':
-            return <Asignar />;
+            return <FiltrosComponente />;
           case 'Modificacion':
             return;
           case 'Consulta':

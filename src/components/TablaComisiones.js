@@ -26,7 +26,7 @@ export default class TablaComisiones extends Component {
   
   static getDerivedStateFromProps(props) {
     
-    let result = props.result
+    let {result} = props
 
     return{
       isLoaded: true,
@@ -37,6 +37,8 @@ export default class TablaComisiones extends Component {
 
   render() {
 
+    let {result} = this.props
+    console.log(this.props);
     // armamos las tablas identificando las columnas
     const data = {
       columns: [
@@ -77,9 +79,10 @@ export default class TablaComisiones extends Component {
           width: 150
        }
       ],
+      
       // vamos cargando cada columna con el resultado que arroja la api, recorriendo todo el json
       rows: [
-        ...this.props.result.map( data => ( // los "..." hacen que valla guardando los resultados anteriores.
+        ...result.map( data => ( // los "..." hacen que valla guardando los resultados anteriores.
          {
             codigo: data.comision,
             nombre: data.nombre,

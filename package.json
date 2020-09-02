@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@emotion/core": "^10.0.28",
+    "@emotion/core": "^10.0.35",
     "@mverissimoo/emotion-grid": "^1.2.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
@@ -23,7 +23,7 @@
     "react-redux": "^7.2.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
-    "react-split-pane": "^0.1.91",
+    "react-split-pane": "^0.1.92",
     "react-tiny-tabs": "^0.1.2",
     "redux": "^4.0.5",
     "semantic-ui-react": "^0.88.2"
