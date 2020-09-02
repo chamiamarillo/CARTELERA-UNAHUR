@@ -10,7 +10,7 @@ const HeaderLogoTitulo = () => {
             <div className="anchoheader">
                 <div className="logo">
                     <p>
-                        <img 
+                        <img
                             className="img-fluid"
                             src={logo}
                             alt="imagen_logo"

@@ -68,7 +68,7 @@ export default class MenuTab extends Component {
 
                     />
                 </Menu>
-                <Central mostrar={activeItem}/>
+                <Central mostrar={activeItem} />
             </div>
         )
     }

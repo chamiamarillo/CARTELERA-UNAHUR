@@ -3,7 +3,7 @@ import React, { Fragment } from 'react';
 import logologin from "./login.png"
 
 const Loguin = () => {
-    return ( 
+    return (
         <Fragment >
             <div className="anchoLoguin">
                 <input
@@ -14,7 +14,7 @@ const Loguin = () => {
             </div>
             <div className="logoLoguin">
                 <p>
-                    <img 
+                    <img
                         className="img-fluid"
                         src={logologin}
                         alt="imagen_logologin"
@@ -22,9 +22,9 @@ const Loguin = () => {
                 </p>
             </div>
         </Fragment>
-     );
+    );
 }
- 
+
 export default Loguin;
 
 
