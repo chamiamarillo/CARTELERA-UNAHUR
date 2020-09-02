@@ -9,7 +9,7 @@ import Central from './Central'; // pantalla central de interaccion segun la ele
 
 
 const Principal = () => {
-  return ( 
+  return (
 
     <Fragment>
       <header>
@@ -21,7 +21,7 @@ const Principal = () => {
         </nav>
       </div>
       <section>
-        <div className="visual">  
+        <div className="visual">
           <div className="izq">
             <MenuFiltroIzq />
           </div>
@@ -32,9 +32,9 @@ const Principal = () => {
       </section>
 
       <footer></footer>
-      
+
     </Fragment>
-   );
+  );
 }
- 
+
 export default Principal;

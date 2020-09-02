@@ -4,7 +4,7 @@ import FechaHora from './FechaHora';
 import './css/MenuNav.css';
 
 const MenuNav = () => {
-    return ( 
+    return (
         <div className="anchotab">
             <div className="menubotones">
                 <MenuTab />
@@ -13,8 +13,8 @@ const MenuNav = () => {
             <div className="menuhora">
                 <button className="btn btn-default" type="submit">{<FechaHora />}</button>
             </div>
-        </div>        
-     );
+        </div>
+    );
 }
- 
+
 export default MenuNav;
