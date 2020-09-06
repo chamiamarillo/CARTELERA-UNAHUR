@@ -66,7 +66,7 @@ const FiltrosComponente = () => {
       <p></p>
       <div>
         <TablaComisiones
-          result={jsonGrillaFiltrado}
+          jsonGrillaFiltrado={jsonGrillaFiltrado}
         />
       </div>
       <p></p>
