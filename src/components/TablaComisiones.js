@@ -113,4 +113,3 @@ const TablaComisiones = ({ jsonGrillaFiltrado }) => {
 }
 
 export default TablaComisiones
-
