@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { MDBDataTableV5 } from 'mdbreact';
+import './css/TablaComisiones.css'
 
 import Franki from './Franki';
-//import Result from '../components/result';
 
 const TablaComisiones = ({ jsonGrillaFiltrado }) => {
 
@@ -84,24 +84,37 @@ const TablaComisiones = ({ jsonGrillaFiltrado }) => {
     setCheckbox1(e);
   };
 
-
+  /*const widerData = {
+    columns: [
+      ...datatable.columns.map((col) => {
+        col.width = 200;
+        return col;
+      }),
+    ],
+    rows: [...datatable.rows],
+  }; Si queremos poner una barra de desplazamiento*/
 
   return (
     <>
       <MDBDataTableV5
+        paging
         hover
-        entriesOptions={[5, 10, 15, 20]}
+        entriesOptions={[5, 10, 15, 20, 25]}
+        entriesLabel='Cant. Registros'
         entries={5}
         pagesAmount={4}
         data={datatable}
-        paginationLabel={['Anterior', 'Siguiente']}
         searchLabel='Buscar'
+        searchTop 
+        searchBottom={false}
         checkbox
         headCheckboxID='id4'
         bodyCheckboxID='checkboxes4'
         getValueCheckBox={(e) => {
           showLogs2(e);
         }}
+        paginationLabel={['Anterior', 'Siguiente']}
+        //scrollX data={widerData} Para poner la barra e desplazamiento
       />
       
     </>
