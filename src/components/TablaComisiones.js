@@ -7,6 +7,7 @@ import Franki from './Franki';
 const TablaComisiones = ({ jsonGrillaFiltrado }) => {
 
   let result = jsonGrillaFiltrado
+  console.log('ver jsongrilla', jsonGrillaFiltrado)
  
  useEffect(() => {
    if(result !== []){
@@ -61,9 +62,9 @@ const TablaComisiones = ({ jsonGrillaFiltrado }) => {
       }
     ],
     
-    rows: [
-      
-      jsonGrillaFiltrado.map(data => ( // los "..." hacen que valla guardando los resultados anteriores.
+    rows: 
+      [
+      ...jsonGrillaFiltrado.map(data => ( // los "..." hacen que valla guardando los resultados anteriores.
         {
           codigo: data.comision,
           nombre: data.nombre,
@@ -73,12 +74,8 @@ const TablaComisiones = ({ jsonGrillaFiltrado }) => {
           horarios: data.horarios.map(hora => hora.dia + " - ")
         }
       ))
-    ]
+      ]
   });
-
-
-
-
 
 
   const [checkbox1, setCheckbox1] = useState('');
@@ -97,6 +94,8 @@ const TablaComisiones = ({ jsonGrillaFiltrado }) => {
         entries={5}
         pagesAmount={4}
         data={datatable}
+        paginationLabel={['Anterior', 'Siguiente']}
+        searchLabel='Buscar'
         checkbox
         headCheckboxID='id4'
         bodyCheckboxID='checkboxes4'

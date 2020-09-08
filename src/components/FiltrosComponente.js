@@ -13,7 +13,7 @@ const FiltrosComponente = () => {
   const [buscarActividad, guardarActividad] = useState('');
   // json
   const [jsonGrillaOriginal, setjsonGrillaOriginal] = useState([])
-  const [jsonGrillaFiltrado, setjsonGrillaFiltrado] = useState([])
+  const [jsonGrillaFiltrado, setjsonGrillaFiltrado] = useState(null)
 
   useEffect(() => {
     getComisiones().then(rest => setjsonGrillaOriginal(rest));
@@ -37,7 +37,7 @@ const FiltrosComponente = () => {
   }
 
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+  
   return (
     <Fragment>
       <p></p>
@@ -65,9 +65,13 @@ const FiltrosComponente = () => {
       </form>
       <p></p>
       <div>
-        <TablaComisiones
-          jsonGrillaFiltrado={jsonGrillaFiltrado}
-        />
+        {
+          jsonGrillaFiltrado &&
+          <TablaComisiones
+              jsonGrillaFiltrado={jsonGrillaFiltrado}
+          />
+        }
+        
       </div>
       <p></p>
       <div>
