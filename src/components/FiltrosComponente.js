@@ -69,7 +69,10 @@ const FiltrosComponente = () => {
           jsonGrillaFiltrado &&
           <TablaComisiones
               jsonGrillaFiltrado={jsonGrillaFiltrado}
+              jsonGrillaOriginal ={jsonGrillaOriginal}
+              buscarActividad = {buscarActividad}
           />
+
         }
         
       </div>
