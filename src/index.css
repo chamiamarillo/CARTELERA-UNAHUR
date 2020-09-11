@@ -1,4 +1,5 @@
 *******************************************************************************************************************************/
+/*
 *{
 	margin:0;
 	padding:0;
@@ -108,13 +109,13 @@ nav{
     padding-top: 4px;
     float: left;
   }
- 
+ /*
 thead tr th { 
     position: sticky;
     top: 0;
     z-index: 10;
     background-color: #e8ece8;
-  }
+  }*/
 
   .frechahora{
       margin-top: 20px;

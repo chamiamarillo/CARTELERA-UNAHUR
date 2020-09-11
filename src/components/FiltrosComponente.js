@@ -14,6 +14,8 @@ const FiltrosComponente = () => {
   // json
   const [jsonGrillaOriginal, setjsonGrillaOriginal] = useState([])
   const [jsonGrillaFiltrado, setjsonGrillaFiltrado] = useState([])
+  //
+  const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
     getComisiones().then(rest => setjsonGrillaOriginal(rest));
@@ -24,6 +26,7 @@ const FiltrosComponente = () => {
 
     // recetear el formulario
     guardarActividad('');
+    //setPasoJson(false)
   }
 
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -34,10 +37,13 @@ const FiltrosComponente = () => {
 
     const nvoJson = jsonGrilla.filter(data => (data.actividad.nombre.toLowerCase().indexOf(buscarActividad.toLowerCase()) > -1))
     setjsonGrillaFiltrado(nvoJson)
+    setIsLoading(true)
+  
   }
 
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+  
   return (
     <Fragment>
       <p></p>
@@ -65,9 +71,13 @@ const FiltrosComponente = () => {
       </form>
       <p></p>
       <div>
-        <TablaComisiones
-          jsonGrillaFiltrado={jsonGrillaFiltrado}
-        />
+        {
+          isLoading &&
+          <TablaComisiones
+            jsonGrillaFiltrado={jsonGrillaFiltrado}
+            
+          />
+        }
       </div>
       <p></p>
       <div>
