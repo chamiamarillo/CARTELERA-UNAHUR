@@ -1,5 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { getComisiones } from '../util/services/comision.service'
+import { grilla } from '../util/services/grilla.service'
 ////
 import CaracteristicasAulas from './CaracteristicasAulas';
 import TablaComisiones from './TablaComisiones';
@@ -13,7 +14,7 @@ const FiltrosComponente = () => {
   const [buscarActividad, guardarActividad] = useState('');
   // estado para trabajar con los json
   const [jsonGrillaOriginal, setjsonGrillaOriginal] = useState([])
-  const [jsonGrillaFiltrado, setjsonGrillaFiltrado] = useState([])
+  const [jsonGrillaFiltrado, setjsonGrillaFiltrado] = useState(null)
 
   useEffect(() => {
     getComisiones().then(rest => setjsonGrillaOriginal(rest));
@@ -33,7 +34,7 @@ const FiltrosComponente = () => {
   const mapearActividad = (buscarActividad, jsonGrilla) => {
 
     const nvoJson = jsonGrilla.filter(data => (data.actividad.nombre.toLowerCase().indexOf(buscarActividad.toLowerCase()) > -1))
-    setjsonGrillaFiltrado(nvoJson)
+    setjsonGrillaFiltrado(grilla(nvoJson))
   }
 
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

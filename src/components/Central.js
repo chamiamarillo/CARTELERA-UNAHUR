@@ -1,5 +1,10 @@
 import React, { Fragment, Component } from 'react';
 import FiltrosComponente from './FiltrosComponente';
+import Prueba from './Prueba';
+
+
+
+
 
 class Central extends Component {
 
@@ -9,7 +14,7 @@ class Central extends Component {
       case 'Asignacion':
         return <FiltrosComponente />;
       case 'Modificacion':
-        return;
+        return <Prueba />;
       case 'Consulta':
         return;
       default:
