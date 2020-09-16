@@ -8,6 +8,8 @@ import MaquetaGrilla from './MaquetaGrilla';
 ////
 import './css/FiltrosComponent.css'
 
+import MenuFiltroIzq from './MenuFiltroIzq';
+
 const FiltrosComponente = () => {
 
   // definicion de state para el uso de los filtros
@@ -39,7 +41,7 @@ const FiltrosComponente = () => {
 
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  
+
   return (
     <Fragment>
       <p></p>
@@ -67,10 +69,10 @@ const FiltrosComponente = () => {
       </form>
       <p></p>
       <div>
-          <TablaComisiones
-            jsonGrillaFiltrado={jsonGrillaFiltrado}
-            
-          />
+        <TablaComisiones
+          jsonGrillaFiltrado={jsonGrillaFiltrado}
+
+        />
       </div>
       <p></p>
       <div>
@@ -79,6 +81,20 @@ const FiltrosComponente = () => {
       <div>
         <MaquetaGrilla />
       </div>
+
+
+
+      <section>
+        <div className="visual">
+          <div className="izq">
+            <MenuFiltroIzq />
+          </div>
+        </div>
+      </section>
+
+
+
+
     </Fragment>
 
   );

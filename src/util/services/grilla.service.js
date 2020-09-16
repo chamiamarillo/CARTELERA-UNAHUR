@@ -4,16 +4,16 @@
 export const grilla = (jsonGrillaFiltrado) => {
 
   const rowsData = jsonGrillaFiltrado.map(data => ( // los "..." hacen que valla guardando los resultados anteriores.
-  {
-    codigo: data.comision,
-    nombre: data.nombre,
-    docentes: data.docentes.map(docente => docente.nombres + " " + docente.apellido + " - ")[0],
-    acceso_especial: data.acceso_especial,
-    cant_inscriptos: data.cant_inscriptos,
-    horarios: data.horarios.map(hora => hora.dia + " - ")[0]
-  }
-))
-   
+    {
+      codigo: data.comision,
+      nombre: data.nombre,
+      docentes: data.docentes.map(docente => docente.nombres + " " + docente.apellido + " - ")[0],
+      acceso_especial: data.acceso_especial,
+      cant_inscriptos: data.cant_inscriptos,
+      horarios: data.horarios.map(hora => hora.dia + " - ")[0]
+    }
+  ))
+
   return {
     columns: [
       {
@@ -57,7 +57,7 @@ export const grilla = (jsonGrillaFiltrado) => {
         width: 150
       }
     ],
-    rows: 
+    rows:
       rowsData
   }
 }
