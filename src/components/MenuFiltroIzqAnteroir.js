@@ -1,48 +1,12 @@
-import React, { useState } from 'react';
-import * as FaIcons from 'react-icons/fa';
-import * as AiIcons from 'react-icons/ai';
-import { Link } from 'react-router-dom';
-import { SidebarData } from './SidebarData';
+import React, { Component } from "react";
 import './css/MenuFiltroIzq.css';
-import { IconContext } from 'react-icons';
 
-function MenuFiltroIzq() {
-  const [sidebar, setSidebar] = useState(false);
-  const [jsonGrillaFiltrado, setjsonGrillaFiltrado] = useState(null)
+class MenuFiltroIzq extends Component {
+  render() {
+    return (
+      <div className="menuFiltro" id="menuFiltro">
 
-
-  const showSidebar = () => setSidebar(!sidebar);
-
-
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  // Guardamos el resultado de la busqueda en un nuevo json                                                                                                     //
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-  const mapearDias = (buscarDias, jsonGrilla) => {
-
-    const nvoJson = jsonGrilla.filter(data => (data.horarios.map(hora => hora.dia)))
-    setjsonGrillaFiltrado(nvoJson)
-  }
-
-  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-  return (
-    <>
-      <IconContext.Provider value={{ color: '#fff' }}>
-        <div className='navbar'>
-          <Link to='#' className='menu-bars'>
-            <FaIcons.FaBars onClick={showSidebar} />
-          </Link>
-        </div>
-        <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
-          <ul className='nav-menu-items' >
-            <li className='navbar-toggle'>
-              <Link to='#' className='menu-bars' onClick={showSidebar}>
-                <AiIcons.AiOutlineClose />
-              </Link>
-            </li>
-            <div className="panel-group" id="accordion">
+        <div className="panel-group" id="accordion">
           <div className="panel panel-default">
             <div className="panel-heading" id="a">
               <h3 className="panel-title">
@@ -54,19 +18,19 @@ function MenuFiltroIzq() {
                 <form>
                   <div className="checkbox">
 
-                    <label><input type="checkbox" value="Lunes"></input>Lunes</label>
+                    <label><input type="checkbox" value=""></input>Lunes</label>
                   </div>
                   <div className="checkbox">
-                    <label><input type="checkbox" value="Martes"></input>Martes</label>
+                    <label><input type="checkbox" value=""></input>Martes</label>
                   </div>
                   <div className="checkbox">
-                    <label><input type="checkbox" value="Miercoles" ></input>Miercoles</label>
+                    <label><input type="checkbox" value="" ></input>Miercoles</label>
                   </div>
                   <div className="checkbox">
-                    <label><input type="checkbox" value="Jueves" ></input>Jueves</label>
+                    <label><input type="checkbox" value="" ></input>Jueves</label>
                   </div>
                   <div className="checkbox">
-                    <label><input type="checkbox" value="Viernes" ></input>Viernes</label>
+                    <label><input type="checkbox" value="" ></input>Viernes</label>
                   </div>
                   <div className="checkbox">
                     <label><input type="checkbox" value="" ></input>Sabado</label>
@@ -129,11 +93,9 @@ function MenuFiltroIzq() {
             </div>
           </div>
         </div>
-          </ul>
-        </nav>
-      </IconContext.Provider>
-    </>
-  );
+      </div>
+    )
+  }
 }
 
 export default MenuFiltroIzq;

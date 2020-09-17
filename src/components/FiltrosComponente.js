@@ -44,6 +44,7 @@ const FiltrosComponente = () => {
 
   return (
     <Fragment>
+          <MenuFiltroIzq />
       <p></p>
       <form
         id='formActividad'
@@ -87,7 +88,7 @@ const FiltrosComponente = () => {
       <section>
         <div className="visual">
           <div className="izq">
-            <MenuFiltroIzq />
+        
           </div>
         </div>
       </section>
