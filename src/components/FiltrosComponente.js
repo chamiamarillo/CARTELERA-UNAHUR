@@ -1,5 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { getComisiones } from '../util/services/comision.service'
+import { grilla } from '../util/services/grilla.service'
 ////
 import CaracteristicasAulas from './CaracteristicasAulas';
 import TablaComisiones from './TablaComisiones';
@@ -7,11 +8,13 @@ import MaquetaGrilla from './MaquetaGrilla';
 ////
 import './css/FiltrosComponent.css'
 
+import MenuFiltroIzq from './MenuFiltroIzq';
+
 const FiltrosComponente = () => {
 
   // definicion de state para el uso de los filtros
   const [buscarActividad, guardarActividad] = useState('');
-  // json
+  // estado para trabajar con los json
   const [jsonGrillaOriginal, setjsonGrillaOriginal] = useState([])
   const [jsonGrillaFiltrado, setjsonGrillaFiltrado] = useState(null)
 
@@ -27,17 +30,18 @@ const FiltrosComponente = () => {
   }
 
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  // Guardamos el resultado de la busqueda en un nuevo json
+  // Guardamos el resultado de la busqueda en un nuevo json                                                                                                     //
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   const mapearActividad = (buscarActividad, jsonGrilla) => {
 
     const nvoJson = jsonGrilla.filter(data => (data.actividad.nombre.toLowerCase().indexOf(buscarActividad.toLowerCase()) > -1))
-    setjsonGrillaFiltrado(nvoJson)
+    setjsonGrillaFiltrado(grilla(nvoJson))
   }
 
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  
+
+
   return (
     <Fragment>
       <p></p>
@@ -65,16 +69,10 @@ const FiltrosComponente = () => {
       </form>
       <p></p>
       <div>
-        {
-          jsonGrillaFiltrado &&
-          <TablaComisiones
-              jsonGrillaFiltrado={jsonGrillaFiltrado}
-              jsonGrillaOriginal ={jsonGrillaOriginal}
-              buscarActividad = {buscarActividad}
-          />
+        <TablaComisiones
+          jsonGrillaFiltrado={jsonGrillaFiltrado}
 
-        }
-        
+        />
       </div>
       <p></p>
       <div>
@@ -83,6 +81,20 @@ const FiltrosComponente = () => {
       <div>
         <MaquetaGrilla />
       </div>
+
+
+
+      <section>
+        <div className="visual">
+          <div className="izq">
+            <MenuFiltroIzq />
+          </div>
+        </div>
+      </section>
+
+
+
+
     </Fragment>
 
   );

@@ -2,11 +2,13 @@ import React, { Fragment } from 'react';
 
 /******* COMPONENTES */
 import MenuFiltroIzq from "./MenuFiltroIzq"; // Filtro del costado días - banda horaria - propuesta
-import MenuNav from './MenuNav'; // menu superior asignar - crear est. - menu principal
 import HeaderLogoTitulo from './HeaderLogoTitulo'; // final logo y titulo - A FUTURO TERMINAR LOGUIN - 
-import Central from './Central'; // pantalla central de interaccion segun la eleccion del menu
+//import Central from './Central'; // pantalla central de interaccion segun la eleccion del menu
 /****************** */
 
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import FiltrosComponente from './FiltrosComponente';
+import Menu from './Menu';
 
 const Principal = () => {
   return (
@@ -15,24 +17,28 @@ const Principal = () => {
       <header>
         <HeaderLogoTitulo />
       </header>
-      <div className="nuevo-estilo">
-        <nav className="menuNav">
-          <MenuNav />
-        </nav>
-      </div>
-      <section>
-        <div className="visual">
-          <div className="izq">
-            <MenuFiltroIzq />
-          </div>
-          <div className="central">
-            <Central />
-          </div>
-        </div>
-      </section>
-
-      <footer></footer>
-
+          <BrowserRouter>
+            <div>
+                <div className="App">
+                    <div className="container-fluid">
+                        <Menu />
+                        <br />
+                    </div>
+                    <ul className="nav justify-content-center">
+                        <div className="container">
+                            <Switch>
+                                <Route exact path="/"  />
+                                <Route exact path="/Asignacion" component={FiltrosComponente}  />
+                                <Route exact path="/Modificacion"  />
+                                <Route exact path="/Consulta"  />
+                                <Route exact path="/Reporte"  />
+                                <Route exact path="/Salir"  />
+                            </Switch>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </BrowserRouter>
     </Fragment>
   );
 }
