@@ -1,7 +1,7 @@
 //// Funcion para armar la tabla en el componente TablaComisiones ////
 /////////////////////////////////////////////////////////////////////
 
-export const grilla = (jsonGrillaFiltrado) => {
+export const grilla = (jsonGrillaFiltrado, setComisionSelec) => {
 
   const rowsData = jsonGrillaFiltrado.map(data => ( // los "..." hacen que valla guardando los resultados anteriores.
     {
@@ -10,7 +10,8 @@ export const grilla = (jsonGrillaFiltrado) => {
       docentes: data.docentes.map(docente => docente.nombres + " " + docente.apellido + " - ")[0],
       acceso_especial: data.acceso_especial,
       cant_inscriptos: data.cant_inscriptos,
-      horarios: data.horarios.map(hora => hora.dia + " - ")[0]
+      horarios: data.horarios.map(hora => hora.dia + " - ")[0],
+      clickEvent: () => setComisionSelec(data.comision + ' - ' + data.nombre) // estoy usando la referencia del estado que esta en el componente FiltrosComponente
     }
   ))
 

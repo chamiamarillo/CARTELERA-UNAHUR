@@ -1,19 +1,26 @@
-import React, { Component } from "react";
-import './css/MenuFiltroIzq.css';
+import React from 'react';
 
-class MenuFiltroIzq extends Component {
-  render() {
+const MenuFiltroIzq = () => {
+
+
+
+
+
+    
     return (
-      <div className="menuFiltro" id="menuFiltro">
 
-        <div className="panel-group" id="accordion">
-          <div className="panel panel-default">
-            <div className="panel-heading" id="a">
+
+
+        <>
+
+        <div className="panel-group" >
+          <div className="panel">
+            <div className="panel-heading">
               <h3 className="panel-title">
-                <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">Dias de Cursada</a>
+                <a >Dias de Cursada</a>
               </h3>
             </div>
-            <div id="collapse1" className="panel-collapse collapse">
+            <div >
               <div className="panel-body">
                 <form>
                   <div className="checkbox">
@@ -43,7 +50,7 @@ class MenuFiltroIzq extends Component {
             </div>
           </div>
           <div className="panel panel-default">
-            <div className="panel-heading" id="a">
+            <div className="panel-heading" >
               <h3 className="panel-title">
                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">Banda Horaria</a>
               </h3>
@@ -65,7 +72,7 @@ class MenuFiltroIzq extends Component {
             </div>
           </div>
           <div className="panel panel-default">
-            <div className="panel-heading" id="a">
+            <div className="panel-heading" id="B">
               <h3 className="panel-title">
                 <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Propuestas</a>
               </h3>
@@ -93,9 +100,15 @@ class MenuFiltroIzq extends Component {
             </div>
           </div>
         </div>
-      </div>
-    )
-  }
+      </>
+
+
+
+
+
+
+
+    );
 }
 
 export default MenuFiltroIzq;

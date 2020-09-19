@@ -2,18 +2,20 @@ import React, { Fragment, useState, useEffect } from 'react';
 import { getComisiones } from '../util/services/comision.service'
 import { grilla } from '../util/services/grilla.service'
 ////
-import CaracteristicasAulas from './CaracteristicasAulas';
+import CaracteristicasAulas from './CaracteristicasAulas.js';
 import TablaComisiones from './TablaComisiones';
 import MaquetaGrilla from './MaquetaGrilla';
 ////
 import './css/FiltrosComponent.css'
 
-import MenuFiltroIzq from './MenuFiltroIzq';
+
 
 const FiltrosComponente = () => {
 
+  const [comisionSelec, setComisionSelec] = useState('')
   // definicion de state para el uso de los filtros
   const [buscarActividad, guardarActividad] = useState('');
+ 
   // estado para trabajar con los json
   const [jsonGrillaOriginal, setjsonGrillaOriginal] = useState([])
   const [jsonGrillaFiltrado, setjsonGrillaFiltrado] = useState(null)
@@ -36,11 +38,19 @@ const FiltrosComponente = () => {
   const mapearActividad = (buscarActividad, jsonGrilla) => {
 
     const nvoJson = jsonGrilla.filter(data => (data.actividad.nombre.toLowerCase().indexOf(buscarActividad.toLowerCase()) > -1))
-    setjsonGrillaFiltrado(grilla(nvoJson))
+
+    if (buscarActividad !== ' ') {
+      setjsonGrillaFiltrado(grilla(nvoJson, setComisionSelec)) // estoy pasando solo la referencia al seteo del estado
+    } else {
+      setjsonGrillaFiltrado(grilla(jsonGrilla, setComisionSelec))
+    }
+
   }
 
+  //console.log("menu fliltro izquierdo");
+  //console.log(check);
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+  console.log(comisionSelec)
 
   return (
     <Fragment>
@@ -68,15 +78,67 @@ const FiltrosComponente = () => {
           /></li>
       </form>
       <p></p>
+
+
+      <div className="visual">
+        <>
+
+          <div className="panel-group" >
+            <div className="panel">
+              <div className="panel-heading">
+                <h3 className="panel-title">
+                  <a >Dias de Cursada</a>
+                </h3>
+              </div>
+              <div>
+                <div className="panel-body">
+                  <form>
+                    <div className="checkbox">
+
+                      <label><input type="checkbox" value="AU_2 Abordaje de situaciones sociales complejas"></input>Lunes</label>
+                    </div>
+                    <div className="checkbox">
+                      <label><input type="checkbox" value="Martes"></input>Martes</label>
+                    </div>
+                    <div className="checkbox">
+                      <label><input type="checkbox" value="Miercoles" ></input>Miercoles</label>
+                    </div>
+                    <div className="checkbox">
+                      <label><input type="checkbox" value="Jueves" ></input>Jueves</label>
+                    </div>
+                    <div className="checkbox">
+                      <label><input type="checkbox" value="Viernes" ></input>Viernes</label>
+                    </div>
+                    <div className="checkbox">
+                      <label><input type="checkbox" value="Sabado" ></input>Sabado</label>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </>
+
+
+
+
+
+
+      </div>
+
+
+
       <div>
         <TablaComisiones
           jsonGrillaFiltrado={jsonGrillaFiltrado}
-
         />
       </div>
       <p></p>
       <div>
-        <CaracteristicasAulas />
+        <CaracteristicasAulas 
+        comisionSelec={comisionSelec}
+        />
       </div>
       <div>
         <MaquetaGrilla />
@@ -84,13 +146,7 @@ const FiltrosComponente = () => {
 
 
 
-      <section>
-        <div className="visual">
-          <div className="izq">
-            <MenuFiltroIzq />
-          </div>
-        </div>
-      </section>
+
 
 
 

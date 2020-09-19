@@ -1,43 +1,39 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { MDBDataTableV5 } from 'mdbreact';
-//import { grilla } from '../util/services/grilla.service'
+
 
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap-css-only/css/bootstrap.min.css';
 import 'mdbreact/dist/css/mdb.css';
 import './css/TablaComisiones.css'
-//import DataTable from 'react-data-table-component';
+
 
 const TablaComisiones = ({ jsonGrillaFiltrado }) => {
 
-  //const [datatable, setDatatable] = useState(jsonGrillaFiltrado);
-  const [checkbox, setCheckbox1] = useState('');
+
+  //const [jsonTabla, setJsonTabla] = useState({jsonGrillaFiltrado})
+
+  /*
+  const [checkbox, setCheckbox1] = useState(''); 
 
   const showLogs2 = (e) => {
     setCheckbox1(e);
   };
 
-  /*
-    const actualizar = e => {
-      ...datatable;
-  
-    }
-    */
-
-  console.log("Json grilla filtrado")
-  console.log(jsonGrillaFiltrado)
+*/
   /*
     useEffect(() => {
     
-      console.log("FUNCION GRILLA....")
-      console.log(grilla(jsonGrillaFiltrado))
-     setDatatable(grilla(jsonGrillaFiltrado))
+     // console.log("FUNCION GRILLA....")
+     // console.log(grilla(jsonGrillaFiltrado))
+     setRender(mierda)
      // setCheckbox1('')
-    }, [jsonGrillaFiltrado])
+    }, [mierda])
     
-  
-    console.log(datatable)
-    */
+  */
+    
+
+
   return (
     <>
       {
@@ -52,12 +48,15 @@ const TablaComisiones = ({ jsonGrillaFiltrado }) => {
           entries={5}
           pagesAmount={4}
           data={jsonGrillaFiltrado}
-          checkbox
-          headCheckboxID='id2'
-          bodyCheckboxID='checkboxes2'
-          getValueCheckBox={(e) => {
-            showLogs2(e);
-          }}
+          //checkbox
+          //headCheckboxID='id2'
+          //bodyCheckboxID='checkboxes2'
+          striped
+          bordered
+          materialInputs
+          responsive
+          focus
+          //selectRow="selectHandler"
         />
       }
     </>
