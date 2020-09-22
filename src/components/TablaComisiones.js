@@ -40,10 +40,9 @@ const TablaComisiones = ({ jsonGrillaFiltrado }) => {
         jsonGrillaFiltrado &&
 
         <MDBDataTableV5
-          hover
           searchLabel='Buscar'
           entriesLabel='Cant. Registros'
-          //infoLabel
+          infoLabel={["","-","de",""]}
           entriesOptions={[5, 10,15,20, 25,30]}
           entries={5}
           pagesAmount={4}
@@ -56,6 +55,7 @@ const TablaComisiones = ({ jsonGrillaFiltrado }) => {
           materialInputs
           responsive
           focus
+
           //selectRow="selectHandler"
         />
       }
