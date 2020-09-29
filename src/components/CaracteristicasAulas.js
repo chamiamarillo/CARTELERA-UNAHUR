@@ -4,8 +4,6 @@ const CaractiristicasAulas = ({comisionSelec}) => {
 
     let seleccion = JSON.stringify(comisionSelec);
 
-
-
     return (  
 
         <Fragment>
@@ -36,14 +34,6 @@ const CaractiristicasAulas = ({comisionSelec}) => {
           <label>{seleccion}</label>
         </div>
       </Fragment>
-
-
-
-
-
-
-
-
 
 
     );
