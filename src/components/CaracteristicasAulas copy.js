@@ -1,12 +1,23 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, Component } from 'react';
 
-const CaractiristicasAulas = ({comisionSelec}) => {
+class CaracteristicasAulas extends Component {
+  constructor(props, context) {
+    super(props, context);
 
-    let seleccion = JSON.stringify(comisionSelec);
+    this.handleChange = this.handleChange.bind(this);
 
-    return (  
+    this.state = {
+      value: [1, 3]
+    };
+  }
 
-        <Fragment>
+  handleChange(e) {
+    this.setState({ value: e });
+  }
+
+  render() {
+    return (
+      <Fragment>
         <div>
           Seleccione carateristicas necesarias de las aulas:
           </div>
@@ -29,14 +40,10 @@ const CaractiristicasAulas = ({comisionSelec}) => {
         <div className="checkbox checkbox-inline">
           <input type="checkbox" id="inlineCheckbox5" value="option4"></input>
           <label>Mesas de Taller </label>
-          <br></br>
-          <br></br>
-          <label>{seleccion}</label>
         </div>
       </Fragment>
-
-
-    );
+    )
+  }
 }
- 
-export default CaractiristicasAulas;
+
+export default CaracteristicasAulas;
