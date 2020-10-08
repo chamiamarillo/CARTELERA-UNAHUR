@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 
-const CaractiristicasAulas = ({comisionSelec}) => {
+const CaracteristicasAulas = ({comisionSelec}) => {
 
     let seleccion = JSON.stringify(comisionSelec);
 
@@ -49,4 +49,4 @@ const CaractiristicasAulas = ({comisionSelec}) => {
     );
 }
  
-export default CaractiristicasAulas;
+export default CaracteristicasAulas;
