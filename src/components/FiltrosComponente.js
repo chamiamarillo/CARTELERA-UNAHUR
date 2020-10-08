@@ -18,7 +18,7 @@ const FiltrosComponente = () => {
   // definicion de state para el uso de los filtros
   const [buscarActividad, guardarActividad] = useState('');
   //
-  const [dias, setDias] = useState('');
+  const [dias, setDias] = useState([]);
 
   // estado para trabajar con los json
   const [jsonGrillaOriginal, setjsonGrillaOriginal] = useState([])
@@ -35,6 +35,19 @@ const FiltrosComponente = () => {
 
     guardarActividad('');
   }
+
+
+  const guardarDias = e => {
+        
+    setDias([
+      ...dias,
+      e.target.value
+    ]);
+  }
+
+
+
+
 
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // Guardamos el resultado de la busqueda en un nuevo json                                                                                                     //
@@ -67,18 +80,22 @@ const FiltrosComponente = () => {
 
     const nvoJson = jsonGrilla.filter(data => (data.actividad.nombre.toLowerCase().indexOf(buscarActividad.toLowerCase()) > -1))
     //
-    const nvoJson2 = nvoJson.filter(data => (data.horarios.map(hora => hora.dia).indexOf(dias) > -1))
-
+    var i
+    var nvoJson2
+    for (i=0; i<=dias.length-1; i++) {
+      nvoJson2 = nvoJson.filter(data => (data.horarios.map(hora => hora.dia).indexOf(dias[i]) > -1))
+    }
     //console.log(nvoJson2)
     console.log("dia elegido ....")
     console.log(dias)
-
+  
     if (buscarActividad !== ' ') {
       setjsonGrillaFiltrado(grilla(nvoJson2, setComisionSelec)) // estoy pasando solo la referencia al seteo del estado
     } else {
       setjsonGrillaFiltrado(grilla(jsonGrilla, setComisionSelec))
     }
 
+    
   }
 
 
@@ -135,22 +152,22 @@ const FiltrosComponente = () => {
                   <form  >
                     <div className="checkbox">
 
-                      <label><input type="checkbox" value="Lunes" onChange={(e) => setDias(e.target.value)}></input>Lunes</label>
+                      <label><input type="checkbox" value="Lunes" onChange={guardarDias}></input>Lunes</label>
                     </div>
                     <div className="checkbox">
-                      <label><input type="checkbox" value="Martes" onChange={(e) => setDias(e.target.value)}></input>Martes</label>
+                      <label><input type="checkbox" value="Martes" onChange={guardarDias}></input>Martes</label>
                     </div>
                     <div className="checkbox">
-                      <label><input type="checkbox" value="Miercoles" onClick={(e) => setDias(e.target.value)}></input>Miercoles</label>
+                      <label><input type="checkbox" value="Miercoles" onClick={guardarDias}></input>Miercoles</label>
                     </div>
                     <div className="checkbox">
-                      <label><input type="checkbox" value="Jueves" onClick={(e) => setDias(e.target.value)}></input>Jueves</label>
+                      <label><input type="checkbox" value="Jueves" onClick={guardarDias}></input>Jueves</label>
                     </div>
                     <div className="checkbox">
-                      <label><input type="checkbox" value="Viernes" onClick={(e) => setDias(e.target.value)}></input>Viernes</label>
+                      <label><input type="checkbox" value="Viernes" onClick={guardarDias}></input>Viernes</label>
                     </div>
                     <div className="checkbox">
-                      <label><input type="checkbox" value="Sabado" onClick={(e) => setDias(e.target.value)}></input>Sabado</label>
+                      <label><input type="checkbox" value="Sabado" onClick={guardarDias}></input>Sabado</label>
                     </div>
                   </form>
                 </div>
