@@ -8,11 +8,7 @@ const MenuFiltroIzq = () => {
 
     
     return (
-
-
-
         <>
-
         <div className="panel-group" >
           <div className="panel">
             <div className="panel-heading">
