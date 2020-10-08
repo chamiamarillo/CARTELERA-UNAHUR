@@ -1,17 +1,17 @@
 import React, { Fragment } from 'react';
 
-const CaracteristicasAulas = ({comisionSelec}) => {
+const CaractiristicasAulas = ({comisionSelec}) => {
 
     let seleccion = JSON.stringify(comisionSelec);
-
-
 
     return (  
 
         <Fragment>
+          
         <div>
-          Seleccione carateristicas necesarias de las aulas:
+          <h5>Seleccione carateristicas necesarias de las aulas:</h5>
           </div>
+          <div >
         <div className="checkbox checkbox-inline">
           <input type="checkbox" id="inlineCheckbox1" value="option1"></input>
           <label>Televisor </label>
@@ -29,24 +29,15 @@ const CaracteristicasAulas = ({comisionSelec}) => {
           <label>Proyector</label>
         </div>
         <div className="checkbox checkbox-inline">
-          <input type="checkbox" id="inlineCheckbox5" value="option4"></input>
-          <label>Mesas de Taller </label>
-          <br></br>
+          <input type="checkbox" id="inlineCheckbox5" value="option5"></input>
+          <label>Mesas de Taller </label></div>
           <br></br>
           <label>{seleccion}</label>
-        </div>
+        
+          </div>
       </Fragment>
-
-
-
-
-
-
-
-
-
 
     );
 }
  
-export default CaracteristicasAulas;
+export default CaractiristicasAulas;
