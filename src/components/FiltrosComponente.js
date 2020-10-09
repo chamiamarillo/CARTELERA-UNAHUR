@@ -1,13 +1,13 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import { getComisiones } from '../util/services/comision.service'
-import { grilla } from '../util/services/grilla.service'
+import { getComisiones } from '../util/services/comision.service';
+import { grilla } from '../util/services/grilla.service';
 ////
 import CaracteristicasAulas from './CaracteristicasAulas.js';
 import TablaComisiones from './TablaComisiones';
 import MaquetaGrilla from './MaquetaGrilla';
 ////
 import './css/FiltrosComponent.css'
-import { Checkbox } from 'semantic-ui-react';
+//import { Checkbox } from 'semantic-ui-react';
 
 /// ver esto para la busqueda de propuesta
 // https://material-ui.com/es/components/autocomplete/
@@ -18,7 +18,7 @@ const FiltrosComponente = () => {
   // definicion de state para el uso de los filtros
   const [buscarActividad, guardarActividad] = useState('');
   //
-  const [dias, setDias] = useState('');
+  const [dias, setDias] = useState([]);
 
   // estado para trabajar con los json
   const [jsonGrillaOriginal, setjsonGrillaOriginal] = useState([])
@@ -35,6 +35,16 @@ const FiltrosComponente = () => {
 
     guardarActividad('');
   }
+
+
+  const guardarDias = e => {
+        
+    setDias([
+      ...dias,
+      e.target.value
+    ]);
+  }
+
 
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // Guardamos el resultado de la busqueda en un nuevo json                                                                                                     //
@@ -58,7 +68,6 @@ const FiltrosComponente = () => {
 
   }
 
-
   /////////////////////////////////////////.
   /*
   Este debe trabajar con el jsonGrillaFiltrado, pero si el estado esta vasio que use el jsonGrilla
@@ -67,21 +76,43 @@ const FiltrosComponente = () => {
 
     const nvoJson = jsonGrilla.filter(data => (data.actividad.nombre.toLowerCase().indexOf(buscarActividad.toLowerCase()) > -1))
     //
-    const nvoJson2 = nvoJson.filter(data => (data.horarios.map(hora => hora.dia).indexOf(dias) > -1))
-
+    var i
+    var nvoJson2
+    for (i=0; i<=dias.length-1; i++) {
+      nvoJson2 = nvoJson.filter(data => (data.horarios.map(hora => hora.dia).indexOf(dias[i]) > -1))
+    }
     //console.log(nvoJson2)
     console.log("dia elegido ....")
     console.log(dias)
-
+  
     if (buscarActividad !== ' ') {
       setjsonGrillaFiltrado(grilla(nvoJson2, setComisionSelec)) // estoy pasando solo la referencia al seteo del estado
     } else {
       setjsonGrillaFiltrado(grilla(jsonGrilla, setComisionSelec))
     }
 
+    // vuelvo al estado inicial del array
+    setDias([])
+    var control1 = document.getElementById("ch001")
+    var control2 = document.getElementById("ch002")
+    var control3 = document.getElementById("ch003")
+    var control4 = document.getElementById("ch004")
+    var control5 = document.getElementById("ch005")
+    var control6 = document.getElementById("ch006")
+    //console.log("ver propiedad")
+    //console.log(control)
+   if(control1 || control2 || control3 || control4 || control5 || control6) { 
+     control1.checked=false;
+     control2.checked=false;
+     control3.checked=false;
+     control4.checked=false;
+     control5.checked=false;
+     control6.checked=false;
+    }
+   
   }
 
-  console.log("menu filtro izquierdo");
+  console.log("menu fliltro izquierdo");
   console.log(dias);
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   console.log(comisionSelec)
@@ -121,33 +152,32 @@ const FiltrosComponente = () => {
             <div class="card">
               <div class="card-header" id="headingOne">
                 <h5 class="mb-0">
-                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                    Dias de cursada
+                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <h2>DIAS DE CURSADA</h2>
                   </button>
                 </h5>
               </div>
 
               <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                 <div class="card-body">
-                  <form  >
-                    <div className="checkbox">
-
-                      <label><input type="checkbox" value="Lunes" onChange={(e) => setDias(e.target.value)}></input>Lunes</label>
+                  <form >
+                    <div className="checkbox" >
+                      <label><input type="checkbox" id="ch001" value="Lunes" onChange={guardarDias} ></input>Lunes</label>
                     </div>
                     <div className="checkbox">
-                      <label><input type="checkbox" value="Martes" onChange={(e) => setDias(e.target.value)}></input>Martes</label>
+                      <label><input type="checkbox" id="ch002" value="Martes" onChange={guardarDias}></input>Martes</label>
                     </div>
                     <div className="checkbox">
-                      <label><input type="checkbox" value="Miercoles" onClick={(e) => setDias(e.target.value)}></input>Miercoles</label>
+                      <label><input type="checkbox" id="ch003" value="Miercoles" onClick={guardarDias}></input>Miercoles</label>
                     </div>
                     <div className="checkbox">
-                      <label><input type="checkbox" value="Jueves" onClick={(e) => setDias(e.target.value)}></input>Jueves</label>
+                      <label><input type="checkbox" id="ch004" value="Jueves" onClick={guardarDias}></input>Jueves</label>
                     </div>
                     <div className="checkbox">
-                      <label><input type="checkbox" value="Viernes" onClick={(e) => setDias(e.target.value)}></input>Viernes</label>
+                      <label><input type="checkbox" id="ch005" value="Viernes" onClick={guardarDias}></input>Viernes</label>
                     </div>
                     <div className="checkbox">
-                      <label><input type="checkbox" value="Sabado" onClick={(e) => setDias(e.target.value)}></input>Sabado</label>
+                      <label><input type="checkbox" id="ch006" value="Sabado" onClick={guardarDias}></input>Sabado</label>
                     </div>
                   </form>
                 </div>
@@ -173,8 +203,6 @@ const FiltrosComponente = () => {
         </>
       </div>
 
-
-
       <div>
         <TablaComisiones
           jsonGrillaFiltrado={jsonGrillaFiltrado}
@@ -189,7 +217,6 @@ const FiltrosComponente = () => {
       <div>
         <MaquetaGrilla />
       </div>
-
     </Fragment>
   );
 }
