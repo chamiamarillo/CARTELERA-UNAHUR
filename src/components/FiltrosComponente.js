@@ -20,6 +20,10 @@ const FiltrosComponente = () => {
   //
   const [dias, setDias] = useState([]);
 
+  const [propuestas, setPropuestas] = useState([]);
+  //
+  const [buscarPropuesta, guardarPropuesta] = useState('');
+
   // estado para trabajar con los json
   const [jsonGrillaOriginal, setjsonGrillaOriginal] = useState([])
   const [jsonGrillaFiltrado, setjsonGrillaFiltrado] = useState(null)
@@ -32,8 +36,9 @@ const FiltrosComponente = () => {
     e.preventDefault()
 
     // recetear el formulario
-
+    guardarPropuesta('');
     guardarActividad('');
+    
   }
 
 
@@ -51,7 +56,7 @@ const FiltrosComponente = () => {
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   const mapearActividad = (buscarActividad, jsonGrilla) => {
-
+    
     const nvoJson = jsonGrilla.filter(data => (data.actividad.nombre.toLowerCase().indexOf(buscarActividad.toLowerCase()) > -1))
     //
     const nvoJson2 = nvoJson.filter(data => (data.horarios.map(hora => hora.dia).indexOf(dias) > -1))
@@ -65,10 +70,26 @@ const FiltrosComponente = () => {
     } else {
       setjsonGrillaFiltrado(grilla(jsonGrilla, setComisionSelec))
     }
+  }
+  ////////////////Mapear-Propuesta/////////////////////////.
+  const mapearPropuesta = (buscarPropuesta, jsonGrilla) => {
+    console.log("propuestas...... ....")
+    const nvoJson = jsonGrilla.filter(data => (data.propuestas.toLowerCase().indexOf(buscarPropuesta.toLowerCase()) > -1))
+    //const nvoJson2 = nvoJson.filter(data => (data.horarios.map(hora => hora.dia).indexOf(dias) > -1))
+    var i
+    var nvoJson2
+    for (i=0; i<=propuestas.length-1; i++) {
+      nvoJson2 = nvoJson.filter(data => (data.propuestas.map(hora => hora.propuesta).indexOf(propuestas[i]) > -1))
+    }
+   
+    if (buscarPropuesta !== ' ') {
+      setjsonGrillaFiltrado(grilla(nvoJson2, setComisionSelec)) // estoy pasando solo la referencia al seteo del estado
+    } else {
+      setjsonGrillaFiltrado(grilla(jsonGrilla, setComisionSelec))
+    }
 
   }
 
-  /////////////////////////////////////////.
   /*
   Este debe trabajar con el jsonGrillaFiltrado, pero si el estado esta vasio que use el jsonGrilla
   */
@@ -144,6 +165,33 @@ const FiltrosComponente = () => {
       </form>
       <p></p>
 
+    {/*filtro propuesta prueba */}
+    <p></p>
+      <form
+        id='formPropuesta'
+        onSubmit={enviarBusqueda}
+      ><li id="pPropuesta">
+          <label>
+            {'Propuesta: '} {/* el texto del label para poder tener un espacio */}
+            <input
+              type="text"
+              className="propuesta"
+              id="efectoGris"
+              placeholder="Buscar por propuesta"
+              value={buscarPropuesta}
+              onChange={e => guardarPropuesta(e.target.value)}
+            />
+          </label>
+          <input
+            type="submit"
+            className="botonPropuesta"
+            value="Buscar"
+            onClick={() => mapearPropuesta(buscarPropuesta, jsonGrillaOriginal)}
+          /></li>
+      </form>
+      <p></p>
+
+
 
       <div className="visual">
         <>
@@ -153,7 +201,7 @@ const FiltrosComponente = () => {
               <div class="card-header" id="headingOne">
                 <h5 class="mb-0">
                   <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    <h2>DIAS DE CURSADA</h2>
+                    <h5>Días de cursada</h5>
                   </button>
                 </h5>
               </div>
