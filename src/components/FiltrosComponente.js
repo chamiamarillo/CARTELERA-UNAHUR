@@ -60,17 +60,14 @@ const FiltrosComponente = () => {
     const nvoJson = jsonGrilla.filter(data => (data.actividad.nombre.toLowerCase().indexOf(buscarActividad.toLowerCase()) > -1))
     //
     const nvoJson2 = nvoJson.filter(data => (data.horarios.map(hora => hora.dia).indexOf(dias) > -1))
-    //
-   //const nvoJson3 = nvoJson.filter(data => (data.turno.map(hora => hora.nombre).indexOf() > turnos-1))
+    
 
     console.log(nvoJson2)
     console.log("dia elegido ....")
     console.log(dias)
 
-
-    //console.log(nvoJson3)
     console.log("turno elegido ....")
-    //console.log(turnos)
+    console.log(turnos)
 
     if (buscarActividad !== ' ') {
       setjsonGrillaFiltrado(grilla(nvoJson, setComisionSelec)) // estoy pasando solo la referencia al seteo del estado
