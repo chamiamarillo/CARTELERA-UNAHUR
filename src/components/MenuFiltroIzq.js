@@ -47,7 +47,7 @@ const MenuFiltroIzq = () => {
     <div class="card-header" id="headingTwo">
       <h5 class="mb-0">
         <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Banda Horaria
+          turno Horaria
         </button>
       </h5>
     </div>

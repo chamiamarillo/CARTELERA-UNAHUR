@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 
 /******* COMPONENTES */
-import MenuFiltroIzq from "./MenuFiltroIzq"; // Filtro del costado días - banda horaria - propuesta
+import MenuFiltroIzq from "./MenuFiltroIzq"; // Filtro del costado días - turno horaria - propuesta
 import HeaderLogoTitulo from './HeaderLogoTitulo'; // final logo y titulo - A FUTURO TERMINAR LOGUIN - 
 //import Central from './Central'; // pantalla central de interaccion segun la eleccion del menu
 /****************** */

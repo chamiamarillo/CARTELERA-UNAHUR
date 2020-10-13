@@ -22,7 +22,7 @@
     overflow:scroll;
 }
 
-.botonActividad, .botonComision, .botonDocente{
+.botonActividad, .botonComision, .botonDocente ,.botonPropuesta{
     position: absolute;
     float: right; 
     border-radius: 5px;
@@ -38,7 +38,7 @@
   width: 35%;
 }
 
-#pActividad, #pComision, #pDocente{
+#pActividad, #pComision, #pDocente, #pPropuesta{
 padding-bottom: 3%;
 }
 

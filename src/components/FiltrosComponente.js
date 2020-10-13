@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect } from 'react';
-import { getComisiones } from '../util/services/comision.service';
-import { grilla } from '../util/services/grilla.service';
+import { getComisiones } from '../util/services/comision.service'
+import { grilla } from '../util/services/grilla.service'
 ////
 import CaracteristicasAulas from './CaracteristicasAulas.js';
 import TablaComisiones from './TablaComisiones';
@@ -19,10 +19,11 @@ const FiltrosComponente = () => {
   const [buscarActividad, guardarActividad] = useState('');
   //
   const [dias, setDias] = useState([]);
-
-  const [propuestas, setPropuestas] = useState([]);
-  //
-  const [buscarPropuesta, guardarPropuesta] = useState('');
+  /////
+  const [turnos, setTurno] = useState([]);
+  const[buscarTurno, guardarTurno] = useState('');
+  //Propuestas
+  const[buscarPropuesta, guardarPropuesta] = useState('');
 
   // estado para trabajar con los json
   const [jsonGrillaOriginal, setjsonGrillaOriginal] = useState([])
@@ -34,11 +35,10 @@ const FiltrosComponente = () => {
 
   const enviarBusqueda = e => {
     e.preventDefault()
-
     // recetear el formulario
-    guardarPropuesta('');
     guardarActividad('');
-    
+    guardarPropuesta('');
+    guardarTurno('');
   }
 
 
@@ -49,47 +49,66 @@ const FiltrosComponente = () => {
       e.target.value
     ]);
   }
-
+ /* var guardarTurno = e => {
+        
+    setTurno([
+      ...turnos,
+      e.target.value
+    ]);
+  }
+*/
 
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // Guardamos el resultado de la busqueda en un nuevo json                                                                                                     //
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   const mapearActividad = (buscarActividad, jsonGrilla) => {
-    
+
     const nvoJson = jsonGrilla.filter(data => (data.actividad.nombre.toLowerCase().indexOf(buscarActividad.toLowerCase()) > -1))
     //
     const nvoJson2 = nvoJson.filter(data => (data.horarios.map(hora => hora.dia).indexOf(dias) > -1))
+    //
+   // const nvoJson3 = nvoJson.filter(data => (data.turno.map(hora => hora.nombre).indexOf() > turnos-1))
 
     console.log(nvoJson2)
     console.log("dia elegido ....")
     console.log(dias)
+
+
+    //console.log(nvoJson3)
+    //console.log("turno elegido ....")
+    //console.log(turnos)
 
     if (buscarActividad !== ' ') {
       setjsonGrillaFiltrado(grilla(nvoJson, setComisionSelec)) // estoy pasando solo la referencia al seteo del estado
     } else {
       setjsonGrillaFiltrado(grilla(jsonGrilla, setComisionSelec))
     }
+
   }
-  ////////////////Mapear-Propuesta/////////////////////////.
-  const mapearPropuesta = (buscarPropuesta, jsonGrilla) => {
-    console.log("propuestas...... ....")
-    const nvoJson = jsonGrilla.filter(data => (data.propuestas.toLowerCase().indexOf(buscarPropuesta.toLowerCase()) > -1))
-    //const nvoJson2 = nvoJson.filter(data => (data.horarios.map(hora => hora.dia).indexOf(dias) > -1))
-    var i
-    var nvoJson2
-    for (i=0; i<=propuestas.length-1; i++) {
-      nvoJson2 = nvoJson.filter(data => (data.propuestas.map(hora => hora.propuesta).indexOf(propuestas[i]) > -1))
-    }
+
+   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // Mapeamos Propuestas                                                                                                   //
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  const mapearPropuesta= (buscarPropuesta, jsonGrilla) => {
+  
+    const nvoJson = jsonGrilla.filter(data => data.propuestas[0])
+    console.log(nvoJson+"Propuesta........json ....")
+    const nvoJson2 = nvoJson.map(data=> data.propuesta)
+   
+    console.log(nvoJson2+"Propuesta222222222222222222........json ....")
    
     if (buscarPropuesta !== ' ') {
       setjsonGrillaFiltrado(grilla(nvoJson2, setComisionSelec)) // estoy pasando solo la referencia al seteo del estado
     } else {
-      setjsonGrillaFiltrado(grilla(jsonGrilla, setComisionSelec))
+      setjsonGrillaFiltrado(grilla(nvoJson, setComisionSelec))
     }
 
   }
 
+
+  /////////////////////////////////////////.
   /*
   Este debe trabajar con el jsonGrillaFiltrado, pero si el estado esta vasio que use el jsonGrilla
   */
@@ -120,8 +139,6 @@ const FiltrosComponente = () => {
     var control4 = document.getElementById("ch004")
     var control5 = document.getElementById("ch005")
     var control6 = document.getElementById("ch006")
-    //console.log("ver propiedad")
-    //console.log(control)
    if(control1 || control2 || control3 || control4 || control5 || control6) { 
      control1.checked=false;
      control2.checked=false;
@@ -137,6 +154,43 @@ const FiltrosComponente = () => {
   console.log(dias);
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   console.log(comisionSelec)
+  ///////////////////////////////////////////////////////////////////////////////
+  const mapearturno = (buscarTurno, jsonGrilla) => {
+
+    const nvoJson = jsonGrilla.filter(data => (data.turno.nombre.toLowerCase().indexOf(buscarTurno.toLowerCase()) > -1))
+    //
+    var i
+    var nvoJson2
+    for (i=0; i<=turnos.length-1; i++) {
+      nvoJson2 = nvoJson.filter(data => (data.turno.map(e => e.nombre).indexOf(turnos[i]) > -1))
+    }
+    //console.log(nvoJson2)
+    console.log("Turno elegido ....")
+    console.log(turnos)
+  
+    if (buscarActividad !== ' ') {
+      setjsonGrillaFiltrado(grilla(nvoJson2, setComisionSelec)) // estoy pasando solo la referencia al seteo del estado
+    } else {
+      setjsonGrillaFiltrado(grilla(jsonGrilla, setComisionSelec))
+    }
+    // vuelvo al estado inicial del array
+    setTurno([])
+    var turnoMan= document.getElementById("ch1")
+    var turnoTar = document.getElementById("ch2")
+    var turnoNoc= document.getElementById("ch3")
+    
+   if(turnoMan || turnoTar || turnoNoc) { 
+     turnoMan.checked=false;
+     turnoTar.checked=false;
+     turnoNoc.checked=false;
+    
+    }
+  }
+
+  console.log("menu turno horaria");
+  console.log(turnos);
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+ 
 
   return (
     <Fragment>
@@ -163,10 +217,7 @@ const FiltrosComponente = () => {
             onClick={() => mapearActividad(buscarActividad, jsonGrillaOriginal)}
           /></li>
       </form>
-      <p></p>
-
-    {/*filtro propuesta prueba */}
-    <p></p>
+  <p>{'-----------------------------------------------------------------------------------------------------------'}</p>
       <form
         id='formPropuesta'
         onSubmit={enviarBusqueda}
@@ -177,7 +228,7 @@ const FiltrosComponente = () => {
               type="text"
               className="propuesta"
               id="efectoGris"
-              placeholder="Buscar por propuesta"
+              placeholder="Buscar por Propuesta"
               value={buscarPropuesta}
               onChange={e => guardarPropuesta(e.target.value)}
             />
@@ -189,21 +240,17 @@ const FiltrosComponente = () => {
             onClick={() => mapearPropuesta(buscarPropuesta, jsonGrillaOriginal)}
           /></li>
       </form>
-      <p></p>
-
-
 
       <div className="visual">
         <>
-
           <div class="accordion" id="accordionExample">
             <div class="card">
               <div class="card-header" id="headingOne">
-                <h5 class="mb-0">
+                <h7 class="mb-0">
                   <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                     <h5>Días de cursada</h5>
                   </button>
-                </h5>
+                </h7>
               </div>
 
               <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
@@ -237,35 +284,69 @@ const FiltrosComponente = () => {
           <div className="panel-group" >
             <div className="panel">
               <div className="panel-heading">
-                
                   <input
                     type="submit"
                     className="botonActividad"
                     value="Buscar"
-                    onClick={() => mapearDias(buscarActividad, jsonGrillaOriginal)}
-                  />
-              
+                    onClick={() => mapearDias(buscarActividad, jsonGrillaOriginal)}/>
+              </div>
+            </div>
+          </div>
+          <div>{'--------------------------------------------------------------------------------------------'}</div>
+<div class="accordion" id="accordionExample">
+            <div class="card">
+              <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <h7>Bandas horarias</h7>
+                  </button>
+                </h5>
+              </div>
+
+              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+                  <form >
+                    <div className="checkbox" >
+                      <label><input type="checkbox" id="ch1" value="Lunes" onChange={guardarTurno} ></input>Mañana</label>
+                    </div>
+                    <div className="checkbox">
+                      <label><input type="checkbox" id="ch2" value="Martes" onChange={guardarTurno}></input>Tarde</label>
+                    </div>
+                    <div className="checkbox">
+                      <label><input type="checkbox" id="ch3" value="Miercoles" onClick={guardarTurno}></input>Noche</label>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div className="panel-group" >
+            <div className="panel">
+              <div className="panel-heading">
+                  <input
+                    type="submit"
+                    className="botonActividad"
+                    value="Buscar"
+                    onClick={() => mapearturno(buscarTurno, jsonGrillaOriginal)}/>
               </div>
             </div>
           </div>
         </>
       </div>
-
       <div>
-        <TablaComisiones
-          jsonGrillaFiltrado={jsonGrillaFiltrado}
-        />
+         <TablaComisiones  jsonGrillaFiltrado={jsonGrillaFiltrado} />
       </div>
       <p></p>
       <div>
-        <CaracteristicasAulas
-          comisionSelec={comisionSelec}
-        />
+          <CaracteristicasAulas comisionSelec={comisionSelec} />
       </div>
       <div>
-        <MaquetaGrilla />
+          <MaquetaGrilla />
       </div>
     </Fragment>
+
   );
 }
 
