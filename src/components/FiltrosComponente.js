@@ -20,8 +20,8 @@ const FiltrosComponente = () => {
   //
   const [dias, setDias] = useState([]);
   /////
-  const [turnos, setTurno] = useState([]);
-  const[buscarTurno, guardarTurno] = useState('');
+  const [turnos, setTurno] = useState(null);
+ // const[buscarTurno, guardarTurno] = useState('');
   //Propuestas
   const[buscarPropuesta, guardarPropuesta] = useState('');
 
@@ -38,7 +38,7 @@ const FiltrosComponente = () => {
     // recetear el formulario
     guardarActividad('');
     guardarPropuesta('');
-    guardarTurno('');
+    
   }
 
 
@@ -49,14 +49,7 @@ const FiltrosComponente = () => {
       e.target.value
     ]);
   }
- /* var guardarTurno = e => {
-        
-    setTurno([
-      ...turnos,
-      e.target.value
-    ]);
-  }
-*/
+  
 
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // Guardamos el resultado de la busqueda en un nuevo json                                                                                                     //
@@ -68,7 +61,7 @@ const FiltrosComponente = () => {
     //
     const nvoJson2 = nvoJson.filter(data => (data.horarios.map(hora => hora.dia).indexOf(dias) > -1))
     //
-   // const nvoJson3 = nvoJson.filter(data => (data.turno.map(hora => hora.nombre).indexOf() > turnos-1))
+   //const nvoJson3 = nvoJson.filter(data => (data.turno.map(hora => hora.nombre).indexOf() > turnos-1))
 
     console.log(nvoJson2)
     console.log("dia elegido ....")
@@ -76,7 +69,7 @@ const FiltrosComponente = () => {
 
 
     //console.log(nvoJson3)
-    //console.log("turno elegido ....")
+    console.log("turno elegido ....")
     //console.log(turnos)
 
     if (buscarActividad !== ' ') {
@@ -155,18 +148,20 @@ const FiltrosComponente = () => {
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   console.log(comisionSelec)
   ///////////////////////////////////////////////////////////////////////////////
-  const mapearturno = (buscarTurno, jsonGrilla) => {
+  const mapearturno = (buscarActividad, jsonGrilla) => {
+     const nvoJson = jsonGrilla.filter(data => (data.actividad.nombre.toLowerCase().indexOf(buscarActividad.toLowerCase()) > -1))
+     
+     console.log(nvoJson)
+     console.log("Turno elegido ....")
+     console.log(turnos)
+     const nvoJson2 = nvoJson.filter(data=>data.turno.turno == turnos)
 
-    const nvoJson = jsonGrilla.filter(data => (data.turno.nombre.toLowerCase().indexOf(buscarTurno.toLowerCase()) > -1))
+     //const nvoJson2 = nvoJson.filter(data=>data.turno.nombre.toLowerCase().indexOf(turnos) > -1)
     //
-    var i
-    var nvoJson2
-    for (i=0; i<=turnos.length-1; i++) {
-      nvoJson2 = nvoJson.filter(data => (data.turno.map(e => e.nombre).indexOf(turnos[i]) > -1))
-    }
-    //console.log(nvoJson2)
+
+    console.log(nvoJson2)
     console.log("Turno elegido ....")
-    console.log(turnos)
+    
   
     if (buscarActividad !== ' ') {
       setjsonGrillaFiltrado(grilla(nvoJson2, setComisionSelec)) // estoy pasando solo la referencia al seteo del estado
@@ -174,7 +169,7 @@ const FiltrosComponente = () => {
       setjsonGrillaFiltrado(grilla(jsonGrilla, setComisionSelec))
     }
     // vuelvo al estado inicial del array
-    setTurno([])
+    setTurno()
     var turnoMan= document.getElementById("ch1")
     var turnoTar = document.getElementById("ch2")
     var turnoNoc= document.getElementById("ch3")
@@ -307,13 +302,13 @@ const FiltrosComponente = () => {
                 <div class="card-body">
                   <form >
                     <div className="checkbox" >
-                      <label><input type="checkbox" id="ch1" value="Lunes" onChange={guardarTurno} ></input>Mañana</label>
+                      <label><input type="checkbox" id="ch1" value="1" onChange={e=>setTurno(e.target.value)} ></input>Mañana</label>
                     </div>
                     <div className="checkbox">
-                      <label><input type="checkbox" id="ch2" value="Martes" onChange={guardarTurno}></input>Tarde</label>
+                      <label><input type="checkbox" id="ch2" value="2" onChange={e=>setTurno(e.target.value)}></input>Tarde</label>
                     </div>
                     <div className="checkbox">
-                      <label><input type="checkbox" id="ch3" value="Miercoles" onClick={guardarTurno}></input>Noche</label>
+                      <label><input type="checkbox" id="ch3" value="3" onChange={e=>setTurno(e.target.value)}></input>Noche</label>
                     </div>
                   </form>
                 </div>
@@ -329,7 +324,7 @@ const FiltrosComponente = () => {
                     type="submit"
                     className="botonActividad"
                     value="Buscar"
-                    onClick={() => mapearturno(buscarTurno, jsonGrillaOriginal)}/>
+                    onClick={() => mapearturno(buscarActividad, jsonGrillaOriginal)}/>
               </div>
             </div>
           </div>
