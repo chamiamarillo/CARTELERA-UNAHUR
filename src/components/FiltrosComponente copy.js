@@ -13,24 +13,18 @@ import './css/FiltrosComponent.css'
 
 
 import Accordion from 'react-bootstrap/Accordion'
-import { Card, Button } from 'react-bootstrap';
-//import { AccordionCollapse, Card, Button } from 'react-bootstrap';
-//import { Collapse } from 'bootstrap';
-//import { showMenu } from 'react-contextmenu';
-// usado de: https://react-bootstrap.github.io/components/accordion/
+import { Card } from 'react-bootstrap';
+
 
 
 const FiltrosComponente = () => {
 
-  const [comisionSelec, setComisionSelec] = useState('');
-  
-  // definicion de estado para el uso de los filtros a buscar
+  const [comisionSelec, setComisionSelec] = useState('')
+  // definicion de state para el uso de los filtros
   const [buscarActividad, guardarActividad] = useState('');
-  
-  // definicion de estados para los filtro de dias y franja horaria
+  //
   const [dias, setDias] = useState([]);
-  const [franja, setFranja] = useState('')
-  
+
   // estado para trabajar con los json
   const [jsonGrillaOriginal, setjsonGrillaOriginal] = useState([])
   const [jsonGrillaFiltrado, setjsonGrillaFiltrado] = useState(null)
@@ -43,6 +37,7 @@ const FiltrosComponente = () => {
     e.preventDefault()
 
     // recetear el formulario
+
     guardarActividad('');
   }
 
@@ -73,67 +68,57 @@ const FiltrosComponente = () => {
     } else {
       setjsonGrillaFiltrado(grilla(jsonGrilla, setComisionSelec))
     }
+
   }
 
-  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  // Este debe trabajar con el jsonGrillaFiltrado, pero si el estado esta vasio que use el jsonGrilla
-  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  const mapearDiasYFranja = (buscarActividad, jsonGrilla) => {
+  /////////////////////////////////////////.
+  /*
+  Este debe trabajar con el jsonGrillaFiltrado, pero si el estado esta vasio que use el jsonGrilla
+  */
+  const mapearDias = (buscarActividad, jsonGrilla) => {
 
     const nvoJson = jsonGrilla.filter(data => (data.actividad.nombre.toLowerCase().indexOf(buscarActividad.toLowerCase()) > -1))
-    
-    //// ver de cargar un condicional para los filtros combinados de dias y franja horaria!!!!
+    //
+    var i
     var nvoJson2
-    for (let i = 0; i <= dias.length - 1; i++) {
+    for (i = 0; i <= dias.length - 1; i++) {
       nvoJson2 = nvoJson.filter(data => (data.horarios.map(hora => hora.dia).indexOf(dias[i]) > -1))
     }
+    //console.log(nvoJson2)
+    console.log("dia elegido ....")
+    console.log(dias)
 
-    //// esta validazion es necesaria para mezclar los filtros tanto del dia con el de la franja
-    var nvoJson3
-    if (franja != '') 
-      {
-        nvoJson3 = nvoJson2.filter(data => data.turno.turno == franja)
-      } 
-      else 
-      {
-        nvoJson3 = nvoJson2
-      }
 
-    setjsonGrillaFiltrado(grilla(nvoJson3, setComisionSelec))
-
+    setjsonGrillaFiltrado(grilla(nvoJson2, setComisionSelec))
+    /* 
+   if (buscarActividad !== ' ') {
+     setjsonGrillaFiltrado(grilla(nvoJson2, setComisionSelec)) // estoy pasando solo la referencia al seteo del estado
+   } else {
+     setjsonGrillaFiltrado(grilla(jsonGrilla, setComisionSelec))
+   }
+*/
     // vuelvo al estado inicial del array
     setDias([])
-    setFranja('')
-
-    // Esto sirve para limpiara las opciones de los filtro tanto de los dias como de la franja horaria.
     var control1 = document.getElementById("ch001")
     var control2 = document.getElementById("ch002")
     var control3 = document.getElementById("ch003")
     var control4 = document.getElementById("ch004")
     var control5 = document.getElementById("ch005")
     var control6 = document.getElementById("ch006")
-    var control7 = document.getElementById("fr001")
-    var control8 = document.getElementById("fr002")
-    var control9 = document.getElementById("fr003")
-    var collapDia = document.getElementById("cllpdias") // para cerrar el acordeon de dia
-    var collapFranja = document.getElementById("cllpfranja") // para cerrar el acordeon de franja horaria
-    
-    // Si alguno esta seleccionado destilda todos y cierra el acordeon en caso de que este abierto.
-    if (control1 || control2 || control3 || control4 || control5 || control6 || control7 || control8 || control9) {
+    //console.log("ver propiedad")
+    //console.log(control)
+    if (control1 || control2 || control3 || control4 || control5 || control6) {
       control1.checked = false;
       control2.checked = false;
       control3.checked = false;
       control4.checked = false;
       control5.checked = false;
       control6.checked = false;
-      control7.checked = false;
-      control8.checked = false;
-      control9.checked = false;
-      collapDia.className = "collapse"; // para cerrar el acordeon dias
-      collapFranja.className = "collapse"; // para cerrar acordeon franja horaria
     }
   }
+
+
 
 
   console.log("menu fliltro izquierdo");
@@ -171,15 +156,90 @@ const FiltrosComponente = () => {
 
       <div className="visual">
         <>
-          <Accordion >
+          <div className="accordion" id="accordionExample">
+            <div className="card">
+              <div className="card-header" id="headingOne">
+                <h5 className="mb-0">
+                  <button className="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <h2>DIAS DE CURSADA</h2>
+                  </button>
+                </h5>
+              </div>
+
+              <div id="collapseOne" className="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div className="card-body">
+                  <form >
+                    <div className="checkbox" >
+                      <label><input type="checkbox" id="ch001" value="Lunes" onChange={guardarDias} ></input>Lunes</label>
+                    </div>
+                    <div className="checkbox">
+                      <label><input type="checkbox" id="ch002" value="Martes" onChange={guardarDias}></input>Martes</label>
+                    </div>
+                    <div className="checkbox">
+                      <label><input type="checkbox" id="ch003" value="Miercoles" onClick={guardarDias}></input>Miercoles</label>
+                    </div>
+                    <div className="checkbox">
+                      <label><input type="checkbox" id="ch004" value="Jueves" onClick={guardarDias}></input>Jueves</label>
+                    </div>
+                    <div className="checkbox">
+                      <label><input type="checkbox" id="ch005" value="Viernes" onClick={guardarDias}></input>Viernes</label>
+                    </div>
+                    <div className="checkbox">
+                      <label><input type="checkbox" id="ch006" value="Sabado" onClick={guardarDias}></input>Sabado</label>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div className="accordion1" id="accordionExamples">
+            <div className="card">
+              <div className="card-header" id="headingOne">
+                <h5 className="mb-0">
+                  <button className="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <h2>FRANJA HORARIA</h2>
+                  </button>
+                </h5>
+              </div>
+
+              <div id="collapseOne" className="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div className="card-body">
+                  <form >
+                    <div className="checkbox" >
+                      <label><input type="checkbox" id="ch001" value="1"  ></input>Mañana</label>
+                    </div>
+                    <div className="checkbox">
+                      <label><input type="checkbox" id="ch002" value="2" ></input>Tarde</label>
+                    </div>
+                    <div className="checkbox">
+                      <label><input type="checkbox" id="ch003" value="3" ></input>Noche</label>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+          <Accordion defaultActiveKey="3">
             <Card>
-              <Card.Header>
-                <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                  <h3>DIAS DE CURSADA</h3>
-                </Accordion.Toggle>
-              </Card.Header>
-              <Accordion.Collapse eventKey="0" id="cllpdias">
+              <Accordion.Toggle as={Card.Header} eventKey="0">
+                DIAS DE CURSADA
+              </Accordion.Toggle>
+              <Accordion.Collapse eventKey="0">
                 <Card.Body>
+                 
                 <form >
                     <div className="checkbox" >
                       <label><input type="checkbox" id="ch001" value="Lunes" onChange={guardarDias} ></input>Lunes</label>
@@ -200,32 +260,36 @@ const FiltrosComponente = () => {
                       <label><input type="checkbox" id="ch006" value="Sabado" onClick={guardarDias}></input>Sabado</label>
                     </div>
                   </form>
+                 
+                 
+                  
                 </Card.Body>
               </Accordion.Collapse>
             </Card>
+
             <Card>
-              <Card.Header>
-                <Accordion.Toggle as={Button} variant="link" eventKey="1">
-                  <h3>FRANJA HORARIA</h3>
-                </Accordion.Toggle>
-              </Card.Header>
-              <Accordion.Collapse eventKey="1" id="cllpfranja">
-                <Card.Body>
-                <form >
-                    <div className="checkbox" >
-                      <label><input type="checkbox" id="fr001" value="1" onClick={e => setFranja(e.target.value)} ></input>Mañana</label>
-                    </div>
-                    <div className="checkbox">
-                      <label><input type="checkbox" id="fr002" value="2" onClick={e => setFranja(e.target.value)} ></input>Tarde</label>
-                    </div>
-                    <div className="checkbox">
-                      <label><input type="checkbox" id="fr003" value="3" onClick={e => setFranja(e.target.value)} ></input>Noche</label>
-                    </div>
-                  </form>  
-                </Card.Body>
+              <Accordion.Toggle as={Card.Header} eventKey="1">
+                FRANJA HORARIA
+              </Accordion.Toggle>
+              <Accordion.Collapse eventKey="1">
+                <Card.Body>Hello! I'm another body</Card.Body>
               </Accordion.Collapse>
             </Card>
           </Accordion>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
           <div className="panel-group" >
             <div className="panel">
@@ -234,7 +298,7 @@ const FiltrosComponente = () => {
                   type="submit"
                   className="botonActividad"
                   value="Buscar"
-                  onClick={() => mapearDiasYFranja(buscarActividad, jsonGrillaOriginal)}
+                  onClick={() => mapearDias(buscarActividad, jsonGrillaOriginal)}
                 />
               </div>
             </div>
