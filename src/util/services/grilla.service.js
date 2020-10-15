@@ -15,8 +15,8 @@ export const grilla = (jsonGrillaFiltrado, setComisionSelec) => {
       cant_inscriptos: data.cant_inscriptos,
       horarios: data.horarios.map(hora => hora.dia + " - "),
       turnos: data.turno.nombre,
-      propuestas: data.propuestas.map(carreras => carreras.propuesta + " - "),
-      clickEvent: () => setComisionSelec(data.comision + ' - ' + data.nombre), // estoy usando la referencia del estado que esta en el componente FiltrosComponente
+      propuestas: data.propuestas.map(carrera => carrera.propuesta + " - "),
+      clickEvent: () => setComisionSelec(data.comision + ' - ' + data.nombre + ' - ' + data.turno.nombre + ' - ' + data.propuestas.map(carrera => carrera.propuesta + " - ")), // estoy usando la referencia del estado que esta en el componente FiltrosComponente
       boton: <MDBBtn color="light-green" active >Seleccionar</MDBBtn> 
     }
   ))
@@ -75,10 +75,10 @@ export const grilla = (jsonGrillaFiltrado, setComisionSelec) => {
         width: 150
       },
       {
-        label: 'Porpuesta',
-        fiel: 'propuestas',
+        label: 'Porpuestas',
+        field: 'propuestas',
         //sort: 'asc',
-        width: 250
+        width: 150
       }
     ],
     rows:

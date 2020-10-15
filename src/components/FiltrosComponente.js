@@ -91,9 +91,10 @@ const FiltrosComponente = () => {
 
     //// esta validazion es necesaria para mezclar los filtros tanto del dia con el de la franja
     var nvoJson3
-    if (franja != '') 
+    if (franja !== '') 
       {
         nvoJson3 = nvoJson2.filter(data => data.turno.turno == franja)
+        
       } 
       else 
       {
