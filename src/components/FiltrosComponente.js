@@ -57,12 +57,12 @@ const FiltrosComponente = () => {
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // Guardamos el resultado de la busqueda en un nuevo json                                                                                                     //
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+/*
   const mapearActividad = (buscarActividad, jsonGrilla) => {
 
     const nvoJson = jsonGrilla.filter(data => (data.actividad.nombre.toLowerCase().indexOf(buscarActividad.toLowerCase()) > -1))
     //
-    const nvoJson2 = nvoJson.filter(data => (data.horarios.map(hora => hora.dia).indexOf(dias) > -1))
+   // const nvoJson2 = nvoJson.filter(data => (data.horarios.map(hora => hora.dia).indexOf(dias) > -1))
 
     console.log(nvoJson2)
     console.log("dia elegido ....")
@@ -74,34 +74,63 @@ const FiltrosComponente = () => {
       setjsonGrillaFiltrado(grilla(jsonGrilla, setComisionSelec))
     }
   }
-
+*/
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // Este debe trabajar con el jsonGrillaFiltrado, pero si el estado esta vasio que use el jsonGrilla
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   const mapearDiasYFranja = (buscarActividad, jsonGrilla) => {
 
-    const nvoJson = jsonGrilla.filter(data => (data.actividad.nombre.toLowerCase().indexOf(buscarActividad.toLowerCase()) > -1))
+    //const nvoJson = jsonGrilla.filter(data => (data.actividad.nombre.toLowerCase().indexOf(buscarActividad.toLowerCase()) > -1))
+    // validad busqueda de actividad por vacio
+    var nvoJson
+    if (buscarActividad == '') 
+      {
+        nvoJson = jsonGrilla
+      }
+    else
+      {
+        nvoJson = jsonGrilla.filter(data => (data.actividad.nombre.toLowerCase().indexOf(buscarActividad.toLowerCase()) > -1))
+      }
+
+
     
     //// ver de cargar un condicional para los filtros combinados de dias y franja horaria!!!!
+    if (dias.length != 0)
+      {
+   
     var nvoJson2
     for (let i = 0; i <= dias.length - 1; i++) {
       nvoJson2 = nvoJson.filter(data => (data.horarios.map(hora => hora.dia).indexOf(dias[i]) > -1))
     }
 
-    //// esta validazion es necesaria para mezclar los filtros tanto del dia con el de la franja
-    var nvoJson3
-    if (franja !== '') 
-      {
-        nvoJson3 = nvoJson2.filter(data => data.turno.turno == franja)
-        
-      } 
-      else 
-      {
-        nvoJson3 = nvoJson2
-      }
+    nvoJson = nvoJson2
 
-    setjsonGrillaFiltrado(grilla(nvoJson3, setComisionSelec))
+      }
+    //// esta validazion es necesaria para mezclar los filtros tanto del dia con el de la franja
+    
+  
+    
+    
+    
+    
+    
+    //var nvoJson3
+        
+   // if (dias.length == 0) {
+     // nvoJson2 = nvoJson
+    //}
+    if (franja != '') 
+      {
+        nvoJson2 = nvoJson.filter(data => data.turno.turno == franja)
+        nvoJson = nvoJson2
+      } 
+    // else 
+   //   {
+   //     nvoJson3 = nvoJson2
+      //}
+
+    setjsonGrillaFiltrado(grilla(nvoJson, setComisionSelec))
 
     // vuelvo al estado inicial del array
     setDias([])
@@ -164,7 +193,7 @@ const FiltrosComponente = () => {
             type="submit"
             className="botonActividad"
             value="Buscar"
-            onClick={() => mapearActividad(buscarActividad, jsonGrillaOriginal)}
+            //onClick={() => mapearActividad(buscarActividad, jsonGrillaOriginal)}
           /></li>
       </form>
       <p></p>
