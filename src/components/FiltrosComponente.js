@@ -23,14 +23,14 @@ import { Card, Button } from 'react-bootstrap';
 const FiltrosComponente = () => {
 
   const [comisionSelec, setComisionSelec] = useState('');
-  
+
   // definicion de estado para el uso de los filtros a buscar
   const [buscarActividad, guardarActividad] = useState('');
-  
+
   // definicion de estados para los filtro de dias y franja horaria
   const [dias, setDias] = useState([]);
   const [franja, setFranja] = useState('')
-  
+
   // estado para trabajar con los json
   const [jsonGrillaOriginal, setjsonGrillaOriginal] = useState([])
   const [jsonGrillaFiltrado, setjsonGrillaFiltrado] = useState(null)
@@ -57,24 +57,24 @@ const FiltrosComponente = () => {
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // Guardamos el resultado de la busqueda en un nuevo json                                                                                                     //
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/*
-  const mapearActividad = (buscarActividad, jsonGrilla) => {
-
-    const nvoJson = jsonGrilla.filter(data => (data.actividad.nombre.toLowerCase().indexOf(buscarActividad.toLowerCase()) > -1))
-    //
-   // const nvoJson2 = nvoJson.filter(data => (data.horarios.map(hora => hora.dia).indexOf(dias) > -1))
-
-    console.log(nvoJson2)
-    console.log("dia elegido ....")
-    console.log(dias)
-
-    if (buscarActividad !== ' ') {
-      setjsonGrillaFiltrado(grilla(nvoJson, setComisionSelec)) // estoy pasando solo la referencia al seteo del estado
-    } else {
-      setjsonGrillaFiltrado(grilla(jsonGrilla, setComisionSelec))
+  /*
+    const mapearActividad = (buscarActividad, jsonGrilla) => {
+  
+      const nvoJson = jsonGrilla.filter(data => (data.actividad.nombre.toLowerCase().indexOf(buscarActividad.toLowerCase()) > -1))
+      //
+     // const nvoJson2 = nvoJson.filter(data => (data.horarios.map(hora => hora.dia).indexOf(dias) > -1))
+  
+      console.log(nvoJson2)
+      console.log("dia elegido ....")
+      console.log(dias)
+  
+      if (buscarActividad !== ' ') {
+        setjsonGrillaFiltrado(grilla(nvoJson, setComisionSelec)) // estoy pasando solo la referencia al seteo del estado
+      } else {
+        setjsonGrillaFiltrado(grilla(jsonGrilla, setComisionSelec))
+      }
     }
-  }
-*/
+  */
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // Este debe trabajar con el jsonGrillaFiltrado, pero si el estado esta vasio que use el jsonGrilla
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -84,51 +84,41 @@ const FiltrosComponente = () => {
     //const nvoJson = jsonGrilla.filter(data => (data.actividad.nombre.toLowerCase().indexOf(buscarActividad.toLowerCase()) > -1))
     // validad busqueda de actividad por vacio
     var nvoJson
-    if (buscarActividad == '') 
-      {
-        nvoJson = jsonGrilla
-      }
-    else
-      {
-        nvoJson = jsonGrilla.filter(data => (data.actividad.nombre.toLowerCase().indexOf(buscarActividad.toLowerCase()) > -1))
-      }
-
-
-    
-    //// ver de cargar un condicional para los filtros combinados de dias y franja horaria!!!!
-    if (dias.length != 0)
-      {
-   
-    var nvoJson2
-    for (let i = 0; i <= dias.length - 1; i++) {
-      nvoJson2 = nvoJson.filter(data => (data.horarios.map(hora => hora.dia).indexOf(dias[i]) > -1))
+    if (buscarActividad == '') {
+      nvoJson = jsonGrilla
+    }
+    else {
+      nvoJson = jsonGrilla.filter(data => (data.actividad.nombre.toLowerCase().indexOf(buscarActividad.toLowerCase()) > -1))
     }
 
-    nvoJson = nvoJson2
 
+
+    //// ver de cargar un condicional para los filtros combinados de dias y franja horaria!!!!
+    if (dias.length != 0) {
+
+      var nvoJson2
+      for (let i = 0; i <= dias.length - 1; i++) {
+        nvoJson2 = nvoJson.filter(data => (data.horarios.map(hora => hora.dia).indexOf(dias[i]) > -1))
       }
+
+      nvoJson = nvoJson2
+
+    }
     //// esta validazion es necesaria para mezclar los filtros tanto del dia con el de la franja
-    
-  
-    
-    
-    
-    
-    
+
     //var nvoJson3
-        
-   // if (dias.length == 0) {
-     // nvoJson2 = nvoJson
+
+    // if (dias.length == 0) {
+    // nvoJson2 = nvoJson
     //}
-    if (franja != '') 
-      {
-        nvoJson2 = nvoJson.filter(data => data.turno.turno == franja)
-        nvoJson = nvoJson2
-      } 
+    if (franja != '') {
+      nvoJson2 = nvoJson.filter(data => data.turno.turno == franja)
+      nvoJson = nvoJson2
+    }
     // else 
-   //   {
-   //     nvoJson3 = nvoJson2
-      //}
+    //   {
+    //     nvoJson3 = nvoJson2
+    //}
 
     setjsonGrillaFiltrado(grilla(nvoJson, setComisionSelec))
 
@@ -148,7 +138,7 @@ const FiltrosComponente = () => {
     var control9 = document.getElementById("fr003")
     var collapDia = document.getElementById("cllpdias") // para cerrar el acordeon de dia
     var collapFranja = document.getElementById("cllpfranja") // para cerrar el acordeon de franja horaria
-    
+
     // Si alguno esta seleccionado destilda todos y cierra el acordeon en caso de que este abierto.
     if (control1 || control2 || control3 || control4 || control5 || control6 || control7 || control8 || control9) {
       control1.checked = false;
@@ -179,7 +169,9 @@ const FiltrosComponente = () => {
         onSubmit={enviarBusqueda}
       ><li id="pActividad">
           <label>
+            <h4>
             {'Actividad: '} {/* el texto del label para poder tener un espacio */}
+            </h4>
             <input
               type="text"
               className="actividad"
@@ -189,12 +181,33 @@ const FiltrosComponente = () => {
               onChange={e => guardarActividad(e.target.value)}
             />
           </label>
+          {/*
           <input
             type="submit"
             className="botonActividad"
             value="Buscar"
-            //onClick={() => mapearActividad(buscarActividad, jsonGrillaOriginal)}
-          /></li>
+          //onClick={() => mapearActividad(buscarActividad, jsonGrillaOriginal)}
+          /> */}</li>
+      </form>
+
+      <form
+        id='formPropuesta'
+        //onSubmit={enviarBusqueda}
+      ><li id="pPropuesta">
+          <label>
+            <h4>
+            {'Propuesta: '} {/* el texto del label para poder tener un espacio */}
+            </h4>
+            <input
+              type="text"
+              className="propuesta"
+              id="efectoGris"
+              placeholder="Buscar por Propuesta"
+              //value={buscarPropuesta}
+              //onChange={e => guardarPropuesta(e.target.value)}
+            />
+          </label>
+         </li>
       </form>
       <p></p>
 
@@ -210,7 +223,7 @@ const FiltrosComponente = () => {
               </Card.Header>
               <Accordion.Collapse eventKey="0" id="cllpdias">
                 <Card.Body>
-                <form >
+                  <form >
                     <div className="checkbox" >
                       <label><input type="checkbox" id="ch001" value="Lunes" onChange={guardarDias} ></input>Lunes</label>
                     </div>
@@ -241,7 +254,7 @@ const FiltrosComponente = () => {
               </Card.Header>
               <Accordion.Collapse eventKey="1" id="cllpfranja">
                 <Card.Body>
-                <form >
+                  <form >
                     <div className="checkbox" >
                       <label><input type="checkbox" id="fr001" value="1" onClick={e => setFranja(e.target.value)} ></input>Mañana</label>
                     </div>
@@ -251,7 +264,7 @@ const FiltrosComponente = () => {
                     <div className="checkbox">
                       <label><input type="checkbox" id="fr003" value="3" onClick={e => setFranja(e.target.value)} ></input>Noche</label>
                     </div>
-                  </form>  
+                  </form>
                 </Card.Body>
               </Accordion.Collapse>
             </Card>
