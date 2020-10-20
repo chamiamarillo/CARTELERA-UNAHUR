@@ -1,46 +1,91 @@
-import React, {Component, useState} from 'react';
+
+import React, {useState} from 'react'
 import { Dropdown } from 'semantic-ui-react'
 
-const Propuestas = () => {
+const countryOptions = [
+  { key: 'af', value: 'af', flag: 'af', text: 'Afghanistan' },
+  { key: 'ax', value: 'ax', flag: 'ax', text: 'Aland Islands' },
+  { key: 'al', value: 'al', flag: 'al', text: 'Albania' },
+  { key: 'dz', value: 'dz', flag: 'dz', text: 'Algeria' },
+  { key: 'as', value: 'as', flag: 'as', text: 'American Samoa' },
+  { key: 'ad', value: 'ad', flag: 'ad', text: 'Andorra' },
+  { key: 'ao', value: 'ao', flag: 'ao', text: 'Angola' },
+  { key: 'ai', value: 'ai', flag: 'ai', text: 'Anguilla' },
+  { key: 'ag', value: 'ag', flag: 'ag', text: 'Antigua' },
+  { key: 'ar', value: 'ar', flag: 'ar', text: 'Argentina' },
+  { key: 'am', value: 'am', flag: 'am', text: 'Armenia' },
+  { key: 'aw', value: 'aw', flag: 'aw', text: 'Aruba' },
+  { key: 'au', value: 'au', flag: 'au', text: 'Australia' },
+  { key: 'at', value: 'at', flag: 'at', text: 'Austria' },
+  { key: 'az', value: 'az', flag: 'az', text: 'Azerbaijan' },
+  { key: 'bs', value: 'bs', flag: 'bs', text: 'Bahamas' },
+  { key: 'bh', value: 'bh', flag: 'bh', text: 'Bahrain' },
+  { key: 'bd', value: 'bd', flag: 'bd', text: 'Bangladesh' },
+  { key: 'bb', value: 'bb', flag: 'bb', text: 'Barbados' },
+  { key: 'by', value: 'by', flag: 'by', text: 'Belarus' },
+  { key: 'be', value: 'be', flag: 'be', text: 'Belgium' },
+  { key: 'bz', value: 'bz', flag: 'bz', text: 'Belize' },
+  { key: 'bj', value: 'bj', flag: 'bj', text: 'Benin' },
+]
 
-    var value
-    const [elegidos, setElegidos] = useState([])
-    
-    const options = [
-        { key: 1, text: 'One', value: 1 },
-        { key: 2, text: 'Two', value: 2 },
-        { key: 3, text: 'Three', value: 3 },
-    ]
-      
-    const renderLabel = (label) => ({
-    
-        color: 'blue',
-        content: `Customized label - ${label.text}`,
-        icon: 'check',
+console.log()
+
+const Propuesta = () => {
+  
+  const [mierda, setMierda] = useState({})
+  
+  /*
+  const guardaMierda = (Label) => {
+    setMierda(Label.text)
+  }
+  
+  /*
+  handleDropdown = (event, data) => {
+    setMierda({
+      [data.value]: data.text
     })
+  }
+  */
+ /*
+  function funcionCaca() {
+    var garca = document.getElementById('<%=mierdaLista %>').value
+    //var slt = document.getElementById('mierdaLista');
+    setMierda(garca)
+   // alert(mierda);
+    //console.log(mierda)
+  }
+  */
 
-    const guardarSeleccion = (valor) => {
-        setElegidos([
-            ...elegidos,
-            valor
-        ])
-    }
- 
-    console.log(elegidos)
 
 
-    return ( 
-        <Dropdown
-            multiple
-            selection
-            fluid
-            options={options}
-            placeholder='Choose an option'
-            renderLabel={renderLabel}
-            getValue={(e) => {guardarSeleccion(e.placeholder)}}
-            
-        />
-    );
+  console.log(mierda)
+  
+  
+  
+ return( 
+
+  <Dropdown 
+    id='mierdaLista'
+    placeholder='Select Country'
+    fluid
+    search
+    multiple
+    selection
+    options={countryOptions}
+    //onSearchChange={funcionCaca}
+    //onSelectChange={val => setMierda(val)}
+    //valor_seleccionado={p => setMierda(p.value)}
+    onChange={(opt, meta) => setMierda(meta.value)}
+    
+  />
+
+  
+
+ );
+
+
+
+
 }
- 
-export default Propuestas;
+
+export default Propuesta

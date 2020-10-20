@@ -1,5 +1,7 @@
-import React from 'react'
-import { Dropdown } from 'semantic-ui-react'
+import { render } from 'enzyme'
+import { event } from 'jquery'
+import React, {useState} from 'react'
+import { Dropdown, Label } from 'semantic-ui-react'
 
 const countryOptions = [
   { key: 'af', value: 'af', flag: 'af', text: 'Afghanistan' },
@@ -27,14 +29,53 @@ const countryOptions = [
   { key: 'bj', value: 'bj', flag: 'bj', text: 'Benin' },
 ]
 
-const DropdownExampleSearchSelection = () => (
+console.log()
+
+const Propuesta = () => {
+  
+  const [mierda, setMierda] = useState({})
+  
+  
+  const guardaMierda = (Label) => {
+    setMierda(Label.text)
+  }
+  
+  /*
+  handleDropdown = (event, data) => {
+    setMierda({
+      [data.value]: data.text
+    })
+  }
+  */
+ 
+
+  
+
+
+
+  console.log(mierda)
+  
+  
+  
+ return( 
+
   <Dropdown
     placeholder='Select Country'
     fluid
     search
-    selection
+    selection={val => setMierda({value: val, active: true})}
     options={countryOptions}
+    //onChange={this.props.handleDropdown}
+    onSelectChange={val => setMierda({value: val, active: true})}
   />
-)
 
-export default DropdownExampleSearchSelection
+  
+
+ );
+
+
+
+
+}
+
+export default Propuesta
