@@ -21,7 +21,7 @@ import Propuesta from './Propuestas';
 // usado de: https://react-bootstrap.github.io/components/accordion/
 
 
-const FiltrosComponente = ({mierda}) => {
+const FiltrosComponente = () => {
 
   const [comisionSelec, setComisionSelec] = useState('');
 
@@ -40,8 +40,12 @@ const FiltrosComponente = ({mierda}) => {
     getComisiones().then(rest => setjsonGrillaOriginal(rest));
   }, [])
 
+
+
+  const [mierda, setMierda] = useState({})
+
   console.log("-------------------------------------")
-  console.log()
+  console.log(mierda)
 
   const enviarBusqueda = e => {
     e.preventDefault()
@@ -89,17 +93,17 @@ const FiltrosComponente = ({mierda}) => {
     // validad busqueda de actividad por vacio
     
     var nvoJson
-    
+    /*
     if (buscarActividad == '') {
       nvoJson = jsonGrilla
     }
     else {
       nvoJson = jsonGrilla.filter(data => (data.actividad.nombre.toLowerCase().indexOf(buscarActividad.toLowerCase()) > -1))
     }
-    
+    */
     ///////////////////////////////
 
-    //nvoJson = jsonGrilla.filter(data => (data.propuestas.id_propuesta == mierda[0]))  
+    nvoJson = jsonGrilla.filter(data => (data.propuestas.map(carrera => carrera.id_propuesta).indexOf(mierda[0]) > -1))  
 
 
 
@@ -214,7 +218,9 @@ const FiltrosComponente = ({mierda}) => {
             <h4>
             {'Propuesta: '} {/* el texto del label para poder tener un espacio */}
             </h4>
-            <Propuesta />
+            <Propuesta
+              setMierda={setMierda}
+            />
           </label>
          </li>
       </form>

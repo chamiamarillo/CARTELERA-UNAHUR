@@ -34,9 +34,9 @@ const countryOptions = [
 */
 
 
-const Propuesta = () => {
+const Propuesta = ({setMierda}) => {
   
-  const [mierda, setMierda] = useState({})
+  //const [mierda, setMierda] = useState({})
   const [jsonPropuestas, setJsonPropuestas] = useState([])
 
   //console.log(mierda)
