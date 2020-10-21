@@ -14,13 +14,14 @@ import './css/FiltrosComponent.css'
 
 import Accordion from 'react-bootstrap/Accordion'
 import { Card, Button } from 'react-bootstrap';
+import Propuesta from './Propuestas';
 //import { AccordionCollapse, Card, Button } from 'react-bootstrap';
 //import { Collapse } from 'bootstrap';
 //import { showMenu } from 'react-contextmenu';
 // usado de: https://react-bootstrap.github.io/components/accordion/
 
 
-const FiltrosComponente = () => {
+const FiltrosComponente = ({mierda}) => {
 
   const [comisionSelec, setComisionSelec] = useState('');
 
@@ -38,6 +39,9 @@ const FiltrosComponente = () => {
   useEffect(() => {
     getComisiones().then(rest => setjsonGrillaOriginal(rest));
   }, [])
+
+  console.log("-------------------------------------")
+  console.log()
 
   const enviarBusqueda = e => {
     e.preventDefault()
@@ -83,13 +87,25 @@ const FiltrosComponente = () => {
 
     //const nvoJson = jsonGrilla.filter(data => (data.actividad.nombre.toLowerCase().indexOf(buscarActividad.toLowerCase()) > -1))
     // validad busqueda de actividad por vacio
+    
     var nvoJson
+    
     if (buscarActividad == '') {
       nvoJson = jsonGrilla
     }
     else {
       nvoJson = jsonGrilla.filter(data => (data.actividad.nombre.toLowerCase().indexOf(buscarActividad.toLowerCase()) > -1))
     }
+    
+    ///////////////////////////////
+
+    //nvoJson = jsonGrilla.filter(data => (data.propuestas.id_propuesta == mierda[0]))  
+
+
+
+
+
+
 
 
 
@@ -198,14 +214,7 @@ const FiltrosComponente = () => {
             <h4>
             {'Propuesta: '} {/* el texto del label para poder tener un espacio */}
             </h4>
-            <input
-              type="text"
-              className="propuesta"
-              id="efectoGris"
-              placeholder="Buscar por Propuesta"
-              //value={buscarPropuesta}
-              //onChange={e => guardarPropuesta(e.target.value)}
-            />
+            <Propuesta />
           </label>
          </li>
       </form>

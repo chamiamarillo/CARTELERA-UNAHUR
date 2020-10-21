@@ -1,91 +1,79 @@
-
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { Dropdown } from 'semantic-ui-react'
+import { getPropuestas } from '../util/services/propuesta.service'
 
+//import { carreras } from '../util/services/propuestaArmada.service'
+
+// solucion encontrada en https://www.digitalocean.com/community/tutorials/react-react-select
+/*
 const countryOptions = [
-  { key: 'af', value: 'af', flag: 'af', text: 'Afghanistan' },
-  { key: 'ax', value: 'ax', flag: 'ax', text: 'Aland Islands' },
-  { key: 'al', value: 'al', flag: 'al', text: 'Albania' },
-  { key: 'dz', value: 'dz', flag: 'dz', text: 'Algeria' },
-  { key: 'as', value: 'as', flag: 'as', text: 'American Samoa' },
-  { key: 'ad', value: 'ad', flag: 'ad', text: 'Andorra' },
-  { key: 'ao', value: 'ao', flag: 'ao', text: 'Angola' },
-  { key: 'ai', value: 'ai', flag: 'ai', text: 'Anguilla' },
-  { key: 'ag', value: 'ag', flag: 'ag', text: 'Antigua' },
-  { key: 'ar', value: 'ar', flag: 'ar', text: 'Argentina' },
-  { key: 'am', value: 'am', flag: 'am', text: 'Armenia' },
-  { key: 'aw', value: 'aw', flag: 'aw', text: 'Aruba' },
-  { key: 'au', value: 'au', flag: 'au', text: 'Australia' },
-  { key: 'at', value: 'at', flag: 'at', text: 'Austria' },
-  { key: 'az', value: 'az', flag: 'az', text: 'Azerbaijan' },
-  { key: 'bs', value: 'bs', flag: 'bs', text: 'Bahamas' },
-  { key: 'bh', value: 'bh', flag: 'bh', text: 'Bahrain' },
-  { key: 'bd', value: 'bd', flag: 'bd', text: 'Bangladesh' },
-  { key: 'bb', value: 'bb', flag: 'bb', text: 'Barbados' },
-  { key: 'by', value: 'by', flag: 'by', text: 'Belarus' },
-  { key: 'be', value: 'be', flag: 'be', text: 'Belgium' },
-  { key: 'bz', value: 'bz', flag: 'bz', text: 'Belize' },
-  { key: 'bj', value: 'bj', flag: 'bj', text: 'Benin' },
+  { value: 'af1',  text: 'Afghanistan' },
+  { value: 'ax1',  text: 'Aland Islands' },
+  { value: 'al1',  text: 'Albania' },
+  { value: 'dz1',  text: 'Algeria' },
+  { value: 'as1',  text: 'American Samoa' },
+  { value: 'ad1',  text: 'Andorra' },
+  { value: 'ao1',  text: 'Angola' },
+  { value: 'ai1',  text: 'Anguilla' },
+  { value: 'ag1',  text: 'Antigua' },
+  { value: 'ar1',  text: 'Argentina' },
+  { value: 'am1',  text: 'Armenia' },
+  { value: 'aw1',  text: 'Aruba' },
+  { value: 'au1',  text: 'Australia' },
+  { value: 'at1',  text: 'Austria' },
+  { value: 'az1',  text: 'Azerbaijan' },
+  { value: 'bs1',  text: 'Bahamas' },
+  { value: 'bh1',  text: 'Bahrain' },
+  { value: 'bd1',  text: 'Bangladesh' },
+  { value: 'bb1',  text: 'Barbados' },
+  { value: 'by1',  text: 'Belarus' },
+  { value: 'be1',  text: 'Belgium' },
+  { value: 'bz1',  text: 'Belize' },
+  { value: 'bj1',  text: 'Benin' },
 ]
+*/
 
-console.log()
 
 const Propuesta = () => {
   
   const [mierda, setMierda] = useState({})
+  const [jsonPropuestas, setJsonPropuestas] = useState([])
+
+  //console.log(mierda)
   
-  /*
-  const guardaMierda = (Label) => {
-    setMierda(Label.text)
-  }
+  useEffect(() => {
+    getPropuestas().then(rest => setJsonPropuestas(rest));
+  }, [])
+
+  const prp = jsonPropuestas.map(dato => (
+    {
+      value: dato.propuesta,
+      text: dato.nombre
+    }
+  ))
   
-  /*
-  handleDropdown = (event, data) => {
-    setMierda({
-      [data.value]: data.text
-    })
-  }
-  */
- /*
-  function funcionCaca() {
-    var garca = document.getElementById('<%=mierdaLista %>').value
-    //var slt = document.getElementById('mierdaLista');
-    setMierda(garca)
-   // alert(mierda);
-    //console.log(mierda)
-  }
-  */
 
 
-
-  console.log(mierda)
-  
-  
+  //console.log(jsonPropuestas)
+  //console.log(prp)
   
  return( 
 
+  
   <Dropdown 
     id='mierdaLista'
-    placeholder='Select Country'
-    fluid
+    placeholder='Buscar por propuesta'
+    //fluid
     search
     multiple
     selection
-    options={countryOptions}
-    //onSearchChange={funcionCaca}
-    //onSelectChange={val => setMierda(val)}
-    //valor_seleccionado={p => setMierda(p.value)}
+    options={prp}
     onChange={(opt, meta) => setMierda(meta.value)}
     
   />
-
   
-
  );
-
-
-
-
 }
 
 export default Propuesta
+
