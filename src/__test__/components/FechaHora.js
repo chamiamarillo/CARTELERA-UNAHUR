@@ -1,6 +1,5 @@
-import { render } from '@testing-library/react';
 import React from 'react';
-import App from './App';
+import FechaHora from '../../components/FechaHora';
 import { shallow } from 'enzyme';
 
 /* Shallow rendering, es util para probar un componente de forma aislada sin renderizar los sub-componentes que contenga,
@@ -28,5 +27,5 @@ it('renders ProductList',()=>{
 
 
 it('renders without crashing', () => {
-  shallow(<App />);
+  shallow(<FechaHora />);
 });

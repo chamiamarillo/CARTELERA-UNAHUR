@@ -1,7 +1,7 @@
-import { render } from '@testing-library/react';
 import React from 'react';
-import App from './App';
 import { shallow } from 'enzyme';
+import {Encabezado } from '../../components/Encabezado';
+
 
 /* Shallow rendering, es util para probar un componente de forma aislada sin renderizar los sub-componentes que contenga,
 No ejecuta los metodos de ciclo de vida del componente.
@@ -27,6 +27,8 @@ it('renders ProductList',()=>{
   });*/ 
 
 
-it('renders without crashing', () => {
-  shallow(<App />);
-});
+
+it('render no products when store empty', () =>{
+    const wrapper = shallow(<Encabezado encabezado={[]}/>);
+    expect(wrapper.find(".product").length).toBe(0);
+})
