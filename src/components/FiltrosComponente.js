@@ -102,7 +102,7 @@ const FiltrosComponente = () => {
     }
     */
     ///////////////////////////////
-
+    
     nvoJson = jsonGrilla.filter(data => (data.propuestas.map(carrera => carrera.id_propuesta).indexOf(mierda[0]) > -1))  
 
 
