@@ -1,13 +1,14 @@
 import React, { Fragment } from 'react';
 
 /******* COMPONENTES */
-import MenuFiltroIzq from "./MenuFiltroIzq"; // Filtro del costado días - banda horaria - propuesta
+//import MenuFiltroIzq from "./MenuFiltroIzq"; // Filtro del costado días - banda horaria - propuesta
 import HeaderLogoTitulo from './HeaderLogoTitulo'; // final logo y titulo - A FUTURO TERMINAR LOGUIN - 
 //import Central from './Central'; // pantalla central de interaccion segun la eleccion del menu
 /****************** */
 
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import FiltrosComponente from './FiltrosComponente';
+import Propuestas from './Propuestas';
 import Menu from './Menu';
 
 const Principal = () => {
@@ -29,7 +30,7 @@ const Principal = () => {
                             <Switch>
                                 <Route exact path="/"  />
                                 <Route exact path="/Asignacion" component={FiltrosComponente}  />
-                                <Route exact path="/Modificacion" component={MenuFiltroIzq} />
+                                <Route exact path="/Modificacion" component={Propuestas} />
                                 <Route exact path="/Consulta" />
                                 <Route exact path="/Reporte"  />
                                 <Route exact path="/Salir"  />

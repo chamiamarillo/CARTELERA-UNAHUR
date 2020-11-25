@@ -14,7 +14,9 @@ export const grilla = (jsonGrillaFiltrado, setComisionSelec) => {
       acceso_especial: data.acceso_especial,
       cant_inscriptos: data.cant_inscriptos,
       horarios: data.horarios.map(hora => hora.dia + " - "),
-      clickEvent: () => setComisionSelec(data.comision + ' - ' + data.nombre), // estoy usando la referencia del estado que esta en el componente FiltrosComponente
+      turnos: data.turno.nombre,
+      propuestas: data.propuestas.map(carrera => carrera.propuesta + " - "),
+      clickEvent: () => setComisionSelec(data.comision + ' - ' + data.nombre + ' - ' + data.turno.nombre + ' - ' + data.propuestas.map(carrera => carrera.propuesta + " - ")), // estoy usando la referencia del estado que esta en el componente FiltrosComponente
       boton: <MDBBtn color="light-green" active >Seleccionar</MDBBtn> 
     }
   ))
@@ -63,6 +65,18 @@ export const grilla = (jsonGrillaFiltrado, setComisionSelec) => {
       {
         label: 'Dia de Cursada',
         field: 'horarios',
+        //sort: 'asc',
+        width: 150
+      },
+      {
+        label: 'Franja Horaria',
+        field: 'turnos',
+        //sort: 'asc',
+        width: 150
+      },
+      {
+        label: 'Porpuestas',
+        field: 'propuestas',
         //sort: 'asc',
         width: 150
       }
