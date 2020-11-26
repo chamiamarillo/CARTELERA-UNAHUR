@@ -272,7 +272,7 @@ const FiltrosComponente = () => {
                 FRANJA HORARIA
               </Accordion.Toggle>
               <Accordion.Collapse eventKey="1">
-                <Card.Body>Hello! I'm another body</Card.Body>
+                <Card.Body>prueba</Card.Body>
               </Accordion.Collapse>
             </Card>
           </Accordion>

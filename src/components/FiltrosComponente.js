@@ -15,6 +15,7 @@ import './css/FiltrosComponent.css'
 import Accordion from 'react-bootstrap/Accordion'
 import { Card, Button } from 'react-bootstrap';
 import Propuesta from './Propuestas';
+import CaracteristicasDeAulas from './CaracteristicasDeAulas';
 //import { AccordionCollapse, Card, Button } from 'react-bootstrap';
 //import { Collapse } from 'bootstrap';
 //import { showMenu } from 'react-contextmenu';
@@ -41,11 +42,14 @@ const FiltrosComponente = () => {
   }, [])
 
 
+  // estado para armar todas las propuestas
+  const [esPropuesta, setEsPropuesta] = useState([])
 
-  const [mierda, setMierda] = useState({})
+  // estado para armar todas las caracteristicas
+  const [caractAulas, setCaractAulas] = useState([])
 
   console.log("-------------------------------------")
-  console.log(mierda)
+  console.log(esPropuesta)
 
   const enviarBusqueda = e => {
     e.preventDefault()
@@ -87,30 +91,32 @@ const FiltrosComponente = () => {
   // Este debe trabajar con el jsonGrillaFiltrado, pero si el estado esta vasio que use el jsonGrilla
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  const mapearDiasYFranja = (buscarActividad, jsonGrilla) => {
+  const mapearSegunBusqueda = (buscarActividad, jsonGrilla) => { // jsonGrilla es el jsonOriginal el cual trae la api de consulta por atividad.
 
-    //const nvoJson = jsonGrilla.filter(data => (data.actividad.nombre.toLowerCase().indexOf(buscarActividad.toLowerCase()) > -1))
+    //const jsonB = jsonGrilla.filter(data => (data.actividad.nombre.toLowerCase().indexOf(buscarActividad.toLowerCase()) > -1))
     // validad busqueda de actividad por vacio
     
-    var nvoJson
-    /*
+    var nvoJson, jsonActividad
+
+    // jsonActividad es utilizado para procesar la busqueda por actividad. Este termina convirtiendose en nvoJson el que luego se utiliza para procesarlo 
+    // por propuestas - dia - franja
+    
     if (buscarActividad == '') {
-      nvoJson = jsonGrilla
+      jsonActividad = jsonGrilla
     }
     else {
-      nvoJson = jsonGrilla.filter(data => (data.actividad.nombre.toLowerCase().indexOf(buscarActividad.toLowerCase()) > -1))
+      jsonActividad = jsonGrilla.filter(data => (data.actividad.nombre.toLowerCase().indexOf(buscarActividad.toLowerCase()) > -1))
     }
-    */
-    ///////////////////////////////
     
-    nvoJson = jsonGrilla.filter(data => (data.propuestas.map(carrera => carrera.id_propuesta).indexOf(mierda[0]) > -1))  
 
-
-
-
-
-
-
+    ///////////////////////////////
+    if (esPropuesta.length != 0) {
+      nvoJson = jsonActividad.filter(data => (data.propuestas.map(carrera => carrera.id_propuesta).indexOf(esPropuesta[0]) > -1))  
+    }
+    else {
+      nvoJson = jsonActividad
+    }
+    
 
 
     //// ver de cargar un condicional para los filtros combinados de dias y franja horaria!!!!
@@ -140,11 +146,12 @@ const FiltrosComponente = () => {
     //     nvoJson3 = nvoJson2
     //}
 
-    setjsonGrillaFiltrado(grilla(nvoJson, setComisionSelec))
+    setjsonGrillaFiltrado(grilla(nvoJson, setComisionSelec)) // estoy pasando solo la referencia al seteo del estado
 
     // vuelvo al estado inicial del array
     setDias([])
     setFranja('')
+
 
     // Esto sirve para limpiara las opciones de los filtro tanto de los dias como de la franja horaria.
     var control1 = document.getElementById("ch001")
@@ -219,7 +226,7 @@ const FiltrosComponente = () => {
             {'Propuesta: '} {/* el texto del label para poder tener un espacio */}
             </h4>
             <Propuesta
-              setMierda={setMierda}
+              setEsPropuesta={setEsPropuesta}
             />
           </label>
          </li>
@@ -292,7 +299,7 @@ const FiltrosComponente = () => {
                   type="submit"
                   className="botonActividad"
                   value="Buscar"
-                  onClick={() => mapearDiasYFranja(buscarActividad, jsonGrillaOriginal)}
+                  onClick={() => mapearSegunBusqueda(buscarActividad, jsonGrillaOriginal)}
                 />
               </div>
             </div>
@@ -307,9 +314,15 @@ const FiltrosComponente = () => {
       </div>
       <p></p>
       <div>
+
         <CaracteristicasAulas
           comisionSelec={comisionSelec}
         />
+        {/*
+        <CaracteristicasDeAulas
+          setCaractAulas={setCaractAulas}
+        />
+        */}
       </div>
       <div>
         <MaquetaGrilla />

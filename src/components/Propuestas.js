@@ -34,7 +34,7 @@ const countryOptions = [
 */
 
 
-const Propuesta = ({setMierda}) => {
+const Propuesta = ({setEsPropuesta}) => {
   
   //const [mierda, setMierda] = useState({})
   const [jsonPropuestas, setJsonPropuestas] = useState([])
@@ -61,14 +61,14 @@ const Propuesta = ({setMierda}) => {
 
   
   <Dropdown 
-    id='mierdaLista'
+    id='propuestaLista'
     placeholder='Buscar por propuesta'
     //fluid
     search
     multiple
     selection
     options={prp}
-    onChange={(opt, meta) => setMierda(meta.value)}
+    onChange={(opt, meta) => setEsPropuesta(meta.value)}
     
   />
   
