@@ -36,10 +36,7 @@ const countryOptions = [
 
 const Propuesta = ({setEsPropuesta}) => {
   
-  //const [mierda, setMierda] = useState({})
   const [jsonPropuestas, setJsonPropuestas] = useState([])
-
-  //console.log(mierda)
   
   useEffect(() => {
     getPropuestas().then(rest => setJsonPropuestas(rest));
@@ -51,12 +48,7 @@ const Propuesta = ({setEsPropuesta}) => {
       text: dato.nombre
     }
   ))
-  
-
-
-  //console.log(jsonPropuestas)
-  //console.log(prp)
-  
+    
  return( 
 
   
