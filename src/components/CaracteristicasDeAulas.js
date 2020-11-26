@@ -13,7 +13,7 @@ const CaracteristicasDeAulas = ({setCaractAulas}) => {
 
   const cartAu = jsonCaracAulas.map(dato => (
     {
-      value: dato.propuesta,
+      value: dato.ampliacion_tipo,
       text: dato.nombre
     }
   ))
@@ -22,7 +22,7 @@ const CaracteristicasDeAulas = ({setCaractAulas}) => {
  return( 
   <Dropdown 
     id='CaracteristicaAulaLista'
-    placeholder='Buscar por caracteristica de las aulas'
+    placeholder='Caracteristicas de las aulas'
     fluid
     search
     multiple

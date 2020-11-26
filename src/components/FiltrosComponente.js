@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect } from 'react';
 import { getComisiones } from '../util/services/comision.service'
 import { grilla } from '../util/services/grilla.service'
 ////
-import CaracteristicasAulas from './CaracteristicasAulas.js';
+//import CaracteristicasAulas from '../archivosObsoletos/CaracteristicasAulas.js';
 import TablaComisiones from './TablaComisiones';
 import MaquetaGrilla from './MaquetaGrilla';
 ////
@@ -275,15 +275,16 @@ const FiltrosComponente = () => {
       </div>
       <p></p>
       <div>
-
+        {/*
         <CaracteristicasAulas
           comisionSelec={comisionSelec}
         />
-        {/*
+        */}
+        
         <CaracteristicasDeAulas
           setCaractAulas={setCaractAulas}
         />
-        */}
+        
       </div>
       <div>
         <MaquetaGrilla />
