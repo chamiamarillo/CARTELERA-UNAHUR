@@ -83,10 +83,6 @@ nav{
   height: 43px;
   }
 
- 
-
-
-
   
   .menuhora{
     width: 20%;
@@ -94,7 +90,11 @@ nav{
     text-align: center;
     padding-top: 4px;
     float: left;
+   
   }
+ 
+
+  
  /*
 thead tr th { 
     position: sticky;
@@ -103,9 +103,7 @@ thead tr th {
     background-color: #e8ece8;
   }*/
 
-  .frechahora{
-      margin-top: 20px;
-  } 
+  
 
   section{ 
     top: 0px;

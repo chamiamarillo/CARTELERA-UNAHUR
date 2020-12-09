@@ -5,22 +5,22 @@ const MaquetaGrilla = () => {
 
   return (
     <Fragment>
-      <div className="containerGrilla">
+      <div id="containerGrilla">
 
-        <div>
-          <nav id="dias_asignacion_check">
-            <div className="btn-dias">
-              <button id="btn-dias"> <h4 className="btn-dias"> Lunes</h4> </button>
-              <button id="btn-dias"> <h4 className="btn-dias"> Viernes </h4> </button>
+            <div id="btn-dias-inline">
+              <button id="btn-dias"> Lunes </button>
+              <button id="btn-dias"> Viernes </button>
+            </div>
+          
+            <div id="tipoAsignacion">Tipo de asignación:
+              
+                <label ><input id="ch1" type="checkbox" value=""></input>Provisorio</label>
+                
+                <label ><input  id= "ch2" type="checkbox"  value=""></input>Permanente</label>
+                
             </div>
 
-            <div className="labelA"><label> <h4> Tipo de asignación: </h4> </label>
-              <div className="labelB">
-                <ul>
-                  <li className="li"><label><input type="checkbox" value=""></input>Provisorio</label></li>
-                  <li className="li"><label><input type="checkbox" value=""></input>Permanente</label></li>
-                </ul></div></div>
-
+            <div id="desplegableInst">
             <select id="desplegableInstitutos" name="OS" >
               <option selected value="1"> Malvinas Argentinas</option>
               <option value="2">Origone A </option>
@@ -28,11 +28,12 @@ const MaquetaGrilla = () => {
               <option value="4">Sede Vergara</option>
               <option value="5">Chuquisaca</option>
             </select>
-            <div> <p className="labelA"> Mostrar aulas con las categorías disponibles?</p>
-              <button className="btn-mostrar"> <h4> Mostrar</h4> </button></div>
+            </div>
 
-          </nav>
-        </div>
+            <div id="mostrarDisponible" > Mostrar aulas con las categorías disponibles?
+              <button className="btn-mostrar"> Mostrar </button>
+            </div>
+        
       </div>
       <div id="clasedeclase" >
         <div id="classSection">
@@ -58,6 +59,7 @@ const MaquetaGrilla = () => {
         </div>
 
       </div>
+      <p></p>
     </Fragment>
 
   );

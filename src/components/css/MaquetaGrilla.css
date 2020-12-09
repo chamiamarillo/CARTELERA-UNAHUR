@@ -1,32 +1,40 @@
-.containerGrilla{
+#containerGrilla{
     margin-top: 10px;
-    text-align: center;
     border: 1px solid #E2E3E8;
     padding: 4px;
     height: 100px;
-    width: 1000px;
+    width: 1200px;
+    justify-content: space-between;
   }
 
-  #dias_asignacion_check{
-    justify-items: flex-start;
+
+  #btn-dias-inline, #tipoAsignacion, #desplegableInst, 
+  #mostrarDisponible{
+    display: inline;
+   
+   
   }
- 
-  div #btn-dias{
+  #ch1, #ch2{
+    display:inline;
+  }
+  
+  #btn-dias{
     border-radius: 5px;
-    width: 70px;
+    width: 60px;
     height: 25px;
     background:linear-gradient(180deg,rgb(143, 185, 171)0%100%);
     box-shadow: inset 0 0 20px grey;
     float: left;
-  
   }
-  div #btn-dias:hover{
+
+  #btn-dias:hover{
     border-radius: 5px;
     width: 70px;
     background: linear-gradient(180deg,  #8cb1ae 0%100%); 
     background-position: 0 -50px;
     transition: all .3s;
   }
+
   li{
     list-style:none;
   }
@@ -45,8 +53,9 @@
     height: 30px;
     background:linear-gradient(180deg,rgb(156, 185, 175)0%100%);
     box-shadow: inset 0 0 20px grey;
-    float: left;
+    
   }
+  
 
   .btn-mostrar{
     border-radius: 5px;
@@ -54,7 +63,7 @@
     height: 30px;
     background:linear-gradient(180deg,rgb(135, 154, 170)0%100%);
     box-shadow: inset 0 0 20px grey;
-    float: right;
+   
   }
 
  #clasedeclase{

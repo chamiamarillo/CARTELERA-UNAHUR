@@ -1,0 +1,14 @@
+#labelCaracteristicas{
+   display: inline-block;
+   color:black;
+}
+#titulo{
+    color:black;
+    font-size: 15px;
+}
+
+.seleccionado{
+    color:rgb(16, 105, 16);
+    border: 1px solid #353738;
+    width: 780px;
+}

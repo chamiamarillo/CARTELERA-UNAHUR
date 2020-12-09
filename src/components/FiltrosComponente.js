@@ -162,27 +162,26 @@ const FiltrosComponente = () => {
       <form
         id='formActividad'
         onSubmit={enviarBusqueda}
-      ><li id="pActividad">
-          <label>
+      >
+          <label id="pActividad" >
             <h4>
             {'Actividad: '} {/* el texto del label para poder tener un espacio */}
             </h4>
-            <input
+           <input
               type="text"
               className="actividad"
-              id="efectoGris"
+              id="efectoActividad"
               placeholder="Buscar por Actividad"
               value={buscarActividad}
               onChange={e => guardarActividad(e.target.value)}
             />
           </label>
-          </li>
+          
       </form>
 
       <form
         id='formPropuesta'
-      ><li id="pPropuesta">
-          <label>
+      ><label id="labelPropuesta">
             <h4>
             {'Propuesta: '} {/* el texto del label para poder tener un espacio */}
             </h4>
@@ -190,18 +189,17 @@ const FiltrosComponente = () => {
               setEsPropuesta={setEsPropuesta}
             />
           </label>
-         </li>
       </form>
       <p></p>
 
 
       <div className="visual">
         <>
-          <Accordion >
-            <Card>
+          <Accordion id="margenAcordeon">
+            <Card id="cardId">
               <Card.Header>
-                <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                  <h3>DIAS DE CURSADA</h3>
+                <Accordion.Toggle id="cursada" as={Button} variant="link" eventKey="0">
+                 Días de cursada
                 </Accordion.Toggle>
               </Card.Header>
               <Accordion.Collapse eventKey="0" id="cllpdias">
@@ -229,10 +227,11 @@ const FiltrosComponente = () => {
                 </Card.Body>
               </Accordion.Collapse>
             </Card>
-            <Card>
+            <br></br>
+            <Card id="cardId">
               <Card.Header>
-                <Accordion.Toggle as={Button} variant="link" eventKey="1">
-                  <h3>FRANJA HORARIA</h3>
+                <Accordion.Toggle id="franja" as={Button} variant="link" eventKey="1">
+                  Franja Horaria
                 </Accordion.Toggle>
               </Card.Header>
               <Accordion.Collapse eventKey="1" id="cllpfranja">
