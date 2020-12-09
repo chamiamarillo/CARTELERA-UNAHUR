@@ -1,4 +1,3 @@
-*******************************************************************************************************************************/
 
 *{
 	margin:0;
@@ -6,6 +5,9 @@
 	list-style:none;
   }
   
+  #MenuPrincipalLabel{
+    width: 30%;
+  }
 
 /********************************************************************************************************************************/
 /***** Cabezera - Logo - Loguin **************/
@@ -83,7 +85,24 @@ nav{
   height: 43px;
   }
 
-  
+  .anchotab{
+    width: 100%;
+    height: 43px;
+  }
+
+  .menusalir{
+    width: 5%;
+    height: 43px;
+    float: left;
+  }
+
+  .menubotones{
+    width: 75%;
+    height: 43px;
+    float: left;
+  }
+
+
   .menuhora{
     width: 20%;
     height: 43px;
@@ -95,15 +114,11 @@ nav{
  
 
   
- /*
-thead tr th { 
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    background-color: #e8ece8;
-  }*/
 
-  
+  .frechahora{
+      margin-top: 20px;
+  } 
+
 
   section{ 
     top: 0px;
@@ -115,3 +130,4 @@ thead tr th {
       width:auto;
       height:auto;
   }
+
