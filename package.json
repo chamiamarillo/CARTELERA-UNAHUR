@@ -27,6 +27,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "^3.4.3",
     "react-split-pane": "^0.1.92",
+    "react-timeline-range-slider": "^1.1.2",
     "react-tiny-tabs": "^0.1.2",
     "redux": "^4.0.5",
     "semantic-ui-react": "^0.88.2",
