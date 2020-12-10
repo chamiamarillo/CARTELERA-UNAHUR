@@ -252,7 +252,6 @@ const FiltrosComponente = () => {
               </Accordion.Collapse>
             </Card>
           </Accordion>
-
           <div className="panel-group" >
             <div className="panel">
               <div className="panel-heading">

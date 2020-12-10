@@ -16,16 +16,15 @@ const MaquetaGrilla = () => {
   const ed = jsonAulasEdificiosCarac.map(data => (
     {
       name: data.edificio.nombre,
-      value: data.edificio.edificacion,
-      aula: data.nombre
+      value: data.edificio.edificacion
     }
   ))
 
-
+ 
 
   //console.log(jsonAulasEdificiosCarac);
   console.log("---------------------")
-  console.log()
+  console.log(ed)
 
 
 
@@ -48,21 +47,11 @@ const MaquetaGrilla = () => {
                 </ul></div></div>
 
             <select id="desplegableInstitutos" name="OS" >
-              {ed.map(elemento => (
-                <option value={elemento.value}>{elemento.name}</option>
-              )
-              )}
-
-
-
-              {/*
               <option selected value="1"> Malvinas Argentinas</option>
               <option value="2">Origone A </option>
               <option value="3">Origone B</option>
               <option value="4">Sede Vergara</option>
               <option value="5">Chuquisaca</option>
-              */}
-            
             </select>
             <div> <p className="labelA"> Mostrar aulas con las categorías disponibles?</p>
               <button className="btn-mostrar"> <h4> Mostrar</h4> </button></div>
@@ -73,23 +62,11 @@ const MaquetaGrilla = () => {
       <div id="clasedeclase" >
         <div id="classSection">
           <div id="aulas_grilla1"><div> AULAS: </div>
-            {
-              ed.map(elemento => (
-              <li className="btn-mostrarAula">{elemento.aula}</li>
-              ))
-            }
-
-
-
-            {/*
             <li className="btn-mostrarAula">AULA 1</li>
             <li className="btn-mostrarAula">AULA 2</li>
             <li className="btn-mostrarAula">AULA 3</li>
             <li className="btn-mostrarAula">AULA 4</li>
             <li className="btn-mostrarAula">AULA 5</li>
-            */}
-          
-          
           </div>
         </div>
 
