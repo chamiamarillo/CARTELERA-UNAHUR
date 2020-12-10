@@ -1,23 +1,36 @@
-import { data } from "jquery";
 import React, { useState, useEffect, Fragment } from "react";
-import {getAulasEdificioCarac} from '../util/services/AulasEdificioCarac.service';
+import {getEdificios} from '../util/services/edificios.service';
+import {getAulasXEdif} from '../util/services/aulasXEdificios.service';
 import './css/MaquetaGrilla.css';
 
 const MaquetaGrilla = () => {
 
-  const [jsonAulasEdificiosCarac, setJsonAulasEdificosCarac] = useState([]);
-  const [sedes, setSedes] = useState([]);
+  const [jsonEdificios, setJsonEdificos] = useState([]);
+  const [jsonAulasXEdif, setJsonAulasXEdif] = useState([])
+  const [edificio, setEdificio] = useState([])
+  const [edificacion, setEdificacion] = useState()
 
   useEffect(() => {
-    getAulasEdificioCarac().then(rest => setJsonAulasEdificosCarac(rest));
+    getEdificios().then(rest => setJsonEdificos(rest));
+    getAulasXEdif().then(rest => setJsonAulasXEdif(rest));
   }, []);
 
 
-  const ed = jsonAulasEdificiosCarac.map(data => (
+  const sede = jsonEdificios.map(data => (
     {
-      name: data.edificio.nombre,
-      value: data.edificio.edificacion,
-      aula: data.nombre
+      name: data.edificacion_nombre,
+      value: data.edificacion,
+      dire: data.edificacion_direccion
+    }
+  ))
+
+
+  const auXEdif = jsonAulasXEdif.map(data => (
+    {
+      espacio: data.espacio,
+      aula: data.nombre,
+      capasidad: data.capasidad,
+      edificio: data.edificio.edificacion
     }
   ))
 
@@ -48,10 +61,14 @@ const MaquetaGrilla = () => {
                 </ul></div></div>
 
             <select id="desplegableInstitutos" name="OS" >
-              {ed.map(elemento => (
-                <option value={elemento.value}>{elemento.name}</option>
-              )
-              )}
+                <option selected value="0">ELEGIR EDIFICIO</option>
+              {
+                sede.map(elemento => (
+                  <option value={elemento.value}>{elemento.name}</option>
+                  )
+                )
+
+              }
 
 
 
@@ -74,7 +91,7 @@ const MaquetaGrilla = () => {
         <div id="classSection">
           <div id="aulas_grilla1"><div> AULAS: </div>
             {
-              ed.map(elemento => (
+              auXEdif.map(elemento => (
               <li className="btn-mostrarAula">{elemento.aula}</li>
               ))
             }
