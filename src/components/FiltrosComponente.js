@@ -71,7 +71,7 @@ const FiltrosComponente = () => {
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   const mapearSegunBusqueda = (buscarActividad, jsonGrilla) => { // jsonGrilla es el jsonOriginal el cual trae la api de consulta por atividad.
-    
+
     var nvoJson, jsonActividad
 
     // jsonActividad es utilizado para procesar la busqueda por actividad. Este termina convirtiendose en nvoJson el que luego se utiliza para procesarlo 
@@ -84,16 +84,16 @@ const FiltrosComponente = () => {
     else {
       jsonActividad = jsonGrilla.filter(data => (data.actividad.nombre.toLowerCase().indexOf(buscarActividad.toLowerCase()) > -1))
     }
-    
+
 
     /////////////// FILTRO POR PROPUESTA ////////////////
     if (esPropuesta.length != 0) {
-      nvoJson = jsonActividad.filter(data => (data.propuestas.map(carrera => carrera.id_propuesta).indexOf(esPropuesta[0]) > -1))  
+      nvoJson = jsonActividad.filter(data => (data.propuestas.map(carrera => carrera.id_propuesta).indexOf(esPropuesta[0]) > -1))
     }
     else {
       nvoJson = jsonActividad
     }
-    
+
 
     //// ver de cargar un condicional para los filtros combinados de dias y franja horaria!!!!
     if (dias.length != 0) {
@@ -158,45 +158,9 @@ const FiltrosComponente = () => {
 
   return (
     <Fragment>
-      <p></p>
-      <form
-        id='formActividad'
-        onSubmit={enviarBusqueda}
-      ><li id="pActividad">
-          <label>
-            <h4>
-            {'Actividad: '} {/* el texto del label para poder tener un espacio */}
-            </h4>
-            <input
-              type="text"
-              className="actividad"
-              id="efectoGris"
-              placeholder="Buscar por Actividad"
-              value={buscarActividad}
-              onChange={e => guardarActividad(e.target.value)}
-            />
-          </label>
-          </li>
-      </form>
+      <div className="flexGeneral">
 
-      <form
-        id='formPropuesta'
-      ><li id="pPropuesta">
-          <label>
-            <h4>
-            {'Propuesta: '} {/* el texto del label para poder tener un espacio */}
-            </h4>
-            <Propuesta
-              setEsPropuesta={setEsPropuesta}
-            />
-          </label>
-         </li>
-      </form>
-      <p></p>
-
-
-      <div className="visual">
-        <>
+      <div className="flexfiltroIzquierdo">
           <Accordion >
             <Card>
               <Card.Header>
@@ -252,42 +216,65 @@ const FiltrosComponente = () => {
               </Accordion.Collapse>
             </Card>
           </Accordion>
-          <div className="panel-group" >
-            <div className="panel">
-              <div className="panel-heading">
-                <input
-                  type="submit"
-                  className="botonActividad"
-                  value="Buscar"
-                  onClick={() => mapearSegunBusqueda(buscarActividad, jsonGrillaOriginal)}
-                />
-              </div>
-            </div>
-          </div>
-        </>
-      </div>
+        </div> {/*cierra div flexfiltroIzquierdo */}
+      <div class = "flexCentral">
+          <form
+            onSubmit={enviarBusqueda}
+          >
+            <h4>
+              {'Actividad: '} {/* el texto del label para poder tener un espacio */}
+            </h4>
+            <input
+              type="text"
+              id="efectoGris"
+              placeholder="Buscar por Actividad"
+              value={buscarActividad}
+              onChange={e => guardarActividad(e.target.value)}
+            />
+             <h4>
+              {'Propuesta: '} {/* el texto del label para poder tener un espacio */}
+            </h4>
+            <Propuesta
+              setEsPropuesta={setEsPropuesta}
+            />
+          </form> 
 
-      <div>
-        <TablaComisiones
-          jsonGrillaFiltrado={jsonGrillaFiltrado}
-        />
-      </div>
-      <p></p>
-      <div>
-        {/*
+
+
+        <div className="panel-group panel-heading" >
+          <input
+            type="submit"
+            className="botonActividad"
+            value="Buscar"
+            onClick={() => mapearSegunBusqueda(buscarActividad, jsonGrillaOriginal)}
+          />
+        </div>
+
+ 
+        <div>
+          <TablaComisiones
+            jsonGrillaFiltrado={jsonGrillaFiltrado}
+          />
+        </div>
+        <p></p>
+        <div>
+          {/*
         <CaracteristicasAulas
           comisionSelec={comisionSelec}
         />
         */}
-        
-        <CaracteristicasDeAulas
-          setCaractAulas={setCaractAulas}
-        />
-        
-      </div>
-      <div>
-        <MaquetaGrilla />
-      </div>
+
+          <CaracteristicasDeAulas
+            setCaractAulas={setCaractAulas}
+          />
+
+        </div>
+        <div>
+          <MaquetaGrilla />
+        </div>
+        </div>{/* cierra div de flexCentral */}
+        </div> {/* cierra div de flexGeneral */}
+
     </Fragment>
 
   );

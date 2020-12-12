@@ -1,25 +1,5 @@
-#formAsignacion{
-    position: relative;
-    align-items: center;
-    border: 1px solid #E2ffE8;
-    
-  }
-  .nuevo-estilo{
-    margin: 15px;
-    background-color: #EFEDF1;
-    border: 1px solid #E2E3E8;
-    padding: 10px;
-  }
-  .nuevo-estilo2{
-    margin: 10px;
-    text-align: center;
-    border: 1px solid #E2E3E8;
-    padding: 4px;
-  }
-
-  .table{ 
-    height:200px;
-    overflow:scroll;
+* {
+  box-sizing: border-box;
 }
 
 .botonActividad, .botonComision, .botonDocente{
@@ -33,15 +13,6 @@
     
 }
 
-#formActividad{
-  padding-left: 5px;
-  width: 35%;
-}
-
-#pActividad, #pComision, #pDocente{
-padding-bottom: 3%;
-}
-
 #efectoGris{
   border-radius: 5px;
   background:linear-gradient(180deg,rgb(253, 254, 255)0%70%);
@@ -49,9 +20,7 @@ padding-bottom: 3%;
   width: auto;
   height: 25px;
 }
-label{
-  display: inline-block;
-}
+
 /*icono de lupa buscadora va con link a la pagina 
 .container:hover button.icon, .container:active button.icon, .container:focus button.icon{
   outline: none;
@@ -59,3 +28,22 @@ label{
   margin-left: -50px;
    background: rgb(177, 143, 143);
 }*/
+
+.flexGeneral {
+  display: flex;
+  background-color: rgb(20, 148, 105);
+  flex-direction: row-reverse ;
+}
+
+.flexCentral {
+  flex: 1;
+  order: 1;
+  background-color: rgb(148, 139, 20);
+}
+
+.flexfiltroIzquierdo {
+  flex: 2;
+  order: 2;
+  background-color: rgb(69, 20, 148);
+
+}
