@@ -1,44 +1,30 @@
+import { data } from "jquery";
 import React, { useState, useEffect, Fragment } from "react";
-import {getEdificios} from '../util/services/edificios.service';
-import {getAulasXEdif} from '../util/services/aulasXEdificios.service';
+import {getAulasEdificioCarac} from '../util/services/AulasEdificioCarac.service';
 import './css/MaquetaGrilla.css';
 
 const MaquetaGrilla = () => {
 
-  const [jsonEdificios, setJsonEdificos] = useState([]);
-  const [jsonAulasXEdif, setJsonAulasXEdif] = useState([])
-  const [edificio, setEdificio] = useState([])
-  const [edificacion, setEdificacion] = useState()
+  const [jsonAulasEdificiosCarac, setJsonAulasEdificosCarac] = useState([]);
+  const [sedes, setSedes] = useState([]);
 
   useEffect(() => {
-    getEdificios().then(rest => setJsonEdificos(rest));
-    getAulasXEdif().then(rest => setJsonAulasXEdif(rest));
+    getAulasEdificioCarac().then(rest => setJsonAulasEdificosCarac(rest));
   }, []);
 
 
-  const sede = jsonEdificios.map(data => (
+  const ed = jsonAulasEdificiosCarac.map(data => (
     {
-      name: data.edificacion_nombre,
-      value: data.edificacion,
-      dire: data.edificacion_direccion
+      name: data.edificio.nombre,
+      value: data.edificio.edificacion
     }
   ))
 
-
-  const auXEdif = jsonAulasXEdif.map(data => (
-    {
-      espacio: data.espacio,
-      aula: data.nombre,
-      capasidad: data.capasidad,
-      edificio: data.edificio.edificacion
-    }
-  ))
-
-
+ 
 
   //console.log(jsonAulasEdificiosCarac);
   console.log("---------------------")
-  console.log()
+  console.log(ed)
 
 
 
@@ -61,25 +47,11 @@ const MaquetaGrilla = () => {
                 </ul></div></div>
 
             <select id="desplegableInstitutos" name="OS" >
-                <option selected value="0">ELEGIR EDIFICIO</option>
-              {
-                sede.map(elemento => (
-                  <option value={elemento.value}>{elemento.name}</option>
-                  )
-                )
-
-              }
-
-
-
-              {/*
               <option selected value="1"> Malvinas Argentinas</option>
               <option value="2">Origone A </option>
               <option value="3">Origone B</option>
               <option value="4">Sede Vergara</option>
               <option value="5">Chuquisaca</option>
-              */}
-            
             </select>
             <div> <p className="labelA"> Mostrar aulas con las categorías disponibles?</p>
               <button className="btn-mostrar"> <h4> Mostrar</h4> </button></div>
@@ -90,23 +62,11 @@ const MaquetaGrilla = () => {
       <div id="clasedeclase" >
         <div id="classSection">
           <div id="aulas_grilla1"><div> AULAS: </div>
-            {
-              auXEdif.map(elemento => (
-              <li className="btn-mostrarAula">{elemento.aula}</li>
-              ))
-            }
-
-
-
-            {/*
             <li className="btn-mostrarAula">AULA 1</li>
             <li className="btn-mostrarAula">AULA 2</li>
             <li className="btn-mostrarAula">AULA 3</li>
             <li className="btn-mostrarAula">AULA 4</li>
             <li className="btn-mostrarAula">AULA 5</li>
-            */}
-          
-          
           </div>
         </div>
 

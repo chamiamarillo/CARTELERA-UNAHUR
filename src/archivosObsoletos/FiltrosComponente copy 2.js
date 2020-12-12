@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect } from 'react';
 import { getComisiones } from '../util/services/comision.service'
 import { grilla } from '../util/services/grilla.service'
 ////
-//import CaracteristicasAulas from '../archivosObsoletos/CaracteristicasAulas.js';
+import CaracteristicasAulas from './CaracteristicasAulas.js';
 import TablaComisiones from './TablaComisiones';
 import MaquetaGrilla from './MaquetaGrilla';
 ////
@@ -68,16 +68,39 @@ const FiltrosComponente = () => {
 
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   // Guardamos el resultado de la busqueda en un nuevo json                                                                                                     //
-  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  /*
+    const mapearActividad = (buscarActividad, jsonGrilla) => {
+  
+      const nvoJson = jsonGrilla.filter(data => (data.actividad.nombre.toLowerCase().indexOf(buscarActividad.toLowerCase()) > -1))
+      //
+     // const nvoJson2 = nvoJson.filter(data => (data.horarios.map(hora => hora.dia).indexOf(dias) > -1))
+  
+      console.log(nvoJson2)
+      console.log("dia elegido ....")
+      console.log(dias)
+  
+      if (buscarActividad !== ' ') {
+        setjsonGrillaFiltrado(grilla(nvoJson, setComisionSelec)) // estoy pasando solo la referencia al seteo del estado
+      } else {
+        setjsonGrillaFiltrado(grilla(jsonGrilla, setComisionSelec))
+      }
+    }
+  */
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // Este debe trabajar con el jsonGrillaFiltrado, pero si el estado esta vasio que use el jsonGrilla
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   const mapearSegunBusqueda = (buscarActividad, jsonGrilla) => { // jsonGrilla es el jsonOriginal el cual trae la api de consulta por atividad.
+
+    //const jsonB = jsonGrilla.filter(data => (data.actividad.nombre.toLowerCase().indexOf(buscarActividad.toLowerCase()) > -1))
+    // validad busqueda de actividad por vacio
     
     var nvoJson, jsonActividad
 
     // jsonActividad es utilizado para procesar la busqueda por actividad. Este termina convirtiendose en nvoJson el que luego se utiliza para procesarlo 
     // por propuestas - dia - franja
-
-    //////////////// FILTRO POR ACTIVIDAD ///////////////
+    
     if (buscarActividad == '') {
       jsonActividad = jsonGrilla
     }
@@ -86,7 +109,7 @@ const FiltrosComponente = () => {
     }
     
 
-    /////////////// FILTRO POR PROPUESTA ////////////////
+    ///////////////////////////////
     if (esPropuesta.length != 0) {
       nvoJson = jsonActividad.filter(data => (data.propuestas.map(carrera => carrera.id_propuesta).indexOf(esPropuesta[0]) > -1))  
     }
@@ -94,6 +117,7 @@ const FiltrosComponente = () => {
       nvoJson = jsonActividad
     }
     
+
 
     //// ver de cargar un condicional para los filtros combinados de dias y franja horaria!!!!
     if (dias.length != 0) {
@@ -108,12 +132,20 @@ const FiltrosComponente = () => {
     }
     //// esta validazion es necesaria para mezclar los filtros tanto del dia con el de la franja
 
+    //var nvoJson3
+
+    // if (dias.length == 0) {
+    // nvoJson2 = nvoJson
+    //}
     if (franja != '') {
       nvoJson2 = nvoJson.filter(data => data.turno.turno == franja)
       nvoJson = nvoJson2
     }
+    // else 
+    //   {
+    //     nvoJson3 = nvoJson2
+    //}
 
-    ///// ENVIO DEL JSON FINAL FILTRADO PARA ARMAR LA TABLA /////////
     setjsonGrillaFiltrado(grilla(nvoJson, setComisionSelec)) // estoy pasando solo la referencia al seteo del estado
 
     // vuelvo al estado inicial del array
@@ -151,10 +183,10 @@ const FiltrosComponente = () => {
   }
 
 
-  //console.log("menu fliltro izquierdo");
-  //console.log(dias);
+  console.log("menu fliltro izquierdo");
+  console.log(dias);
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  //console.log(comisionSelec)
+  console.log(comisionSelec)
 
   return (
     <Fragment>
@@ -176,11 +208,18 @@ const FiltrosComponente = () => {
               onChange={e => guardarActividad(e.target.value)}
             />
           </label>
-          </li>
+          {/*
+          <input
+            type="submit"
+            className="botonActividad"
+            value="Buscar"
+          //onClick={() => mapearActividad(buscarActividad, jsonGrillaOriginal)}
+          /> */}</li>
       </form>
 
       <form
         id='formPropuesta'
+        //onSubmit={enviarBusqueda}
       ><li id="pPropuesta">
           <label>
             <h4>
@@ -252,6 +291,7 @@ const FiltrosComponente = () => {
               </Accordion.Collapse>
             </Card>
           </Accordion>
+
           <div className="panel-group" >
             <div className="panel">
               <div className="panel-heading">
@@ -274,16 +314,15 @@ const FiltrosComponente = () => {
       </div>
       <p></p>
       <div>
-        {/*
+
         <CaracteristicasAulas
           comisionSelec={comisionSelec}
         />
-        */}
-        
+        {/*
         <CaracteristicasDeAulas
           setCaractAulas={setCaractAulas}
         />
-        
+        */}
       </div>
       <div>
         <MaquetaGrilla />

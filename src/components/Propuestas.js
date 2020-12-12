@@ -34,12 +34,9 @@ const countryOptions = [
 */
 
 
-const Propuesta = ({setMierda}) => {
+const Propuesta = ({setEsPropuesta}) => {
   
-  //const [mierda, setMierda] = useState({})
   const [jsonPropuestas, setJsonPropuestas] = useState([])
-
-  //console.log(mierda)
   
   useEffect(() => {
     getPropuestas().then(rest => setJsonPropuestas(rest));
@@ -51,24 +48,19 @@ const Propuesta = ({setMierda}) => {
       text: dato.nombre
     }
   ))
-  
-
-
-  //console.log(jsonPropuestas)
-  //console.log(prp)
-  
+    
  return( 
 
   
   <Dropdown 
-    id='mierdaLista'
+    id='propuestaLista'
     placeholder='Buscar por propuesta'
     //fluid
     search
     multiple
     selection
     options={prp}
-    onChange={(opt, meta) => setMierda(meta.value)}
+    onChange={(opt, meta) => setEsPropuesta(meta.value)}
     
   />
   
