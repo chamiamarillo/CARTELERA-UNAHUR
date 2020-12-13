@@ -10,6 +10,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import FiltrosComponente from './FiltrosComponente';
 import Propuestas from './Propuestas';
 import Menu from './Menu';
+import Edificios from './Edificios';
 
 const Principal = () => {
   return (
@@ -31,7 +32,7 @@ const Principal = () => {
                                 <Route exact path="/"  />
                                 <Route exact path="/Asignacion" component={FiltrosComponente}  />
                                 <Route exact path="/Modificacion" component={Propuestas} />
-                                <Route exact path="/Consulta" />
+                                <Route exact path="/Consulta" component={Edificios} />
                                 <Route exact path="/Reporte"  />
                                 <Route exact path="/Salir"  />
                             </Switch>

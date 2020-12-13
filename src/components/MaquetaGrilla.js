@@ -1,14 +1,16 @@
 import React, { useState, useEffect, Fragment } from "react";
-import {getEdificios} from '../util/services/edificios.service';
-import {getAulasXEdif} from '../util/services/aulasXEdificios.service';
+import { Dropdown } from 'semantic-ui-react'
+import AulasPorEdificio from './AulasPorEdificio';
+import { getEdificios } from '../util/services/edificios.service';
+import { getAulasXEdif } from '../util/services/aulasXEdificios.service';
 import './css/MaquetaGrilla.css';
+import Edificios from "./Edificios";
 
 const MaquetaGrilla = () => {
 
   const [jsonEdificios, setJsonEdificos] = useState([]);
   const [jsonAulasXEdif, setJsonAulasXEdif] = useState([])
-  const [edificio, setEdificio] = useState([])
-  const [edificacion, setEdificacion] = useState()
+  const [edifSelect, setEdifSelect] = useState(null);
 
   useEffect(() => {
     getEdificios().then(rest => setJsonEdificos(rest));
@@ -18,32 +20,27 @@ const MaquetaGrilla = () => {
 
   const sede = jsonEdificios.map(data => (
     {
-      name: data.edificacion_nombre,
+      text: data.edificacion_nombre,
       value: data.edificacion,
-      dire: data.edificacion_direccion
     }
   ))
-
 
   const auXEdif = jsonAulasXEdif.map(data => (
     {
       espacio: data.espacio,
       aula: data.nombre,
-      capasidad: data.capasidad,
+      capacidad: data.capacidad,
       edificio: data.edificio.edificacion
     }
   ))
 
-
-
-  //console.log(jsonAulasEdificiosCarac);
-  console.log("---------------------")
-  console.log()
-
+  const mierda = auXEdif.filter(e => e.edificio === edifSelect)
+  
 
 
   return (
     <Fragment>
+
       <div className="containerGrilla">
 
         <div>
@@ -60,27 +57,24 @@ const MaquetaGrilla = () => {
                   <li className="li"><label><input type="checkbox" value=""></input>Permanente</label></li>
                 </ul></div></div>
 
-            <select id="desplegableInstitutos" name="OS" >
-                <option selected value="0">ELEGIR EDIFICIO</option>
-              {
-                sede.map(elemento => (
-                  <option value={elemento.value}>{elemento.name}</option>
-                  )
-                )
-
-              }
-
-
+            <div>
+              <Dropdown
+                placeholder='Select Country'
+                //fluid
+                search
+                selection
+                options={sede}
+                onChange={(opt, meta) => setEdifSelect(meta.value)}
+              />
 
               {/*
-              <option selected value="1"> Malvinas Argentinas</option>
-              <option value="2">Origone A </option>
-              <option value="3">Origone B</option>
-              <option value="4">Sede Vergara</option>
-              <option value="5">Chuquisaca</option>
-              */}
-            
-            </select>
+                sede.map(elemento => (
+                  <option key={elemento.valor} value={elemento.valor} onChange={e => setEdificacion(e.select)} >{elemento.name}</option>
+                  )
+                )
+                */}
+
+            </div>
             <div> <p className="labelA"> Mostrar aulas con las categorías disponibles?</p>
               <button className="btn-mostrar"> <h4> Mostrar</h4> </button></div>
 
@@ -90,28 +84,19 @@ const MaquetaGrilla = () => {
       <div id="clasedeclase" >
         <div id="classSection">
           <div id="aulas_grilla1"><div> AULAS: </div>
+
             {
-              auXEdif.map(elemento => (
-              <li className="btn-mostrarAula">{elemento.aula}</li>
+              mierda.map(elemento => (
+                <li className="btn-mostrarAula">{elemento.aula}</li>
               ))
             }
 
-
-
-            {/*
-            <li className="btn-mostrarAula">AULA 1</li>
-            <li className="btn-mostrarAula">AULA 2</li>
-            <li className="btn-mostrarAula">AULA 3</li>
-            <li className="btn-mostrarAula">AULA 4</li>
-            <li className="btn-mostrarAula">AULA 5</li>
-            */}
-          
-          
           </div>
         </div>
 
         <div id="classSection2">
-          <div id="divPe">  <p>|  07:00  |</p><p>  08: 00  |</p><p>  09:00  |</p> <p>  10:00  |</p><p> 11:00  |</p><p> 12:00  |</p><p> 13:00  |</p><p> 14:00  |</p><p> 15:00  |</p><p> 16:00  |</p>
+          <div id="divPe">
+            <p>|  07:00  |</p><p>  08: 00  |</p><p>  09:00  |</p> <p>  10:00  |</p><p> 11:00  |</p><p> 12:00  |</p><p> 13:00  |</p><p> 14:00  |</p><p> 15:00  |</p><p> 16:00  |</p>
             <p> 17:00  |</p><p> 18:00  |</p><p> 19:00  |</p><p> 20:00  |</p><p> 21:00  |</p><p> 22:00  |</p></div>
           <ol className="aulas_grilla2">
             <li className="efectoAzul"></li>
