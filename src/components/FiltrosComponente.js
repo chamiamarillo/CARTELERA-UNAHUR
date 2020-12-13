@@ -286,7 +286,9 @@ const FiltrosComponente = () => {
         
       </div>
       <div>
-        <MaquetaGrilla />
+        <MaquetaGrilla 
+          caractAulas={caractAulas}
+        />
       </div>
     </Fragment>
 

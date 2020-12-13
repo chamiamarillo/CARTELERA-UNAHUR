@@ -1,12 +1,12 @@
 import React, { useState, useEffect, Fragment } from "react";
 import { Dropdown } from 'semantic-ui-react'
-import AulasPorEdificio from './AulasPorEdificio';
 import { getEdificios } from '../util/services/edificios.service';
 import { getAulasXEdif } from '../util/services/aulasXEdificios.service';
 import './css/MaquetaGrilla.css';
-import Edificios from "./Edificios";
+//import Edificios from "./Edificios";
+//import AulasPorEdificio from './AulasPorEdificio';
 
-const MaquetaGrilla = () => {
+const MaquetaGrilla = ({caractAulas}) => {
 
   const [jsonEdificios, setJsonEdificos] = useState([]);
   const [jsonAulasXEdif, setJsonAulasXEdif] = useState([])
@@ -30,11 +30,20 @@ const MaquetaGrilla = () => {
       espacio: data.espacio,
       aula: data.nombre,
       capacidad: data.capacidad,
-      edificio: data.edificio.edificacion
+      edificio: data.edificio.edificacion,
+      carac: data.caracteristicas.map(cc => cc.ampliacion_tipo),
+      caracNombre: data.caracteristicas.map(cc => cc.nombre_ampliacion)
     }
   ))
 
   const mierda = auXEdif.filter(e => e.edificio === edifSelect)
+
+  const mierda2 = mierda.filter(c => c.carac.some(element => {
+    element.includes(caractAulas)
+  }))  
+
+  //console.log(auXEdif)
+  console.log(mierda2)
   
 
 
