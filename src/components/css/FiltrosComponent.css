@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 
-.botonActividad, .botonComision, .botonDocente{
+.botonActividad{
     position: absolute;
     float: right; 
     border-radius: 5px;
@@ -21,6 +21,37 @@
   height: 25px;
 }
 
+
+#formActividad{
+  padding-left: 5px;
+  display:inline;
+  border-radius: 5px;
+  background:linear-gradient(180deg,rgb(253, 254, 255)0%70%);
+  box-shadow: inset 0 0 20px rgb(161, 161, 161);
+  }
+ 
+  .item{
+    color:black;
+    background-color: red;
+    
+  }
+    
+  #efectoActividad, #efectoPropuesta, #CaracteristicaAulaLista {
+  border-radius: 5px;
+  background:linear-gradient(180deg,rgb(253, 254, 255)0%70%);
+  box-shadow: inset 0 0 20px rgb(161, 161, 161);
+  position: relative;
+  font-family: verdana, arial, helvetica;
+  font: rgb(15, 15, 15);
+  height: 35px;
+  width: 90%;
+
+  }
+/*#efectoPropuesta li a {
+  color: #f4511e !important;
+}
+*/
+
 /*icono de lupa buscadora va con link a la pagina 
 .container:hover button.icon, .container:active button.icon, .container:focus button.icon{
   outline: none;
@@ -31,19 +62,44 @@
 
 .flexGeneral {
   display: flex;
-  background-color: rgb(20, 148, 105);
+  
   flex-direction: row-reverse ;
 }
 
 .flexCentral {
   flex: 1;
   order: 1;
-  background-color: rgb(148, 139, 20);
+  
+  justify-content: space-between;
 }
 
 .flexfiltroIzquierdo {
   flex: 2;
   order: 2;
-  background-color: rgb(69, 20, 148);
+  
 
 }
+.cardFranja{
+  display: flex;
+  /*max-width:  6;
+  max-height: 6;
+  border-radius:100%;
+  */
+  background:linear-gradient(180deg,rgb(139, 231, 200)0%70%);
+  position: relative;
+  box-shadow: inset 0 0 20px grey;
+  font: rgb(58, 57, 57);
+  }
+
+  .fuentesAcordeon{
+  font-size: 15px;
+  text-transform: capitalize;
+  font: rgb(51, 50, 50);
+  }
+
+  .estiloDesplegable{
+    font-family: verdana, arial, helvetica;
+    background-color: rgb(132, 250, 220);
+    box-shadow: inset 0 0 20px grey;
+  }
+ 

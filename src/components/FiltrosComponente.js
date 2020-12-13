@@ -1,25 +1,16 @@
 import React, { Fragment, useState, useEffect } from 'react';
 import { getComisiones } from '../util/services/comision.service'
 import { grilla } from '../util/services/grilla.service'
-////
-//import CaracteristicasAulas from '../archivosObsoletos/CaracteristicasAulas.js';
 import TablaComisiones from './TablaComisiones';
 import MaquetaGrilla from './MaquetaGrilla';
-////
 import './css/FiltrosComponent.css'
 //import { Checkbox } from 'semantic-ui-react';
 /// ver esto para la busqueda de propuesta
 // https://material-ui.com/es/components/autocomplete/
-
-
 import Accordion from 'react-bootstrap/Accordion'
 import { Card, Button } from 'react-bootstrap';
 import Propuesta from './Propuestas';
 import CaracteristicasDeAulas from './CaracteristicasDeAulas';
-//import { AccordionCollapse, Card, Button } from 'react-bootstrap';
-//import { Collapse } from 'bootstrap';
-//import { showMenu } from 'react-contextmenu';
-// usado de: https://react-bootstrap.github.io/components/accordion/
 
 
 const FiltrosComponente = () => {
@@ -163,13 +154,13 @@ const FiltrosComponente = () => {
       <div className="flexfiltroIzquierdo">
           <Accordion >
             <Card>
-              <Card.Header>
+              <Card.Header className="cardFranja" >
                 <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                  <h3>DIAS DE CURSADA</h3>
+                  <h2 className="fuentesAcordeon">Días De Cursada</h2>
                 </Accordion.Toggle>
               </Card.Header>
               <Accordion.Collapse eventKey="0" id="cllpdias">
-                <Card.Body>
+                <Card.Body className="estiloDesplegable">
                   <form >
                     <div className="checkbox" >
                       <label><input type="checkbox" id="ch001" value="Lunes" onChange={guardarDias} ></input>Lunes</label>
@@ -194,13 +185,13 @@ const FiltrosComponente = () => {
               </Accordion.Collapse>
             </Card>
             <Card>
-              <Card.Header>
+              <Card.Header className="cardFranja">
                 <Accordion.Toggle as={Button} variant="link" eventKey="1">
-                  <h3>FRANJA HORARIA</h3>
+                  <h5 className="fuentesAcordeon">Franja Horaria</h5>
                 </Accordion.Toggle>
               </Card.Header>
               <Accordion.Collapse eventKey="1" id="cllpfranja">
-                <Card.Body>
+                <Card.Body className="estiloDesplegable">
                   <form >
                     <div className="checkbox" >
                       <label><input type="checkbox" id="fr001" value="1" onClick={e => setFranja(e.target.value)} ></input>Mañana</label>
@@ -218,7 +209,7 @@ const FiltrosComponente = () => {
           </Accordion>
         </div> {/*cierra div flexfiltroIzquierdo */}
       <div class = "flexCentral">
-          <form
+          <form id="formActividad"
             onSubmit={enviarBusqueda}
           >
             <h4>
@@ -226,15 +217,16 @@ const FiltrosComponente = () => {
             </h4>
             <input
               type="text"
-              id="efectoGris"
+              id="efectoActividad"
               placeholder="Buscar por Actividad"
               value={buscarActividad}
               onChange={e => guardarActividad(e.target.value)}
             />
-             <h4>
+             <h4 >
               {'Propuesta: '} {/* el texto del label para poder tener un espacio */}
             </h4>
-            <Propuesta
+            < Propuesta
+          
               setEsPropuesta={setEsPropuesta}
             />
           </form> 
@@ -258,11 +250,6 @@ const FiltrosComponente = () => {
         </div>
         <p></p>
         <div>
-          {/*
-        <CaracteristicasAulas
-          comisionSelec={comisionSelec}
-        />
-        */}
 
           <CaracteristicasDeAulas
             setCaractAulas={setCaractAulas}
