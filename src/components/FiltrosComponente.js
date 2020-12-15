@@ -157,117 +157,99 @@ const FiltrosComponente = () => {
   //console.log(comisionSelec)
 
   return (
-    <Fragment>
-      <p></p>
-      <form
-        id='formActividad'
-        onSubmit={enviarBusqueda}
-      ><li id="pActividad">
-          <label>
-            <h4>
-            {'Actividad: '} {/* el texto del label para poder tener un espacio */}
-            </h4>
-            <input
-              type="text"
-              className="actividad"
-              id="efectoGris"
-              placeholder="Buscar por Actividad"
-              value={buscarActividad}
-              onChange={e => guardarActividad(e.target.value)}
-            />
-          </label>
-          </li>
-      </form>
+  <Fragment>
+    <div className="flexGeneral">
 
-      <form
-        id='formPropuesta'
-      ><li id="pPropuesta">
-          <label>
-            <h4>
-            {'Propuesta: '} {/* el texto del label para poder tener un espacio */}
-            </h4>
-            <Propuesta
-              setEsPropuesta={setEsPropuesta}
-            />
-          </label>
-         </li>
-      </form>
-      <p></p>
-
-
-      <div className="visual">
-        <>
-          <Accordion >
-            <Card>
-              <Card.Header>
-                <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                  <h3>DIAS DE CURSADA</h3>
-                </Accordion.Toggle>
-              </Card.Header>
-              <Accordion.Collapse eventKey="0" id="cllpdias">
-                <Card.Body>
-                  <form >
-                    <div className="checkbox" >
-                      <label><input type="checkbox" id="ch001" value="Lunes" onChange={guardarDias} ></input>Lunes</label>
-                    </div>
-                    <div className="checkbox">
-                      <label><input type="checkbox" id="ch002" value="Martes" onChange={guardarDias}></input>Martes</label>
-                    </div>
-                    <div className="checkbox">
-                      <label><input type="checkbox" id="ch003" value="Miercoles" onClick={guardarDias}></input>Miercoles</label>
-                    </div>
-                    <div className="checkbox">
-                      <label><input type="checkbox" id="ch004" value="Jueves" onClick={guardarDias}></input>Jueves</label>
-                    </div>
-                    <div className="checkbox">
-                      <label><input type="checkbox" id="ch005" value="Viernes" onClick={guardarDias}></input>Viernes</label>
-                    </div>
-                    <div className="checkbox">
-                      <label><input type="checkbox" id="ch006" value="Sabado" onClick={guardarDias}></input>Sabado</label>
-                    </div>
-                  </form>
-                </Card.Body>
-              </Accordion.Collapse>
-            </Card>
-            <Card>
-              <Card.Header>
-                <Accordion.Toggle as={Button} variant="link" eventKey="1">
-                  <h3>FRANJA HORARIA</h3>
-                </Accordion.Toggle>
-              </Card.Header>
-              <Accordion.Collapse eventKey="1" id="cllpfranja">
-                <Card.Body>
-                  <form >
-                    <div className="checkbox" >
-                      <label><input type="checkbox" id="fr001" value="1" onClick={e => setFranja(e.target.value)} ></input>Mañana</label>
-                    </div>
-                    <div className="checkbox">
-                      <label><input type="checkbox" id="fr002" value="2" onClick={e => setFranja(e.target.value)} ></input>Tarde</label>
-                    </div>
-                    <div className="checkbox">
-                      <label><input type="checkbox" id="fr003" value="3" onClick={e => setFranja(e.target.value)} ></input>Noche</label>
-                    </div>
-                  </form>
-                </Card.Body>
-              </Accordion.Collapse>
-            </Card>
-          </Accordion>
-          <div className="panel-group" >
-            <div className="panel">
-              <div className="panel-heading">
-                <input
-                  type="submit"
-                  className="botonActividad"
-                  value="Buscar"
-                  onClick={() => mapearSegunBusqueda(buscarActividad, jsonGrillaOriginal)}
-                />
+<div className="flexfiltroIzquierdo">
+    <Accordion >
+      <Card className = "buttonMenuIzq">
+        <Card.Header>
+          <Accordion.Toggle as={Button} variant="link" eventKey="0" id = 'buttonCard'>
+            <p>Días de Cursada</p>
+          </Accordion.Toggle>
+        </Card.Header>
+        <Accordion.Collapse eventKey="0" id="cllpdias">
+          <Card.Body>
+            <form >
+              <div className="checkbox" >
+                <label><input type="checkbox" id="ch001" value="Lunes" onChange={guardarDias} ></input>Lunes</label>
               </div>
-            </div>
-          </div>
-        </>
-      </div>
+              <div className="checkbox">
+                <label><input type="checkbox" id="ch002" value="Martes" onChange={guardarDias}></input>Martes</label>
+              </div>
+              <div className="checkbox">
+                <label><input type="checkbox" id="ch003" value="Miercoles" onClick={guardarDias}></input>Miercoles</label>
+              </div>
+              <div className="checkbox">
+                <label><input type="checkbox" id="ch004" value="Jueves" onClick={guardarDias}></input>Jueves</label>
+              </div>
+              <div className="checkbox">
+                <label><input type="checkbox" id="ch005" value="Viernes" onClick={guardarDias}></input>Viernes</label>
+              </div>
+              <div className="checkbox">
+                <label><input type="checkbox" id="ch006" value="Sabado" onClick={guardarDias}></input>Sabado</label>
+              </div>
+            </form>
+          </Card.Body>
+        </Accordion.Collapse>
+      </Card>
+      <Card className = "buttonMenuIzq">
+        <Card.Header>
+          <Accordion.Toggle as={Button} variant="link" eventKey="1" id = 'buttonCard' >
+            <p>Franja Horaria</p>
+          </Accordion.Toggle>
+        </Card.Header>
+        <Accordion.Collapse eventKey="1" id="cllpfranja">
+          <Card.Body>
+            <form >
+              <div className="checkbox" >
+                <label><input type="checkbox" id="fr001" value="1" onClick={e => setFranja(e.target.value)} ></input>Mañana</label>
+              </div>
+              <div className="checkbox">
+                <label><input type="checkbox" id="fr002" value="2" onClick={e => setFranja(e.target.value)} ></input>Tarde</label>
+              </div>
+              <div className="checkbox">
+                <label><input type="checkbox" id="fr003" value="3" onClick={e => setFranja(e.target.value)} ></input>Noche</label>
+              </div>
+            </form>
+          </Card.Body>
+        </Accordion.Collapse>
+      </Card>
+    </Accordion>
+  </div> {/*cierra div flexfiltroIzquierdo */}
+<div class = "flexCentral">
+    <form 
+     onSubmit={enviarBusqueda}
+    >
+      <h4>
+        {'Actividad: '} {/* el texto del label para poder tener un espacio */}
+      </h4>
+      <input
+        type="text"
+        id="efectoActividad"
+        placeholder="Buscar por Actividad"
+        value={buscarActividad}
+        onChange={e => guardarActividad(e.target.value)}
+      />
+       <h4>
+        {'Propuesta: '} {/* el texto del label para poder tener un espacio */}
+      </h4>
+      <Propuesta
+        setEsPropuesta={setEsPropuesta}
+      />
+    </form> 
 
-      <div>
+
+
+  <div className="panel-group panel-heading" >
+    <input
+      type="submit"
+      className="botonActividad"
+      value="Buscar"
+      onClick={() => mapearSegunBusqueda(buscarActividad, jsonGrillaOriginal)}
+    />
+  </div>
+  <div>
         <TablaComisiones
           jsonGrillaFiltrado={jsonGrillaFiltrado}
         />
@@ -290,6 +272,11 @@ const FiltrosComponente = () => {
           caractAulas={caractAulas}
         />
       </div>
+
+ 
+  </div>{/* cierra div de flexCentral */}
+  </div> {/* cierra div de flexGeneral */}
+
     </Fragment>
 
   );

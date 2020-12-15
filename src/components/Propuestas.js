@@ -53,7 +53,7 @@ const Propuesta = ({setEsPropuesta}) => {
 
   
   <Dropdown 
-    id='propuestaLista'
+    id="efectoPropuesta"
     placeholder='Buscar por propuesta'
     //fluid
     search

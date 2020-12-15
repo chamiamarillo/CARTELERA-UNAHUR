@@ -74,7 +74,7 @@ const MaquetaGrilla = ({caractAulas}) => {
 
             <div>
               <Dropdown
-                placeholder='Select Country'
+                placeholder='Seleccionar edificio'
                 //fluid
                 search
                 selection
