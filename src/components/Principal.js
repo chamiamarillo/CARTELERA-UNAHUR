@@ -19,6 +19,7 @@ const Principal = () => {
       <header>
         <HeaderLogoTitulo />
       </header>
+      <p></p>
           <BrowserRouter>
             <div>
                 <div className="App">
