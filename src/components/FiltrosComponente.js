@@ -160,12 +160,12 @@ const FiltrosComponente = () => {
     <Fragment>
       <div className="flexGeneral">
 
-      <div className="flexfiltroIzquierdo">
+        <div className="flexfiltroIzquierdo">
           <Accordion >
-            <Card>
-              <Card.Header>
-                <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                  <h3>DIAS DE CURSADA</h3>
+            <Card className = "buttonMenuIzq">
+              <Card.Header >
+                <Accordion.Toggle as={Button} variant="link" eventKey="0" id = 'buttonCard' >
+                  <p>Dias de Cursada</p>
                 </Accordion.Toggle>
               </Card.Header>
               <Accordion.Collapse eventKey="0" id="cllpdias">
@@ -193,10 +193,10 @@ const FiltrosComponente = () => {
                 </Card.Body>
               </Accordion.Collapse>
             </Card>
-            <Card>
-              <Card.Header>
-                <Accordion.Toggle as={Button} variant="link" eventKey="1">
-                  <h3>FRANJA HORARIA</h3>
+            <Card className = "buttonMenuIzq">
+              <Card.Header >
+                <Accordion.Toggle as={Button} variant="link" eventKey="1" id = 'buttonCard' >
+                  <p>Franja Horaria</p>
                 </Accordion.Toggle>
               </Card.Header>
               <Accordion.Collapse eventKey="1" id="cllpfranja">
@@ -217,13 +217,12 @@ const FiltrosComponente = () => {
             </Card>
           </Accordion>
         </div> {/*cierra div flexfiltroIzquierdo */}
-      <div class = "flexCentral">
+
+        <div class="flexCentral">
           <form
             onSubmit={enviarBusqueda}
           >
-            <h4>
-              {'Actividad: '} {/* el texto del label para poder tener un espacio */}
-            </h4>
+            <h5><p>Actividad</p> </h5>
             <input
               type="text"
               id="efectoGris"
@@ -231,49 +230,40 @@ const FiltrosComponente = () => {
               value={buscarActividad}
               onChange={e => guardarActividad(e.target.value)}
             />
-             <h4>
+            <h5>
               {'Propuesta: '} {/* el texto del label para poder tener un espacio */}
-            </h4>
+            </h5>
             <Propuesta
               setEsPropuesta={setEsPropuesta}
             />
-          </form> 
+          </form>
 
+          <div className="panel-group panel-heading" >
+            <input
+              type="submit"
+              className="botonActividad"
+              value="Buscar"
+              onClick={() => mapearSegunBusqueda(buscarActividad, jsonGrillaOriginal)}
+            />
+          </div>
 
+          <div>
+            <TablaComisiones
+              jsonGrillaFiltrado={jsonGrillaFiltrado}
+            />
+          </div>
+          <p></p>
+          <div>
+            <CaracteristicasDeAulas
+              setCaractAulas={setCaractAulas}
+            />
 
-        <div className="panel-group panel-heading" >
-          <input
-            type="submit"
-            className="botonActividad"
-            value="Buscar"
-            onClick={() => mapearSegunBusqueda(buscarActividad, jsonGrillaOriginal)}
-          />
-        </div>
-
- 
-        <div>
-          <TablaComisiones
-            jsonGrillaFiltrado={jsonGrillaFiltrado}
-          />
-        </div>
-        <p></p>
-        <div>
-          {/*
-        <CaracteristicasAulas
-          comisionSelec={comisionSelec}
-        />
-        */}
-
-          <CaracteristicasDeAulas
-            setCaractAulas={setCaractAulas}
-          />
-
-        </div>
-        <div>
-          <MaquetaGrilla />
-        </div>
+          </div>
+          <div>
+            <MaquetaGrilla />
+          </div>
         </div>{/* cierra div de flexCentral */}
-        </div> {/* cierra div de flexGeneral */}
+      </div> {/* cierra div de flexGeneral */}
 
     </Fragment>
 

@@ -10,6 +10,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import FiltrosComponente from './FiltrosComponente';
 import Propuestas from './Propuestas';
 import Menu from './Menu';
+import ComboBox from './ComboBox';
 
 const Principal = () => {
   return (
@@ -30,7 +31,7 @@ const Principal = () => {
                             <Switch>
                                 <Route exact path="/"  />
                                 <Route exact path="/Asignacion" component={FiltrosComponente}  />
-                                <Route exact path="/Modificacion" component={Propuestas} />
+                                <Route exact path="/Modificacion" component={ComboBox} />
                                 <Route exact path="/Consulta" />
                                 <Route exact path="/Reporte"  />
                                 <Route exact path="/Salir"  />
