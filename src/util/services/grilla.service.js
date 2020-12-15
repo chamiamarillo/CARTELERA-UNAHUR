@@ -15,7 +15,7 @@ export const grilla = (jsonGrillaFiltrado, setComisionSelec) => {
       cant_inscriptos: data.cant_inscriptos,
       horarios: data.horarios.map(hora => hora.dia + " - "),
       turnos: data.turno.nombre,
-      propuestas: data.propuestas.map(carrera => carrera.propuesta + " - "),
+      //propuestas: data.propuestas.map(carrera => carrera.propuesta + " - "),
       clickEvent: () => setComisionSelec(data.comision + ' - ' + data.nombre + ' - ' + data.turno.nombre + ' - ' + data.propuestas.map(carrera => carrera.propuesta + " - ")), // estoy usando la referencia del estado que esta en el componente FiltrosComponente
       boton: <MDBBtn color="light-green" active >Seleccionar</MDBBtn> 
     }
@@ -24,7 +24,7 @@ export const grilla = (jsonGrillaFiltrado, setComisionSelec) => {
   return {
     columns: [
       {
-        label: 'boton',
+        label: '',
         field: 'boton',
         width: 50,
       },
@@ -73,13 +73,13 @@ export const grilla = (jsonGrillaFiltrado, setComisionSelec) => {
         field: 'turnos',
         //sort: 'asc',
         width: 150
-      },
+      }/*,
       {
         label: 'Porpuestas',
         field: 'propuestas',
         //sort: 'asc',
         width: 150
-      }
+      }*/
     ],
     rows:
       rowsData

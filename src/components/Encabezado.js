@@ -12,7 +12,6 @@ class Encabezado extends React.Component {
       <BrowserRouter>
         <div>
           <LogoUsuario />
-
         </div>
       </BrowserRouter>
     );

@@ -28,7 +28,7 @@ const CaracteristicasDeAulas = ({setCaractAulas}) => {
     multiple
     selection
     options={cartAu}
-    onChange={(opt, meta) => setCaractAulas(meta.value)}
+    onChange={(opt, meta) => setCaractAulas(meta.value)} /// revisar
     
   />
  );
