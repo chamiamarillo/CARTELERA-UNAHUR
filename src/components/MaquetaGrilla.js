@@ -38,12 +38,18 @@ const MaquetaGrilla = ({caractAulas}) => {
 
   const mierda = auXEdif.filter(e => e.edificio === edifSelect)
 
-  const mierda2 = mierda.filter(c => c.carac.some(element => {
-    element.includes(caractAulas)
+/*  
+  const mierda2 = mierda.filter(c => c.carac.foreach(e => 
+    {
+      edifSelect.foreach(ee => 
+        {
+          ee.id === e.ampliacion_tipo
+      })
   }))  
+*/
 
   //console.log(auXEdif)
-  console.log(mierda2)
+  console.log(caractAulas)
   
 
 

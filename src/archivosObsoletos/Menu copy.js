@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-import FechaHora from './FechaHora';
+import FechaHora from '../components/FechaHora';
 
 class Menu extends Component {
     render() {

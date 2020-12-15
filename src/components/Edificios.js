@@ -26,7 +26,7 @@ const Edificios = () => {
 
   return (
   <Dropdown
-    placeholder='Select Country'
+    placeholder='Seleccionar Edificio'
     //fluid
     search
     selection
