@@ -19,6 +19,7 @@
     "popper.js": "^1.16.1",
     "react": "^16.14.0",
     "react-aria": "^0.9.5",
+    "react-beautiful-dnd": "^13.1.0",
     "react-bootstrap": "^1.4.0",
     "react-columns": "^1.2.1",
     "react-contextmenu": "^2.14.0",
