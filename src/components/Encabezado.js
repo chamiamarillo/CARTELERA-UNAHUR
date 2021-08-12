@@ -5,9 +5,7 @@ import React from 'react';
 import LogoUsuario from "./LogoUsuario";
 
 
-class Encabezado extends React.Component {
-  render() {
-
+const Encabezado = () => {
     return (
       <BrowserRouter>
         <div>
@@ -15,6 +13,6 @@ class Encabezado extends React.Component {
         </div>
       </BrowserRouter>
     );
-  }
+  
 }
 export default Encabezado;

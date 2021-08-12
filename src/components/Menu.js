@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import FechaHora from './FechaHora';
 
-class Menu extends Component {
-    render() {
+//class Menu extends Component {
+const Menu = () => {
+
         return (
             <nav className="navbar navbar-expand-md navbar-light bg-light">
 
@@ -37,7 +38,7 @@ class Menu extends Component {
                 </div>
             </nav>
         )
-    }
-}
+    
+} 
 
 export default Menu;

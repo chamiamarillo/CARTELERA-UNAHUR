@@ -6,19 +6,27 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 const initialTasks = [
   {
     id: "1",
-    text: "React.js",
+    text: "Lunes",
   },
   {
     id: "2",
-    text: "HTML/CSS",
+    text: "Martes",
   },
   {
     id: "3",
-    text: "AWS",
+    text: "Miércoles",
   },
   {
     id: "4",
-    text: "JavaScript",
+    text: "Jueves",
+  },
+  {
+    id: "5",
+    text: "Viernes",
+  },
+  {
+    id: "6",
+    text: "Sábado",
   },
 ];
 
@@ -52,7 +60,7 @@ function NuevoComponentePrueba() {
       }}
     >
       <div className="app">
-        <h1>Estudiar</h1>
+        <h1>Dias de la comision a asignar</h1>
         <Droppable droppableId="tasks">
           {(droppableProvided) => (
             <ul
