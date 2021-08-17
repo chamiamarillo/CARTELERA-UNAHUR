@@ -11,9 +11,6 @@ const AulasPorEdificio = ({ jsonAulasXEdif }) => {
         }
     ))
 
-
-
-
     return (
         <>
             {

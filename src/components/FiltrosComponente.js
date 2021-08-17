@@ -5,6 +5,8 @@ import { grilla } from '../util/services/grilla.service'
 //import CaracteristicasAulas from '../archivosObsoletos/CaracteristicasAulas.js';
 import TablaComisiones from './TablaComisiones';
 import MaquetaGrilla from './MaquetaGrilla';
+import Display from './Display';
+
 ////
 import './css/FiltrosComponent.css'
 //import { Checkbox } from 'semantic-ui-react';
@@ -270,6 +272,10 @@ const FiltrosComponente = () => {
       <div>
         <MaquetaGrilla 
           caractAulas={caractAulas}
+        />
+      </div>
+      <div>
+        <Display 
         />
       </div>
 

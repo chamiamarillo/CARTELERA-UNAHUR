@@ -26,7 +26,7 @@ const MaquetaGrilla = ({ caractAulas }) => {
   ))
 
   const auXEdif = jsonAulasXEdif.map(data => (
-    {
+    {   
       espacio: data.espacio,
       aula: data.nombre,
       capacidad: data.capacidad,
@@ -37,14 +37,14 @@ const MaquetaGrilla = ({ caractAulas }) => {
   ))
 
   const mierda = auXEdif.filter(e => e.edificio === edifSelect)
-
+console.log(mierda)
   /*  
     const mierda2 = mierda.filter(c => c.carac.foreach(e => 
       {
         edifSelect.foreach(ee => 
           {
             ee.id === e.ampliacion_tipo
-        })
+        })  
     }))  
   */
 
@@ -81,31 +81,7 @@ const MaquetaGrilla = ({ caractAulas }) => {
         </div>
       </div>
 
-      <div id="clasedeclase" >
-        <div id="classSection">
-          <div id="aulas_grilla1"><div> AULAS: </div>
-
-            {
-              mierda.map(elemento => (
-                <ul id="btn-mostrarAula">{elemento.aula}</ul>
-              ))
-            }
-          </div>
-        </div>
-
-        <div id="classSection2">
-          <div id="divPe">
-            <p>|  07:00  |</p><p>  08: 00  |</p><p>  09:00  |</p> <p>  10:00  |</p><p> 11:00  |</p><p> 12:00  |</p><p> 13:00  |</p><p> 14:00  |</p><p> 15:00  |</p><p> 16:00  |</p>
-            <p> 17:00  |</p><p> 18:00  |</p><p> 19:00  |</p><p> 20:00  |</p><p> 21:00  |</p><p> 22:00  |</p></div>
-          <ol className="aulas_grilla2">
-            {
-              mierda.map(elemento => (
-                <ul className="efectoAzul">{elemento.length}</ul>
-              ))
-            }
-          </ol>
-        </div>
-      </div>
+     
     </Fragment>
 
   );

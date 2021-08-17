@@ -11,6 +11,7 @@ import FiltrosComponente from './FiltrosComponente';
 import Propuestas from './Propuestas';
 import Menu from './Menu';
 import Edificios from './Edificios';
+import Display from './Display';
 
 const Principal = () => {
   return (
@@ -35,7 +36,7 @@ const Principal = () => {
                                 <Route exact path="/Modificacion" component={Propuestas} />
                                 <Route exact path="/Consulta" component={Edificios} />
                                 <Route exact path="/Reporte"  />
-                                <Route exact path="/Salir"  />
+                                <Route exact path="/Salir"  component={Display}/>
                             </Switch>
                         </div>
                     </ul>
