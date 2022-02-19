@@ -4,7 +4,7 @@ let username = 'aulas';
 let password = 'aulas';
 let proxyUrl = 'https://cors-anywhere.herokuapp.com/';
 
-let url = `http://guarani-test.unahur.edu.ar:80/guarani/3.18/rest/aulas-unahur` // url de la api a consultar
+let url = `http://guarani-test.unahur.edu.ar:80/guarani/3.18/rest/v1/aulas-unahur` // url de la api a consultar
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // funcion utilizada en el componente de FiltrosComponentes
